@@ -52,6 +52,8 @@ const I18N_STRINGS = {
     btn_regen_variation: "Nova Variação",
     btn_upload_image: "Enviar Minha Imagem",
     btn_copy_prompt_pixar: "Copiar Prompt",
+    btn_copy_story_prompt: "Copiar Prompt de Historia",
+    btn_copy_story_prompt: "Copiar Prompt da História",
     btn_download_image: "Baixar Imagem",
     label_memory_verse: "Versículo para Guardar no Coração:",
     sec3_title: "3. Hora de Colorir!",
@@ -138,6 +140,7 @@ const I18N_STRINGS = {
     btn_regen_variation: "New Variation",
     btn_upload_image: "Upload My Image",
     btn_copy_prompt_pixar: "Copy Prompt",
+    btn_copy_story_prompt: "Copy Story Prompt",
     btn_download_image: "Download Image",
     label_memory_verse: "Memory Verse to Keep in the Heart:",
     sec3_title: "3. Coloring Time!",
@@ -310,6 +313,7 @@ const I18N_STRINGS = {
     btn_regen_variation: "Nouvelle Variation",
     btn_upload_image: "Téléverser Mon Image",
     btn_copy_prompt_pixar: "Copier le Prompt",
+    btn_copy_story_prompt: "Copier le Prompt de l'Histoire",
     btn_download_image: "Télécharger l'Image",
     label_memory_verse: "Verset d'Or à Garder dans le Cœur :",
     sec3_title: "3. L'Heure du Coloriage !",
@@ -6894,11 +6898,13 @@ const PRESET_TITLES = {
   salmo91: { pt: "Salmo 91: Proteção", en: "Psalm 91: Protection", es: "Salmo 91: Protección", fr: "Psaume 91 : Protection" },
   filipenses413: { pt: "Filipenses 4:13: Minha Força", en: "Philippians 4:13: Strength", es: "Filipenses 4:13: Fuerza", fr: "Philippiens 4:13 : Force" },
   lampada: { pt: "Salmo 119:105: Lâmpada", en: "Psalm 119:105: Lamp", es: "Salmo 119:105: Lámpara", fr: "Psaume 119:105 : Lampe" },
+  paralitico: { pt: "Lucas 5: Cura do Paralítico", en: "Luke 5: Healing of Paralytic", es: "Lucas 5: Curación del Paralítico", fr: "Luc 5 : Guérison du Paralytique" },
   pesca: { pt: "Lucas 5: Pesca Maravilhosa", en: "Luke 5: Miraculous Catch", es: "Lucas 5: Pesca Milagrosa", fr: "Luc 5 : Pêche Miraculeuse" }
 };
 
 const THEME_GALLERY = {
   joao6: { color: "assets/images/loaves_pixar.jpg", coloring: "assets/images/loaves_coloring.jpg" },
+  paralitico: { color: "assets/images/paralitico_pixar.jpg", coloring: "assets/images/paralitico_coloring.jpg" },
   pesca: { color: "assets/images/pesca_pixar.jpg", coloring: "assets/images/pesca_coloring.jpg" },
   salmo91: { color: "assets/images/salmo91_pixar.jpg", coloring: "assets/images/salmo91_coloring.jpg" },
   filipenses413: { color: "assets/images/filipenses_pixar.jpg", coloring: "assets/images/filipenses_coloring.jpg" },
@@ -7035,6 +7041,21 @@ function setupEventListeners() {
   // Ferramentas de Imagem: 3D Pixar
   document.getElementById("btn-gen-pixar-ai").addEventListener("click", () => generatePixarImageAI(false));
   document.getElementById("btn-regen-pixar-ai").addEventListener("click", () => generatePixarImageAI(true));
+  
+  const btnCopyStoryPrompt = document.getElementById("btn-copy-story-prompt");
+  if (btnCopyStoryPrompt) {
+    btnCopyStoryPrompt.addEventListener("click", () => {
+      const promptEl = document.getElementById("pedagogical-story-prompt-text");
+      if (!promptEl) return;
+      const textToCopy = promptEl.textContent;
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        showToastNotification("📋 Prompt pedagógico da história copiado com sucesso!");
+      }).catch(() => {
+        showToastNotification("📋 Prompt copiado para a área de transferência!");
+      });
+    });
+  }
+
   document.getElementById("btn-copy-pixar-prompt").addEventListener("click", (e) => {
     const loc = getLocalizedStory(currentStoryObj);
     const prompt = buildMasterImagePrompt(loc.ref || loc.title, currentAge);
@@ -7217,6 +7238,7 @@ function renderCurrentStory() {
   const ageSelect = document.getElementById("age-select");
   const ageLabel = ageSelect.options[ageSelect.selectedIndex].text.split("(")[0].trim();
   document.getElementById("activity-age").textContent = ageLabel;
+  updatePedagogicalStoryPrompt();
 
   // Imagem Colorida (3D Pixar)
   const imgColor = document.getElementById("story-image-color");
@@ -7228,7 +7250,7 @@ function renderCurrentStory() {
   const imgColoring = document.getElementById("coloring-image");
   imgColoring.src = currentStoryObj.imageColoring || "assets/images/cross_coloring.jpg";
   imgColoring.alt = localized.title;
-  document.getElementById("coloring-caption").textContent = localized.imageColoringDesc || I18N_STRINGS[currentLang].coloring_caption_default;
+  const capEl = document.getElementById("coloring-caption"); if (capEl) { capEl.textContent = ""; capEl.style.display = "none"; }
 
   // Sincronizar Seletores de Tema Visual
   const selPixar = document.getElementById("theme-visual-select-pixar");
@@ -8274,4 +8296,114 @@ function exportDOCX() {
   fileDownload.download = `biblekids_${currentLang}_${currentStoryKey}.doc`;
   fileDownload.click();
   document.body.removeChild(fileDownload);
+}
+
+
+// --- PROMPT DE COMANDO PEDAGÓGICO PARA CRIAÇÃO DA HISTÓRIA POR IDADE ---
+function buildPedagogicalStoryPrompt(storyObj, ageGroup, lang) {
+  const loc = getLocalizedStory(storyObj) || {};
+  const title = loc.title || "História Bíblica";
+  const ref = loc.ref || "Passagem Bíblica";
+  
+  const ageSpecs = {
+    "3-5": {
+      label: (lang === "en") ? "3 to 5 years (Toddlers / Early Childhood)" :
+             (lang === "es") ? "3 a 5 años (Maternal / Preescolar)" :
+             (lang === "fr") ? "3 à 5 ans (Petite Enfance)" :
+             "3 a 5 anos (Maternal e Jardim da Infância)",
+      guidelines: (lang === "en") ? 
+        "Pedagogical criteria: Use simple, sensory vocabulary, repetitive rhythmic words, warm and reassuring tone. Focus on God's love, gentleness, and protection. Avoid scaring details or complex theology. Keep sentences short and engaging." :
+        (lang === "es") ?
+        "Criterios pedagógicos: Utilizar vocabulario sencillo y sensorial, frases cortas y ritmo acogedor. Enfatizar el amor, la ternura y el cuidado de Dios. Evitar conceptos abstractos o detalles atemorizantes. Finalizar con alegría y gratitud." :
+        (lang === "fr") ?
+        "Critères pédagogiques : Vocabulaire simple, phrases courtes et rythme doux. Mettre l'accent sur l'amour, la tendresse et la protection de Dieu. Éviter les termes théologiques complexes." :
+        "Critérios pedagógicos: Frases curtas, vocabulário afetivo e sensorial, repetições lúdicas e tom acolhedor. Foco absoluto no amor, no cuidado e na proteção de Deus. Sem termos assustadores ou teologia abstrata. Conclusão calorosa com louvor e gratidão."
+    },
+    "6-8": {
+      label: (lang === "en") ? "6 to 8 years (Primary School)" :
+             (lang === "es") ? "6 a 8 años (Primarios)" :
+             (lang === "fr") ? "6 à 8 ans (Enfants Primaires)" :
+             "6 a 8 anos (Primários)",
+      guidelines: (lang === "en") ? 
+        "Pedagogical criteria: Narrative chronological flow with vivid dialogues, relatable child-friendly character emotions, and clear moral choices. Highlight practical faith, friendship, teamwork, and loving obedience to God's Word." :
+        (lang === "es") ?
+        "Criterios pedagógicos: Narrativa cronológica dinámica con diálogos expresivos y personajes cercanos. Enfatizar la fe viva, el compañerismo, la obediencia a Dios y la aplicación práctica en la escuela y el hogar." :
+        (lang === "fr") ?
+        "Critères pédagogiques : Récit vivant avec dialogues et émotions claires. Souligner la foi active, la solidarité, l'obéissance bienveillante et l'application dans la vie quotidienne." :
+        "Critérios pedagógicos: Narrativa cronológica clara e dinâmica, diálogos expressivos, personagens carismáticos com emoções humanas identificáveis. Destaque para fé prática, cooperação, amizade verdadeira e obediência à Palavra no dia a dia."
+    },
+    "9-12": {
+      label: (lang === "en") ? "9 to 12 years (Juniors / Pre-Teens)" :
+             (lang === "es") ? "9 a 12 años (Pre-Adolescentes)" :
+             (lang === "fr") ? "9 à 12 ans (Pré-Adolescents)" :
+             "9 a 12 anos (Juniores / Pré-Adolescentes)",
+      guidelines: (lang === "en") ? 
+        "Pedagogical criteria: Faithful biblical and historical context, moral reflection, and character-building challenges. Address peer pressure, integrity, and personal discipleship. Connect scripture truth to real pre-teen life decisions." :
+        (lang === "es") ?
+        "Criterios pedagógicos: Contexto bíblico e histórico riguroso, reflexión ética y madurez espiritual. Conectar la verdad bíblica con la lealtad, la identidad y las decisiones reales de los preadolescentes." :
+        (lang === "fr") ?
+        "Critères pédagogiques : Contexte historique fidèle, profondeur morale et responsabilité chrétienne. Encourager la réflexion personnelle, l'intégrité et l'engagement dans la foi." :
+        "Critérios pedagógicos: Contextualização histórica e bíblica precisa, reflexão ética e maturidade cristã. Abordar temas como lealdade, pressão social, coragem moral e discipulado autêntico. Aplicação desafiadora e relevante para a tomada de decisões."
+    }
+  };
+
+  const ageData = ageSpecs[ageGroup] || ageSpecs["6-8"];
+
+  if (lang === "en") {
+    return `[PEDAGOGICAL COMMAND FOR CHILDREN'S BIBLE STORYTELLING]
+Role: Christian Children's Educator & Storyteller
+Theme: "${title}" (${ref})
+Target Age: ${ageData.label}
+
+Objective: Tell this biblical narrative tailored specifically for the cognitive and emotional stage of ${ageData.label}.
+${ageData.guidelines}
+
+Format: 2 to 3 engaging paragraphs, clear narrative arc, ending with a heart-to-heart practical reflection.`;
+  } else if (lang === "es") {
+    return `[COMANDO PEDAGÓGICO PARA NARRACIÓN BÍBLICA INFANTIL]
+Rol: Educador y Narrador Bíblico Infantil
+Tema: "${title}" (${ref})
+Edad Establecida: ${ageData.label}
+
+Objetivo: Narrar este pasaje bíblico adaptado al desarrollo emocional y cognitivo de niños de ${ageData.label}.
+${ageData.guidelines}
+
+Estructura: 2 a 3 párrafos fluidos, diálogos vivos y aplicación al corazón.`;
+  } else if (lang === "fr") {
+    return `[COMMANDE PÉDAGOGIQUE POUR RÉCIT BIBLIQUE POUR ENFANTS]
+Rôle : Éducateur chrétien et conteur biblique
+Thème : "${title}" (${ref})
+Tranche d'Âge : ${ageData.label}
+
+Objectif : Raconter cette histoire adaptée à la compréhension des enfants de ${ageData.label}.
+${ageData.guidelines}`;
+  } else {
+    return `[PROMPT DE COMANDO PEDAGÓGICO - CONTAÇÃO DE HISTÓRIA BÍBLICA INFANTIL]
+Atuação: Educador Cristão e Contador de Histórias da Escola Bíblica Infantil (EBI)
+Tema da Lição: "${title}" (${ref})
+Faixa Etária Selecionada: ${ageData.label}
+
+Objetivo Pedagógico: Criar a narrativa bíblica adaptada especificamente à capacidade de compreensão e maturidade emocional da faixa etária de ${ageData.label}.
+
+Diretrizes de Linguagem e Didática:
+• ${ageData.guidelines}
+• Manter fidelidade absoluta ao texto das Sagradas Escrituras.
+• Estrutura: Início acolhedor, desenvolvimento com conflito/ação claro, clímax de fé e lição prática transformadora.`;
+  }
+}
+
+function updatePedagogicalStoryPrompt() {
+  const promptEl = document.getElementById("pedagogical-story-prompt-text");
+  const ageLabelEl = document.getElementById("prompt-target-age-label");
+  if (!promptEl) return;
+
+  const ageSelect = document.getElementById("age-select");
+  const ageKey = ageSelect ? ageSelect.value : currentAge;
+  const ageLabel = ageSelect ? ageSelect.options[ageSelect.selectedIndex].text.split("(")[0].trim() : "6 a 8 anos";
+
+  if (ageLabelEl) {
+    ageLabelEl.textContent = ageLabel;
+  }
+
+  promptEl.textContent = buildPedagogicalStoryPrompt(currentStoryObj, ageKey, currentLang);
 }

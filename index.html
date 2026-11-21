@@ -267,6 +267,23 @@
             <span class="section-tag" data-i18n="sec1_tag">História Bíblica Adaptada</span>
           </div>
 
+          <!-- Prompt de Comando Pedagógico (História Adaptada para a Idade Selecionada) -->
+          <div class="pedagogical-prompt-container no-print" id="pedagogical-story-prompt-container">
+            <div class="prompt-header-row">
+              <div class="prompt-title-badge">
+                <span class="badge-icon">⚡</span>
+                <strong>Prompt de Comando Pedagógico:</strong>
+                <span class="prompt-target-age" id="prompt-target-age-label">6 a 8 anos</span>
+              </div>
+              <button type="button" class="btn-xs btn-copy-prompt" id="btn-copy-story-prompt" title="Copiar este comando pedagógico para usar na IA ou preparar aula">
+                📋 <span data-i18n="btn_copy_story_prompt">Copiar Prompt da História</span>
+              </button>
+            </div>
+            <div class="prompt-text-display" id="pedagogical-story-prompt-text">
+              <!-- Gerado dinamicamente via JS de acordo com a idade e passagem -->
+            </div>
+          </div>
+
           <!-- Texto Narrado da História por Idade -->
           <div class="story-body" id="story-body">
             <!-- Preenchido via JavaScript de acordo com a faixa etária -->
@@ -313,6 +330,8 @@
                 <div class="theme-picker-group">
                   <label for="theme-visual-select-pixar" class="theme-select-label">🎨 Tema Visual:</label>
                   <select id="theme-visual-select-pixar" class="theme-select-inline" title="Escolha a cena temática bíblica para a aula">
+                    <option value="paralitico">🛏️ Lucas 5: A Cura do Paralítico (Telhado)</option>
+                    <option value="paralitico">🛏️ Lucas 5: A Cura do Paralítico (Telhado)</option>
                     <option value="pesca" selected>⛵ Lucas 5: A Pesca Maravilhosa</option>
                     <option value="joao6">🍞 João 6: Pães e Peixes</option>
                     <option value="salmo91">🛡️ Salmo 91: Proteção e Anjos</option>
@@ -375,7 +394,7 @@
             </div>
             
             <div class="coloring-footer-info">
-              <span id="coloring-caption" data-i18n="coloring_caption_default">Linhas pretas nítidas sobre fundo branco — perfeito para lápis de cor e giz de cera!</span>
+              <span id="coloring-caption" class="hidden" style="display:none!important;"></span>
               
               <!-- Barra de Ferramentas de Colorir -->
               <div class="coloring-btn-group no-print">
@@ -541,6 +560,19 @@
             <p class="challenge-description" id="challenge-text">
               "Esta semana vou praticar a generosidade: vou repartir com alegria um lanche ou brinquedo com um amigo ou irmão que precise, lembrando do milagre de Jesus!"
             </p>
+            <!-- Rastreador Semanal da Criança para Geladeira -->
+            <div class="challenge-days-tracker">
+              <span class="tracker-title">📅 Marque os dias que você cumpriu o desafio:</span>
+              <div class="tracker-days-grid">
+                <label class="tracker-day"><input type="checkbox" /> <span>Seg</span></label>
+                <label class="tracker-day"><input type="checkbox" /> <span>Ter</span></label>
+                <label class="tracker-day"><input type="checkbox" /> <span>Qua</span></label>
+                <label class="tracker-day"><input type="checkbox" /> <span>Qui</span></label>
+                <label class="tracker-day"><input type="checkbox" /> <span>Sex</span></label>
+                <label class="tracker-day"><input type="checkbox" /> <span>Sáb</span></label>
+                <label class="tracker-day"><input type="checkbox" /> <span>Dom</span></label>
+              </div>
+            </div>
 
             <div class="signature-row">
               <div class="signature-block">

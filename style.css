@@ -1452,3 +1452,107 @@ select:focus {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   MELHORIAS PEDAGÓGICAS E DESAFIO PRÁTICO (ATUALIZAÇÃO DE EXCELÊNCIA)
+   ========================================================================== */
+
+/* Container de Prompt de Comando Pedagógico (A Palavra Contada) */
+.pedagogical-prompt-container {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid var(--accent, #4f46e5);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.prompt-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.prompt-title-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #1e293b;
+}
+
+.prompt-target-age {
+  background: #e0e7ff;
+  color: #3730a3;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+}
+
+.prompt-text-display {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.82rem;
+  color: #334155;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+/* Ocultar legenda abaixo do desenho de colorir para deixar estritamente o desenho */
+#coloring-caption {
+  display: none !important;
+}
+
+/* Rastreador Semanal da Criança para Geladeira */
+.challenge-days-tracker {
+  background: #fffbeb;
+  border: 1px dashed #f59e0b;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 12px 0 16px 0;
+}
+
+.tracker-title {
+  display: block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #92400e;
+  margin-bottom: 8px;
+}
+
+.tracker-days-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tracker-day {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #ffffff;
+  border: 1px solid #fcd34d;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #78350f;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tracker-day input[type="checkbox"] {
+  accent-color: #d97706;
+  cursor: pointer;
+}
