@@ -6878,6 +6878,172 @@ const STORIES_DB = {
       "challenge": "Cette semaine, je choisis d'obéir avec joie et de coopérer en famille et à l'école !"
     }
   }
+,
+  "paralitico": {
+    "icon": "🛏️✨",
+    "imageColor": "assets/images/paralitico_pixar.jpg",
+    "imageColoring": "assets/images/paralitico_coloring.jpg",
+    "pt": {
+      "title": "A Cura do Paralítico",
+      "ref": "Lucas 5:17-26",
+      "imageColorDesc": "Jesus cura com muito amor o homem que foi descido pelo telhado por seus 4 fiéis amigos.",
+      "imageColoringDesc": "Desenho para colorir: Jesus com braços abertos acolhendo o paralítico descido pelo telhado pelos 4 amigos.",
+      "verse": {
+        "text": "Ele disse ao paralítico: Eu te digo: Levanta-te, toma o teu leito e vai para tua casa.",
+        "ref": "Lucas 5:24"
+      },
+      "storyByAge": {
+        "3-5": "Um homem não conseguia andar e ficava sempre deitadinho em sua caminha. Mas ele tinha 4 amigos muito especiais e cheios de amor! Quando souberam que Jesus estava ensinando numa casa cheia de gente, tiveram uma grande ideia: subiram no telhado, abriram um espacinho com muito cuidado e desceram o amigo com cordas bem pertinho de Jesus! Jesus sorriu com carinho, viu o amor e a fé deles e disse: 'Levante e ande!'. O homem ficou curado na mesma hora, levantou pulando de alegria e foi para casa louvando a Deus!",
+        "6-8": "Na cidade de Cafarnaum, tantas pessoas foram ouvir os ensinamentos de Jesus que a casa ficou lotada e não cabia mais ninguém. Havia ali um homem paralítico que sonhava em se encontrar com o Mestre. Ele tinha 4 amigos fiéis que creram no poder de Jesus: subiram no telhado, retiraram algumas telhas e desceram a esteira do amigo bem no meio da sala, diante de Jesus! Quando Jesus viu a fé e a união daqueles amigos, disse: 'Os teus pecados estão perdoados. Levanta-te, pega a tua cama e vai para a tua casa'. No mesmo instante o homem se levantou curado, tomou seu leito e foi para casa glorificando a Deus diante de todos!",
+        "9-12": "O relato de Lucas 5:17-26 revela o poder soberano de Cristo e a força transformadora da verdadeira amizade. Diante de uma casa completamente lotada, quatro amigos venceram as barreiras físicas subindo no telhado para descer o amigo necessitado aos pés de Jesus. A Bíblia ressalta que Jesus, 'vendo a fé deles', atuou nas esferas espiritual e física: perdoou os pecados do homem e o curou instantaneamente, dizendo: 'Levanta-te, toma o teu leito e vai para tua casa'. Esse milagre nos ensina que a fé ativa supera qualquer obstáculo para conduzir o próximo a Cristo."
+      },
+      "application": {
+        "home": "Ser um amigo prestativo em casa: ajudar os pais e irmãos com alegria e cuidar de quem estiver cansado.",
+        "school": "Ser um amigo leal no recreio, não excluir ninguém das brincadeiras e ajudar quem tem dificuldades.",
+        "heart": "Confiar que Jesus tem todo o poder para transformar vidas e orar com fé pelos amigos.",
+        "prayer": "Querido Jesus, obrigado pelos amigos e pela minha família. Ensina-me a ser um amigo fiel e bondoso, pronto para ajudar quem precisa e amar como o Senhor nos amou. Amém!"
+      },
+      "words": ["AMIGOS", "JESUS", "FE", "TELHADO", "CURA"],
+      "quiz": [
+        {
+          "question": "Quantos amigos fiéis ajudaram o homem paralítico a chegar até Jesus?",
+          "options": ["4 amigos cheios de amor", "10 amigos", "Nenhum amigo"],
+          "answerIndex": 0
+        },
+        {
+          "question": "Por onde os amigos desceram o homem até a presença de Jesus?",
+          "options": ["Por uma abertura feita no telhado", "Pela porta da frente", "Pela janela da cozinha"],
+          "answerIndex": 0
+        },
+        {
+          "question": "O que Jesus disse ao homem curado?",
+          "options": ["Levanta-te, toma o teu leito e vai para tua casa", "Fique sempre na cama", "Não conte para ninguém"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "Esta semana vou ser um amigo fiel e prestativo: ajudar com alegria um colega na escola ou alguém em casa que esteja precisando de apoio!"
+    },
+    "en": {
+      "title": "Healing of the Paralyzed Man",
+      "ref": "Luke 5:17-26",
+      "imageColorDesc": "Jesus healing the paralyzed man lowered through the roof by 4 faithful friends.",
+      "imageColoringDesc": "Coloring page: Jesus welcoming the paralyzed man lowered through the roof.",
+      "verse": {
+        "text": "He said to the paralyzed man: I tell you, get up, take your mat and go home.",
+        "ref": "Luke 5:24"
+      },
+      "storyByAge": {
+        "3-5": "A man could not walk and had to stay in bed. But he had 4 wonderful friends who loved him! They carried him to the house where Jesus was teaching. Because of the crowd, they climbed up to the roof and gently lowered their friend to Jesus with ropes. Jesus saw their faith, smiled and healed him! The man stood up, jumped with joy and praised God!",
+        "6-8": "In Capernaum, a house was so crowded with people listening to Jesus that no one could get in. A paralyzed man had 4 faithful friends who believed Jesus could heal him. They climbed up to the roof, removed some tiles, and lowered the man right before Jesus! Seeing their faith, Jesus told him: 'Arise, take up your bed, and go home.' Instantly the man stood up healed and went home praising God!",
+        "9-12": "Luke 5:17-26 showcases Jesus' divine authority and the power of faithful friendship. Four devoted men overcame physical obstacles by removing tiles from the roof and lowering their paralyzed friend to Jesus. Jesus, seeing their faith, both forgave his sins and healed his body completely. This miracle inspires us to be bold in bringing others to Christ and trusting His restoring power."
+      },
+      "application": {
+        "home": "Help family members cheerfully and pray for anyone at home who feels unwell.",
+        "school": "Be an encouraging friend, welcoming newcomers and helping classmates with homework or games.",
+        "heart": "Believe that Jesus has the power to do what is impossible and never give up on helping others.",
+        "prayer": "Lord Jesus, thank You for faithful friends and family. Give me a kind heart to help those in need and lead them to You. Amen!"
+      },
+      "words": ["FRIENDS", "JESUS", "FAITH", "ROOF", "HEALING"],
+      "quiz": [
+        {
+          "question": "How many friends carried the paralyzed man to Jesus?",
+          "options": ["4 faithful friends", "10 friends", "None"],
+          "answerIndex": 0
+        },
+        {
+          "question": "How did they lower the man into the crowded house?",
+          "options": ["Through the open roof", "Through the front door", "Through a window"],
+          "answerIndex": 0
+        },
+        {
+          "question": "What did Jesus tell the healed man?",
+          "options": ["Get up, take your mat and go home", "Stay in bed forever", "Be silent"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "This week I will be a faithful helper: cheerfully assisting a classmate or family member who needs support!"
+    },
+    "es": {
+      "title": "La Curación del Paralítico",
+      "ref": "Lucas 5:17-26",
+      "imageColorDesc": "Jesús curando al paralítico bajado por el techo por cuatro fieles amigos.",
+      "imageColoringDesc": "Dibujo para colorear: Jesús acogiendo al paralítico bajado por el techo.",
+      "verse": {
+        "text": "Dijo al paralítico: A ti te digo: Levántate, toma tu lecho, y vete a tu casa.",
+        "ref": "Lucas 5:24"
+      },
+      "storyByAge": {
+        "3-5": "Había un hombre que no podía caminar. Pero tenía 4 amigos muy buenos y cariñosos. Ellos llevaron al amigo hasta la casa donde estaba Jesús. Como no cabía nadie por la puerta, ¡subieron al techo y lo bajaron con cuerdas hasta Jesús! Jesús sonrió con amor, sanó al hombre, y él se levantó muy feliz dando gracias a Dios.",
+        "6-8": "En Capernaúm, una casa estaba repleta de personas oyendo a Jesús. Cuatro amigos de un hombre paralítico confiaban en que Jesús podía sanarlo. Subieron al techo, quitaron unas tejas y bajaron al amigo en su camilla justo delante de Jesús. Al ver su fe, Jesús le dijo: 'Levántate, toma tu lecho y vete a tu casa'. ¡El hombre se levantó sano y fue a su casa alabando a Dios!",
+        "9-12": "El relato de Lucas 5:17-26 enseña sobre la autoridad de Cristo y el valor de la amistad perseverante. Cuatro hombres superaron el obstáculo de la multitud subiendo al techo para presentar a su amigo necesitado ante el Salvador. Jesús perdonó sus pecados y sanó su cuerpo. Este pasaje nos desafía a ser canales de amor y fe para llevar a otros a los pies de Jesús."
+      },
+      "application": {
+        "home": "Ayudar con alegría a mis padres y hermanos, mostrando paciencia y amor.",
+        "school": "Ser un amigo fiel e inclusivo en la escuela, apoyando a quien necesite ayuda.",
+        "heart": "Confiar en que Jesús tiene todo el poder para sanar y transformar nuestras vidas.",
+        "prayer": "¡Señor Jesús, gracias por la amistad y por Tu infinito amor! Dame un corazón generoso para ayudar a los demás. ¡Amén!"
+      },
+      "words": ["AMIGOS", "JESUS", "FE", "TECHO", "CURA"],
+      "quiz": [
+        {
+          "question": "¿Cuántos amigos ayudaron al hombre paralítico?",
+          "options": ["4 amigos fieles", "10 amigos", "Ninguno"],
+          "answerIndex": 0
+        },
+        {
+          "question": "¿Por dónde bajaron los amigos al paralítico?",
+          "options": ["Por una abertura en el techo", "Por la puerta principal", "Por la ventana"],
+          "answerIndex": 0
+        },
+        {
+          "question": "¿Qué le dijo Jesús al hombre sanado?",
+          "options": ["Levántate, toma tu lecho y vete a tu casa", "Quédate acostado", "No hables con nadie"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "¡Esta semana seré un amigo servicial ayudando con alegría a un compañero o familiar que necesite apoyo!"
+    },
+    "fr": {
+      "title": "La Guérison du Paralytique",
+      "ref": "Luc 5:17-26",
+      "imageColorDesc": "Jésus guérissant avec amour le paralytique descendu par le toit par ses 4 amis fidèles.",
+      "imageColoringDesc": "Coloriage : Jésus accueillant le paralytique descendu par le toit par ses 4 amis.",
+      "verse": {
+        "text": "Il dit au paralytique : Je te le dis, lève-toi, prends ton lit, et va dans ta maison.",
+        "ref": "Luc 5:24"
+      },
+      "storyByAge": {
+        "3-5": "Un homme ne pouvait pas marcher. Mais il avait 4 amis très gentils ! Quand ils ont su que Jésus était dans uma maison, ils ont monté leur ami sur le toit et l'ont fait descendre doucement avec des cordes. Jésus a souri et a guéri l'homme. Il s'est levé plein de joie et a remercié Dieu !",
+        "6-8": "À Capernaüm, la foule était si nombreuse que personne ne pouvait entrer dans la maison où Jésus enseignait. Quatre amis fidèles d'un homme paralytique sont montés sur le toit, ont retiré des tuiles et ont descendu leur ami devant Jésus. Voyant leur foi, Jésus lui dit : 'Lève-toi, prends ton lit et va chez toi'. L'homme s'est levé guéri et est rentré chez lui en louant Dieu !",
+        "9-12": "Luc 5:17-26 démontre l'autorité divine du Christ et la puissance de la véritable amitié. Quatre hommes ont surmonté les obstacles en descendant leur ami par le toit jusqu'aux pieds de Jésus. Jésus a pardonné ses péchés et a guéri son corps. Ce récit nous encourage à persévérer dans la prière et l'amour fraternel pour conduire nos amis à Christ."
+      },
+      "application": {
+        "home": "Aider ma famille avec le sourire et être attentif aux besoins de chacun.",
+        "school": "Être un camarade bienveillant qui n'exclut personne et qui encourage les autres.",
+        "heart": "Faire confiance à Jésus en toutes circonstances et prier fidèlement pour mes amis.",
+        "prayer": "Seigneur Jésus, merci pour mes amis et ma famille. Donne-moi la force d'aider ceux qui en ont besoin et de refléter Ton amour. Amen !"
+      },
+      "words": ["AMIS", "JESUS", "FOI", "TOIT", "GUERISON"],
+      "quiz": [
+        {
+          "question": "Combien d'amis ont porté le paralytique vers Jésus ?",
+          "options": ["4 amis fidèles", "10 amis", "Aucun"],
+          "answerIndex": 0
+        },
+        {
+          "question": "Par où ont-ils fait descendre le paralytique ?",
+          "options": ["Par une ouverture dans le toit", "Par la porte principale", "Par la fenêtre"],
+          "answerIndex": 0
+        },
+        {
+          "question": "Qu'a dit Jésus à l'homme guéri ?",
+          "options": ["Lève-toi, prends ton lit et va chez toi", "Reste couché", "Ne dis rien à personne"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "Cette semaine, je serai un ami bienveillant en apportant mon aide à un camarade ou à un proche !"
+    }
+  }
 };
 
 // --- 3. TÍTULOS DOS PRESETS EM CADA IDIOMA ---
