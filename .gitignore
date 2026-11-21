@@ -1,5 +1,22 @@
+# Ambientes e credenciais
+.env
+.env.*
+*.env
+*.key
+*.pem
+credentials.json
+token.json
+secrets.json
+
+# Arquivos temporarios e rascunhos
+*scratch*/
+*.tmp
+*.bak
+__pycache__/
+*.pyc
+test_*.jpg
+
+# Sistema e logs
 .DS_Store
 Thumbs.db
 *.log
-scratch/
-test_*.jpg
