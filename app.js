@@ -6879,6 +6879,171 @@ const STORIES_DB = {
     }
   }
 ,
+  "betesda": {
+    "icon": "🛏️💧",
+    "imageColor": "assets/images/bethesda_pixar.jpg",
+    "imageColoring": "assets/images/bethesda_coloring.jpg",
+    "pt": {
+      "title": "A Cura no Tanque de Betesda",
+      "ref": "João 5:1-15",
+      "imageColorDesc": "Jesus cura com infinito amor o homem enfermo há 38 anos junto ao Tanque de Betesda.",
+      "imageColoringDesc": "Desenho para colorir: Jesus estendendo a mão para o homem na esteira junto às águas do Tanque de Betesda.",
+      "verse": {
+        "text": "Disse-lhe Jesus: Levanta-te, toma o teu leito e anda. Imediatamente o homem ficou curado, tomou o seu leito e andou.",
+        "ref": "João 5:8-9"
+      },
+      "storyByAge": {
+        "3-5": "Havia um lugar muito bonito chamado Tanque de Betesda, com águas calminhas. Perto dali, um homem que não conseguia andar ficava deitadinho em sua caminha há muito tempo. Um dia, Jesus chegou com muito amor, olhou nos olhinhos dele e perguntou: 'Você quer ficar bom?'. Jesus sorriu e disse com carinho: 'Levante-se, pegue a sua caminha e ande!'. Na mesma hora, as pernas dele ficaram fortes e cheias de vida! O homem levantou com um sorrisão, enrolou sua caminha e começou a andar feliz da vida, pulando de alegria e agradecendo a Deus!",
+        "6-8": "Em Jerusalém ficava o Tanque de Betesda, cercado por cinco belos arcos de pedra. Muitas pessoas doentes ficavam ali esperando o movimento das águas. Havia um homem que estava doente e sem conseguir andar há 38 anos! Ele se sentia sozinho, pois não tinha quem o ajudasse a entrar no tanque. Mas Jesus foi até ele, conheceu todo o seu sofrimento e lhe disse com voz firme e cheia de amor: 'Levanta-te, toma o teu leito e anda!'. Imediatamente o homem sentiu suas forças renovadas, levantou-se curado, pegou sua esteira nos braços e saiu andando com alegria, louvando o poder de Jesus diante de todos!",
+        "9-12": "No capítulo 5 do Evangelho de João, Jesus vai a Jerusalém e visita o Tanque de Betesda, famoso por suas cinco arcadas. Ali jazia um homem paralisado há impressionantes 38 anos, sem esperança humana e sem ninguém para auxiliá-lo. Ao encontrá-lo, Jesus demonstrou Sua soberana graça: sem depender do tanque ou de rituais, ordenou diretamente: 'Levanta-te, toma o teu leito e anda!'. Instantaneamente restaurado em seu corpo e espírito, o homem tomou seu leito e andou. Esse milagre nos ensina que o amor de Cristo enxerga quem todos esqueceram e que Sua palavra tem poder absoluto para transformar qualquer situação."
+      },
+      "application": {
+        "home": "Ser paciente e atencioso com a família, ajudando quem estiver cansado com um gesto de carinho.",
+        "school": "Perceber aquele colega que costuma ficar sozinho no recreio e chamá-lo com alegria para brincar.",
+        "heart": "Confiar que Jesus sempre cuida de nós e nunca estamos sozinhos, mesmo quando a espera parece demorada.",
+        "prayer": "Querido Jesus, obrigado por Teu amor maravilhoso que cuida de mim. Dá-me um coração atento para enxergar quem precisa de ajuda e paciência para confiar nas Tuas promessas todos os dias. Amém!"
+      },
+      "words": ["JESUS", "TANQUE", "AGUAS", "BETESDA", "CURA"],
+      "quiz": [
+        {
+          "question": "Há quantos anos o homem esperava pela cura junto ao Tanque de Betesda?",
+          "options": ["38 anos", "2 anos", "1 semana"],
+          "answerIndex": 0
+        },
+        {
+          "question": "O que Jesus disse com autoridade e amor ao homem enfermo?",
+          "options": ["Levanta-te, toma o teu leito e anda", "Continue deitado esperando", "Vá embora nadando no tanque"],
+          "answerIndex": 0
+        },
+        {
+          "question": "O que aconteceu imediatamente após a palavra de Jesus?",
+          "options": ["O homem ficou curado, pegou sua cama e andou feliz", "O homem continuou triste na cama", "O homem não conseguiu se levantar"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "Esta semana vou confiar que Jesus cuida de mim em qualquer momento e ajudar alguém com paciência e amor!"
+    },
+    "en": {
+      "title": "Healing at the Pool of Bethesda",
+      "ref": "John 5:1-15",
+      "imageColorDesc": "Jesus healing the invalid man of 38 years at the Pool of Bethesda.",
+      "imageColoringDesc": "Coloring page: Jesus extending His hand to the man on his mat beside the Pool of Bethesda.",
+      "verse": {
+        "text": "Jesus said to him: Get up, take up your bed, and walk. And at once the man was healed, and he took up his bed and walked.",
+        "ref": "John 5:8-9"
+      },
+      "storyByAge": {
+        "3-5": "There was a special pool called Bethesda with calm blue water. A man who couldn't walk had been lying on his little mat for a very long time. One day, Jesus came, smiled kindly and asked him: 'Do you want to be healed?'. Then Jesus said: 'Stand up, pick up your mat, and walk!'. Right away, his legs became strong! He stood up with a huge smile, rolled up his mat, and walked with joy, praising God!",
+        "6-8": "In Jerusalem by the Sheep Gate stood the Pool of Bethesda, surrounded by five stone porches. A man had been sick and unable to walk for 38 long years. He had no one to help him into the pool. But Jesus came right to him, knew his heart, and said with love: 'Rise, take up your bed, and walk!'. Immediately the man was healed, took up his mat, and walked joyfully, glorifying God!",
+        "9-12": "In John 5, Jesus visited the Pool of Bethesda in Jerusalem where many sick people waited for healing. One man had suffered for 38 years without anyone to assist him. Demonstrating divine sovereignty and compassion, Jesus commanded: 'Get up, take up your bed, and walk.' Instantly restored, the man picked up his mat and walked. This miracle teaches us that Christ's grace transcends human limitations and reaches those who feel forgotten."
+      },
+      "application": {
+        "home": "Show kindness and patience to family members who are tired or feeling down.",
+        "school": "Look out for classmates sitting alone during recess and invite them to play.",
+        "heart": "Trust that Jesus sees us personally and never forgets His children.",
+        "prayer": "Lord Jesus, thank You for Your love and for always seeing me. Give me compassion to help others and patience to trust Your perfect timing. Amen!"
+      },
+      "words": ["JESUS", "POOL", "WATERS", "BETHESDA", "HEALING"],
+      "quiz": [
+        {
+          "question": "How many years had the man been ill at the Pool of Bethesda?",
+          "options": ["38 years", "2 years", "1 week"],
+          "answerIndex": 0
+        },
+        {
+          "question": "What did Jesus command the man to do?",
+          "options": ["Rise, take up your bed and walk", "Stay in bed waiting", "Swim across the pool"],
+          "answerIndex": 0
+        },
+        {
+          "question": "What happened immediately after Jesus spoke?",
+          "options": ["The man was healed, took his mat and walked", "He remained lying down", "He walked away sad"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "This week I will trust that Jesus cares for me and show patience and kindness to help someone in need!"
+    },
+    "es": {
+      "title": "La Curación en el Estanque de Betesda",
+      "ref": "Juan 5:1-15",
+      "imageColorDesc": "Jesús sanando con amor al hombre enfermo durante 38 años junto al Estanque de Betesda.",
+      "imageColoringDesc": "Dibujo para colorear: Jesús extendiendo su mano al hombre en su lecho junto al Estanque de Betesda.",
+      "verse": {
+        "text": "Jesús le dijo: Levántate, toma tu lecho, y anda. Y al instante aquel hombre fue sanado, y tomó su lecho, y anduvo.",
+        "ref": "Juan 5:8-9"
+      },
+      "storyByAge": {
+        "3-5": "Había un lugar llamado el Estanque de Betesda con aguas tranquilas. Un hombre que no podía caminar llevaba mucho tiempo acostado en su camita. Un día llegó Jesús con mucho amor y le preguntó con ternura: '¿Quieres ser sano?'. Jesús le dijo: '¡Levántate, toma tu camita y anda!'. ¡Al instante sus piernas tuvieron fuerza! Se levantó con una gran sonrisa y caminó feliz alabando a Dios.",
+        "6-8": "En Jerusalén estaba el Estanque de Betesda con cinco hermosos pórticos. Había un hombre enfermo desde hacía 38 años que no tenía a nadie para ayudarle a entrar en el agua. Jesús lo vio, se compadeció y le dijo: '¡Levántate, toma tu lecho y anda!'. Al instante quedó completamente sano, tomó su camilla y comenzó a caminar lleno de alegría dando gracias a Dios.",
+        "9-12": "En Juan 5, Jesús visita el Estanque de Betesda en Jerusalén. Allí se encontraba un hombre paralítico desde hacía 38 años, sin esperanza humana. Jesús demostró su soberana gracia y autoridad ordenándole: 'Levántate, toma tu lecho y anda'. El hombre fue sanado al instante. Este milagro nos enseña que el poder restaurador de Cristo no depende de ritos humanos y que Él cuida de cada uno de nosotros con amor perfecto."
+      },
+      "application": {
+        "home": "Ayudar en casa con paciencia y una sonrisa a quien esté cansado.",
+        "school": "Acercarse con cariño a los compañeros que estén solos en el recreo.",
+        "heart": "Confiar siempre en que Jesús escucha nuestras oraciones y cuida de nuestra vida.",
+        "prayer": "Señor Jesús, gracias por mirarme con amor y cuidarme siempre. Ayúdame a ser compasivo con los demás y a confiar en Tu poder. ¡Amén!"
+      },
+      "words": ["JESUS", "ESTANQUE", "AGUAS", "BETESDA", "CURA"],
+      "quiz": [
+        {
+          "question": "¿Cuántos años llevaba enfermo el hombre junto al Estanque de Betesda?",
+          "options": ["38 años", "2 años", "1 semana"],
+          "answerIndex": 0
+        },
+        {
+          "question": "¿Qué le dijo Jesús al hombre enfermo?",
+          "options": ["Levántate, toma tu lecho y anda", "Sigue acostado esperando", "Vete nadando"],
+          "answerIndex": 0
+        },
+        {
+          "question": "¿Qué hizo el hombre inmediatamente después de ser sanado?",
+          "options": ["Fue sanado, tomó su lecho y anduvo feliz", "Se quedó triste", "No pudo levantarse"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "¡Esta semana confiaré en el cuidado de Jesús y ayudaré a alguien con paciencia y amor!"
+    },
+    "fr": {
+      "title": "La Guérison à la Piscine de Béthesda",
+      "ref": "Jean 5:1-15",
+      "imageColorDesc": "Jésus guérissant avec amour l'homme malade depuis 38 ans près de la piscine de Béthesda.",
+      "imageColoringDesc": "Coloriage : Jésus tendant la main à l'homme sur sa natte près de l'eau de Béthesda.",
+      "verse": {
+        "text": "Jésus lui dit : Lève-toi, prends ton lit, et marche. Aussitôt cet homme fut guéri ; il prit son lit, et marcha.",
+        "ref": "Jean 5:8-9"
+      },
+      "storyByAge": {
+        "3-5": "Il y avait un endroit appelé la piscine de Béthesda. Un monsieur ne pouvait pas marcher et restait couché depuis très longtemps. Jésus est venu avec beaucoup d'amour et lui a dit : 'Lève-toi, prends ton petit lit et marche !'. Aussitôt ses jambes sont devenues fortes ! Il s'est levé avec un grand sourire et s'est mis à marcher en remerciant Dieu !",
+        "6-8": "À Jérusalem, près de la piscine de Béthesda avec ses cinq portiques, un homme était malade depuis 38 ans. Il n'avait personne pour l'aider à descendre dans l'eau. Mais Jésus s'est approché avec bonté et lui a dit : 'Lève-toi, prends ton lit et marche !'. Instantanément guéri, l'homme a pris sa natte et a marché en louant Dieu devant tous !",
+        "9-12": "Dans Jean 5, Jésus visite la piscine de Béthesda à Jérusalem. Un homme infirme depuis 38 ans attendait sans espoir humain. Jésus démontre sa souveraineté et sa miséricorde en lui ordonnant : 'Lève-toi, prends ton lit et marche'. Guéri instantanément, l'homme prit son lit et marcha. Ce miracle nous rappelle que la grâce de Christ transcende toute impossibilité et qu'Il prend soin de chacun de nous."
+      },
+      "application": {
+        "home": "Aider à la maison avec patience et douceur ceux qui sont fatigués.",
+        "school": "Inviter à jouer un camarade qui est seul dans la cour de récréation.",
+        "heart": "Faire confiance à Jésus qui nous aime et entend toujours nos prières.",
+        "prayer": "Seigneur Jésus, merci pour Ton grand amour et Ta fidélité. Donne-moi un cœur attentif pour consoler et aider les autres. Amen !"
+      },
+      "words": ["JESUS", "PISCINE", "EAUX", "BETHESDA", "GUERISON"],
+      "quiz": [
+        {
+          "question": "Depuis combien d'années l'homme était-il malade à la piscine de Béthesda ?",
+          "options": ["38 ans", "2 ans", "1 semaine"],
+          "answerIndex": 0
+        },
+        {
+          "question": "Qu'est-ce que Jésus a ordonné à l'homme malade ?",
+          "options": ["Lève-toi, prends ton lit et marche", "Reste couché", "Va nager"],
+          "answerIndex": 0
+        },
+        {
+          "question": "Que fit l'homme immédiatement après la parole de Jésus ?",
+          "options": ["Il fut guéri, prit son lit et marcha avec joie", "Il resta triste", "Il ne put se lever"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "Cette semaine, je ferai confiance à Jésus et j'aiderai quelqu'un avec patience et amour !"
+    }
+  },
   "paralitico": {
     "icon": "🛏️✨",
     "imageColor": "assets/images/paralitico_pixar.jpg",
@@ -7064,12 +7229,14 @@ const PRESET_TITLES = {
   salmo91: { pt: "Salmo 91: Proteção", en: "Psalm 91: Protection", es: "Salmo 91: Protección", fr: "Psaume 91 : Protection" },
   filipenses413: { pt: "Filipenses 4:13: Minha Força", en: "Philippians 4:13: Strength", es: "Filipenses 4:13: Fuerza", fr: "Philippiens 4:13 : Force" },
   lampada: { pt: "Salmo 119:105: Lâmpada", en: "Psalm 119:105: Lamp", es: "Salmo 119:105: Lámpara", fr: "Psaume 119:105 : Lampe" },
+  betesda: { pt: "João 5: Tanque de Betesda", en: "John 5: Pool of Bethesda", es: "Juan 5: Estanque de Betesda", fr: "Jean 5 : Piscine de Béthesda" },
   paralitico: { pt: "Lucas 5: Cura do Paralítico", en: "Luke 5: Healing of Paralytic", es: "Lucas 5: Curación del Paralítico", fr: "Luc 5 : Guérison du Paralytique" },
   pesca: { pt: "Lucas 5: Pesca Maravilhosa", en: "Luke 5: Miraculous Catch", es: "Lucas 5: Pesca Milagrosa", fr: "Luc 5 : Pêche Miraculeuse" }
 };
 
 const THEME_GALLERY = {
   joao6: { color: "assets/images/loaves_pixar.jpg", coloring: "assets/images/loaves_coloring.jpg" },
+  betesda: { color: "assets/images/bethesda_pixar.jpg", coloring: "assets/images/bethesda_coloring.jpg" },
   paralitico: { color: "assets/images/paralitico_pixar.jpg", coloring: "assets/images/paralitico_coloring.jpg" },
   pesca: { color: "assets/images/pesca_pixar.jpg", coloring: "assets/images/pesca_coloring.jpg" },
   salmo91: { color: "assets/images/salmo91_pixar.jpg", coloring: "assets/images/salmo91_coloring.jpg" },
@@ -7878,6 +8045,16 @@ function handleGenerate() {
   }
 
   const p = (passVal + " " + textVal).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  // 0a. A Cura no Tanque de Betesda (João 5:1-15 / Tanque / Betesda / 38 anos / Paralítico de Betesda)
+  if (p.includes("betesda") || p.includes("bethesda") || p.includes("tanque") || p.includes("pool") ||
+      p.includes("38 anos") || p.includes("38 years") || p.includes("joao 5") || p.includes("john 5") ||
+      p.includes("juan 5") || p.includes("jean 5") ||
+      (p.includes("paralit") && (p.includes("tanque") || p.includes("betesda") || p.includes("joao") || p.includes("john") || p.includes("agua")))) {
+    loadStoryDirect("betesda");
+    return;
+  }
+
 
   // 1. Checagem de versículos ultra famosos
   if (p.includes("salmo 119") || p.includes("psalm 119") || p.includes("psaume 119") || 

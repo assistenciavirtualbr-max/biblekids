@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=2.2">
+  <link rel="stylesheet" href="style.css?v=2.3">
   
   <!-- Bibliotecas Locais para Exportação Offline -->
   <script src="assets/html2pdf.bundle.min.js"></script>
@@ -131,6 +131,9 @@
         <div class="form-group">
           <label class="form-label" data-i18n="label_presets">📚 Aulas Já Criadas (1 Clique):</label>
           <div class="preset-badges" id="preset-container">
+            <button type="button" class="preset-btn" data-story="betesda">
+              🛏️💧 <span class="p-title">João 5: Tanque de Betesda</span>
+            </button>
             <button type="button" class="preset-btn" data-story="paralitico">
               🛏️✨ <span class="p-title">Lucas 5: Cura do Paralítico</span>
             </button>
@@ -333,6 +336,7 @@
                 <div class="theme-picker-group">
                   <label for="theme-visual-select-pixar" class="theme-select-label">🎨 Tema Visual:</label>
                   <select id="theme-visual-select-pixar" class="theme-select-inline" title="Escolha a cena temática bíblica para a aula">
+                    <option value="betesda">🛏️💧 João 5: O Paralítico no Tanque de Betesda</option>
                     <option value="paralitico">🛏️ Lucas 5: A Cura do Paralítico (Telhado)</option>
                     <option value="pesca" selected>⛵ Lucas 5: A Pesca Maravilhosa</option>
                     <option value="joao6">🍞 João 6: Pães e Peixes</option>
@@ -403,6 +407,7 @@
                 <div class="theme-picker-group">
                   <label for="theme-visual-select-coloring" class="theme-select-label">🖍️ Tema:</label>
                   <select id="theme-visual-select-coloring" class="theme-select-inline" title="Trocar cena do desenho para colorir">
+                    <option value="betesda">🛏️💧 João 5: O Paralítico no Tanque de Betesda</option>
                     <option value="paralitico">🛏️ Lucas 5: A Cura do Paralítico (Telhado)</option>
                     <option value="pesca" selected>⛵ Lucas 5: A Pesca Maravilhosa</option>
                     <option value="joao6">🍞 João 6: Pães e Peixes</option>
@@ -622,6 +627,6 @@
   <!-- Elemento de Canvas Invisível para Processamento e Filtro de Imagem (Linework P&B) -->
   <canvas id="hidden-process-canvas" style="display:none;"></canvas>
 
-  <script src="app.js?v=2.2"></script>
+  <script src="app.js?v=2.3"></script>
 </body>
 </html>
