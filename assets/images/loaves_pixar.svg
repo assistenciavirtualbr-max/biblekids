@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <!-- Background Sky Gradient -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ea8de" />
+      <stop offset="50%" stop-color="#90e0ef" />
+      <stop offset="100%" stop-color="#caf0f8" />
+    </linearGradient>
+
+    <!-- Warm Divine Sun Glow -->
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fffbeb" stop-opacity="1" />
+      <stop offset="40%" stop-color="#fde047" stop-opacity="0.8" />
+      <stop offset="80%" stop-color="#f59e0b" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Rolling Hills Gradients -->
+    <linearGradient id="backHillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#80b918" />
+      <stop offset="100%" stop-color="#55a630" />
+    </linearGradient>
+    <linearGradient id="mainHillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#aacc00" />
+      <stop offset="60%" stop-color="#55a630" />
+      <stop offset="100%" stop-color="#2b9348" />
+    </linearGradient>
+
+    <!-- Loaf 3D Pixar Bread Gradients -->
+    <radialGradient id="breadGrad" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fed7aa" />
+      <stop offset="35%" stop-color="#f97316" />
+      <stop offset="75%" stop-color="#c2410c" />
+      <stop offset="100%" stop-color="#7c2d12" />
+    </radialGradient>
+    <linearGradient id="breadCrustGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffedd5" />
+      <stop offset="50%" stop-color="#fde047" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+
+    <!-- Fish 3D Pixar Gradients -->
+    <linearGradient id="fishBody1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="40%" stop-color="#0ea5e9" />
+      <stop offset="85%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="fishBelly" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="100%" stop-color="#bae6fd" />
+    </linearGradient>
+
+    <!-- Woven Wicker Basket Gradients -->
+    <linearGradient id="basketRimGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eab308" />
+      <stop offset="50%" stop-color="#ca8a04" />
+      <stop offset="100%" stop-color="#713f12" />
+    </linearGradient>
+    <radialGradient id="basketBodyGrad" cx="50%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="50%" stop-color="#b45309" />
+      <stop offset="85%" stop-color="#78350f" />
+      <stop offset="100%" stop-color="#451a03" />
+    </radialGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="pixarShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#14532d" flood-opacity="0.45" />
+    </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Sky Canvas -->
+  <rect width="1280" height="720" fill="url(#skyGrad)" />
+
+  <!-- Sun Rays & Glow -->
+  <circle cx="220" cy="150" r="180" fill="url(#sunGlow)" />
+  <circle cx="220" cy="150" r="45" fill="#fef08a" />
+  <circle cx="220" cy="150" r="35" fill="#ffffff" />
+
+  <!-- Cartoon Clouds -->
+  <g fill="#ffffff" opacity="0.9" filter="url(#pixarShadow)">
+    <circle cx="360" cy="140" r="40" />
+    <circle cx="410" cy="125" r="50" />
+    <circle cx="465" cy="135" r="45" />
+    <circle cx="510" cy="145" r="35" />
+    <rect x="360" y="140" width="150" height="40" rx="10" />
+
+    <circle cx="860" cy="130" r="35" />
+    <circle cx="910" cy="115" r="45" />
+    <circle cx="960" cy="125" r="40" />
+    <circle cx="1000" cy="135" r="30" />
+    <rect x="860" y="130" width="140" height="35" rx="10" />
+  </g>
+
+  <!-- Distant Blue Sea of Galilee -->
+  <path d="M 0 340 Q 640 310 1280 340 L 1280 430 L 0 430 Z" fill="#0284c7" opacity="0.4" />
+
+  <!-- Rolling Lush Green Hills -->
+  <path d="M -50 370 Q 300 280 700 320 T 1330 350 L 1330 720 L -50 720 Z" fill="url(#backHillGrad)" />
+  <path d="M -50 440 Q 400 360 850 410 T 1330 420 L 1330 720 L -50 720 Z" fill="url(#mainHillGrad)" />
+
+  <!-- Cheerful Crowd Silhouettes on Distant Hill (A Grande Multidão) -->
+  <g fill="#4d7c0f" opacity="0.6">
+    <ellipse cx="260" cy="335" rx="12" ry="18" />
+    <circle cx="260" cy="315" r="7" />
+    <ellipse cx="290" cy="340" rx="10" ry="16" />
+    <circle cx="290" cy="322" r="6" />
+    <ellipse cx="320" cy="338" rx="14" ry="19" />
+    <circle cx="320" cy="317" r="8" />
+    <ellipse cx="980" cy="385" rx="12" ry="18" />
+    <circle cx="980" cy="365" r="7" />
+    <ellipse cx="1010" cy="390" rx="10" ry="16" />
+    <circle cx="1010" cy="372" r="6" />
+    <ellipse cx="1040" cy="388" rx="13" ry="17" />
+    <circle cx="1040" cy="368" r="8" />
+  </g>
+
+  <!-- Little Wildflowers in Foreground -->
+  <g transform="translate(180, 560)">
+    <circle cx="0" cy="0" r="8" fill="#fde047" />
+    <circle cx="0" cy="-14" r="7" fill="#f43f5e" />
+    <circle cx="14" cy="0" r="7" fill="#f43f5e" />
+    <circle cx="0" cy="14" r="7" fill="#f43f5e" />
+    <circle cx="-14" cy="0" r="7" fill="#f43f5e" />
+  </g>
+  <g transform="translate(1120, 540)">
+    <circle cx="0" cy="0" r="8" fill="#fde047" />
+    <circle cx="0" cy="-14" r="7" fill="#38bdf8" />
+    <circle cx="14" cy="0" r="7" fill="#38bdf8" />
+    <circle cx="0" cy="14" r="7" fill="#38bdf8" />
+    <circle cx="-14" cy="0" r="7" fill="#38bdf8" />
+  </g>
+
+  <!-- Ground Shadow for the Central Miraculous Basket -->
+  <ellipse cx="640" cy="610" rx="340" ry="60" fill="#14532d" opacity="0.5" filter="url(#softGlow)" />
+
+  <!-- ======================================================== -->
+  <!-- CENTRAL 3D PIXAR COMPOSITION: THE 5 LOAVES & 2 FISH BASKET -->
+  <!-- ======================================================== -->
+
+  <g id="pixar-basket-assembly" transform="translate(640, 430)">
+
+    <!-- Heavenly Sparkles & Stars -->
+    <g fill="#fef08a" filter="url(#softGlow)">
+      <polygon points="0,-160 5,-145 20,-145 8,-135 12,-120 0,-130 -12,-120 -8,-135 -20,-145 -5,-145" transform="translate(-180, -40)" />
+      <polygon points="0,-160 5,-145 20,-145 8,-135 12,-120 0,-130 -12,-120 -8,-135 -20,-145 -5,-145" transform="translate(180, -40)" />
+      <polygon points="0,-160 5,-145 20,-145 8,-135 12,-120 0,-130 -12,-120 -8,-135 -20,-145 -5,-145" transform="translate(0, -90) scale(1.4)" />
+    </g>
+
+    <!-- BACK 3 LOAVES (Pães Dourados) -->
+    <!-- Loaf 1 (Left Back) -->
+    <g transform="translate(-150, -100) rotate(-15)" filter="url(#pixarShadow)">
+      <ellipse cx="0" cy="0" rx="75" ry="48" fill="url(#breadGrad)" />
+      <path d="M -35 -25 Q -30 0 -25 25" stroke="url(#breadCrustGrad)" stroke-width="6" stroke-linecap="round" />
+      <path d="M 0 -30 Q 5 0 10 30" stroke="url(#breadCrustGrad)" stroke-width="6" stroke-linecap="round" />
+      <path d="M 35 -25 Q 40 0 45 25" stroke="url(#breadCrustGrad)" stroke-width="6" stroke-linecap="round" />
+    </g>
+
+    <!-- Loaf 2 (Center Back) -->
+    <g transform="translate(0, -125)" filter="url(#pixarShadow)">
+      <ellipse cx="0" cy="0" rx="85" ry="55" fill="url(#breadGrad)" />
+      <path d="M -40 -30 Q -35 0 -30 30" stroke="url(#breadCrustGrad)" stroke-width="7" stroke-linecap="round" />
+      <path d="M 0 -35 Q 0 0 0 35" stroke="url(#breadCrustGrad)" stroke-width="7" stroke-linecap="round" />
+      <path d="M 40 -30 Q 35 0 30 30" stroke="url(#breadCrustGrad)" stroke-width="7" stroke-linecap="round" />
+    </g>
+
+    <!-- Loaf 3 (Right Back) -->
+    <g transform="translate(150, -100) rotate(15)" filter="url(#pixarShadow)">
+      <ellipse cx="0" cy="0" rx="75" ry="48" fill="url(#breadGrad)" />
+      <path d="M -35 -25 Q -40 0 -45 25" stroke="url(#breadCrustGrad)" stroke-width="6" stroke-linecap="round" />
+      <path d="M 0 -30 Q -5 0 -10 30" stroke="url(#breadCrustGrad)" stroke-width="6" stroke-linecap="round" />
+      <path d="M 35 -25 Q 30 0 25 25" stroke="url(#breadCrustGrad)" stroke-width="6" stroke-linecap="round" />
+    </g>
+
+    <!-- FRONT 2 LOAVES -->
+    <!-- Loaf 4 (Left Front) -->
+    <g transform="translate(-90, -50) rotate(-8)" filter="url(#pixarShadow)">
+      <ellipse cx="0" cy="0" rx="85" ry="52" fill="url(#breadGrad)" />
+      <path d="M -45 -25 Q -40 0 -35 25" stroke="url(#breadCrustGrad)" stroke-width="7" stroke-linecap="round" />
+      <path d="M -5 -30 Q 0 0 5 30" stroke="url(#breadCrustGrad)" stroke-width="7" stroke-linecap="round" />
+      <path d="M 35 -25 Q 40 0 45 25" stroke="url(#breadCrustGrad)" stroke-width="7" stroke-linecap="round" />
+    </g>
+
+    <!-- Loaf 5 (Right Front) -->
+    <g transform="translate(90, -50) rotate(8)" filter="url(#pixarShadow)">
+      <ellipse cx="0" cy="0" rx="85" ry="52" fill="url(#breadGrad)" />
+      <path d="M -35 -25 Q -40 0 -45 25" stroke="url(#breadCrustGrad)" stroke-width="7" stroke-linecap="round" />
+      <path d="M 5 -30 Q 0 0 -5 30" stroke="url(#breadCrustGrad)" stroke-width="7" stroke-linecap="round" />
+      <path d="M 45 -25 Q 40 0 35 25" stroke="url(#breadCrustGrad)" stroke-width="7" stroke-linecap="round" />
+    </g>
+
+    <!-- THE 2 PIXAR FISH (Dois Peixinhos Fofos) -->
+    <!-- Left Fish -->
+    <g transform="translate(-110, 10) rotate(-12)" filter="url(#pixarShadow)">
+      <!-- Tail -->
+      <path d="M -100 5 L -140 -25 Q -125 5 -140 35 Z" fill="#0ea5e9" stroke="#0369a1" stroke-width="3" />
+      <!-- Top Fin -->
+      <path d="M -25 -32 Q -5 -55 20 -35 Z" fill="#38bdf8" />
+      <!-- Body -->
+      <path d="M -100 0 C -60 -45, 35 -40, 80 -5 C 85 0, 85 10, 80 15 C 35 50, -60 45, -100 10 Z" fill="url(#fishBody1)" stroke="#0284c7" stroke-width="3" />
+      <!-- Soft Belly -->
+      <path d="M -60 15 C -20 38, 30 35, 60 12 C 40 22, -10 24, -60 15 Z" fill="url(#fishBelly)" opacity="0.85" />
+      <!-- Glossy 3D Eye -->
+      <circle cx="55" cy="-8" r="10" fill="#ffffff" />
+      <circle cx="56" cy="-8" r="6" fill="#0f172a" />
+      <circle cx="58" cy="-10" r="3" fill="#ffffff" />
+      <!-- Smile -->
+      <path d="M 68 5 Q 60 18 50 8" fill="none" stroke="#082f49" stroke-width="3.5" stroke-linecap="round" />
+      <!-- Bubbles -->
+      <circle cx="95" cy="-20" r="6" fill="#e0f2fe" opacity="0.75" />
+      <circle cx="105" cy="-35" r="4" fill="#e0f2fe" opacity="0.6" />
+    </g>
+
+    <!-- Right Fish -->
+    <g transform="translate(110, 15) rotate(10) scale(-1, 1)" filter="url(#pixarShadow)">
+      <!-- Tail -->
+      <path d="M -100 5 L -140 -25 Q -125 5 -140 35 Z" fill="#0ea5e9" stroke="#0369a1" stroke-width="3" />
+      <!-- Top Fin -->
+      <path d="M -25 -32 Q -5 -55 20 -35 Z" fill="#38bdf8" />
+      <!-- Body -->
+      <path d="M -100 0 C -60 -45, 35 -40, 80 -5 C 85 0, 85 10, 80 15 C 35 50, -60 45, -100 10 Z" fill="url(#fishBody1)" stroke="#0284c7" stroke-width="3" />
+      <!-- Soft Belly -->
+      <path d="M -60 15 C -20 38, 30 35, 60 12 C 40 22, -10 24, -60 15 Z" fill="url(#fishBelly)" opacity="0.85" />
+      <!-- Glossy 3D Eye -->
+      <circle cx="55" cy="-8" r="10" fill="#ffffff" />
+      <circle cx="56" cy="-8" r="6" fill="#0f172a" />
+      <circle cx="58" cy="-10" r="3" fill="#ffffff" />
+      <!-- Smile -->
+      <path d="M 68 5 Q 60 18 50 8" fill="none" stroke="#082f49" stroke-width="3.5" stroke-linecap="round" />
+      <!-- Bubbles -->
+      <circle cx="95" cy="-20" r="6" fill="#e0f2fe" opacity="0.75" />
+      <circle cx="105" cy="-35" r="4" fill="#e0f2fe" opacity="0.6" />
+    </g>
+
+    <!-- THE 3D PIXAR WOVEN BASKET -->
+    <!-- Basket Rim -->
+    <ellipse cx="0" cy="30" rx="280" ry="40" fill="url(#basketRimGrad)" stroke="#78350f" stroke-width="4" filter="url(#pixarShadow)" />
+    <!-- Braided Highlights on Rim -->
+    <path d="M -250 25 Q -220 40 -190 25 Q -160 40 -130 25 Q -100 40 -70 25 Q -40 40 -10 25 Q 20 40 50 25 Q 80 40 110 25 Q 140 40 170 25 Q 200 40 230 25" fill="none" stroke="#fef08a" stroke-width="3" opacity="0.75" />
+
+    <!-- Basket Deep Body -->
+    <path d="M -260 35 C -230 140, -190 200, -150 220 Q 0 240 150 220 C 190 200, 230 140, 260 35 Z" fill="url(#basketBodyGrad)" stroke="#451a03" stroke-width="5" filter="url(#pixarShadow)" />
+
+    <!-- Weave Textured Ribbons -->
+    <path d="M -240 80 Q 0 120 240 80" fill="none" stroke="#f59e0b" stroke-width="7" opacity="0.65" />
+    <path d="M -210 130 Q 0 170 210 130" fill="none" stroke="#f59e0b" stroke-width="7" opacity="0.65" />
+    <path d="M -180 175 Q 0 215 180 175" fill="none" stroke="#f59e0b" stroke-width="6" opacity="0.65" />
+
+    <!-- Basket Handles -->
+    <path d="M -270 20 C -320 25, -320 90, -250 80" fill="none" stroke="url(#basketRimGrad)" stroke-width="12" stroke-linecap="round" />
+    <path d="M 270 20 C 320 25, 320 90, 250 80" fill="none" stroke="url(#basketRimGrad)" stroke-width="12" stroke-linecap="round" />
+  </g>
+
+  <!-- 2 OF THE 12 OVERFLOWING BASKETS AT SIDES -->
+  <g transform="translate(240, 560) scale(0.55)" filter="url(#pixarShadow)">
+    <ellipse cx="0" cy="0" rx="90" ry="30" fill="url(#basketRimGrad)" />
+    <path d="M -80 5 C -60 70, -40 110, 0 115 C 40 110, 60 70, 80 5 Z" fill="url(#basketBodyGrad)" />
+    <!-- Bread loaves overflowing -->
+    <ellipse cx="-25" cy="-20" rx="35" ry="22" fill="url(#breadGrad)" />
+    <ellipse cx="25" cy="-20" rx="35" ry="22" fill="url(#breadGrad)" />
+  </g>
+  <g transform="translate(1040, 560) scale(0.55)" filter="url(#pixarShadow)">
+    <ellipse cx="0" cy="0" rx="90" ry="30" fill="url(#basketRimGrad)" />
+    <path d="M -80 5 C -60 70, -40 110, 0 115 C 40 110, 60 70, 80 5 Z" fill="url(#basketBodyGrad)" />
+    <!-- Bread loaves overflowing -->
+    <ellipse cx="-25" cy="-20" rx="35" ry="22" fill="url(#breadGrad)" />
+    <ellipse cx="25" cy="-20" rx="35" ry="22" fill="url(#breadGrad)" />
+  </g>
+
+  <!-- Cinematic Top Title Ribbon -->
+  <g transform="translate(640, 60)" filter="url(#pixarShadow)">
+    <rect x="-350" y="-30" width="700" height="60" rx="20" fill="#ffffff" opacity="0.95" />
+    <text x="0" y="8" font-family="'Fredoka', 'Nunito', sans-serif" font-weight="800" font-size="28px" fill="#b45309" text-anchor="middle">✨ A Multiplicação dos Pães e dos Peixes • João 6:1-14 ✨</text>
+  </g>
+</svg>

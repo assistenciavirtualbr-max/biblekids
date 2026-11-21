@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BibleKids - Gerador de Atividades Bíblicas Infantis</title>
+  
+  <!-- Fontes Google: Fredoka (Títulos Infantis) e Nunito (Leitura Confortável) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Bibliotecas Locais para Exportação Offline -->
+  <script src="assets/html2pdf.bundle.min.js"></script>
+  <script src="assets/docx.umd.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation / Header -->
+  <header class="app-header no-print">
+    <div class="header-container">
+      <div class="logo">
+        <span class="logo-icon">📖✨</span>
+        <div class="logo-text">
+          <h1>BibleKids</h1>
+          <p id="ui-header-subtitle" data-i18n="header_subtitle">Gerador de Aulas e Atividades Bíblicas Infantis</p>
+        </div>
+      </div>
+
+      <!-- Seletor Multilíngue (4 Idiomas: PT, EN, ES, FR) -->
+      <div class="header-lang-switcher" id="lang-switcher">
+        <span class="lang-label" data-i18n="lang_label">🌍 Idioma / Language:</span>
+        <div class="lang-pill-group">
+          <button type="button" class="lang-pill active" data-lang="pt" title="Português (Brasil)">
+            <span class="flag-icon">🇧🇷</span> <span class="lang-code">PT</span>
+          </button>
+          <button type="button" class="lang-pill" data-lang="en" title="English (Global)">
+            <span class="flag-icon">🇺🇸</span> <span class="lang-code">EN</span>
+          </button>
+          <button type="button" class="lang-pill" data-lang="es" title="Español (América Latina / España)">
+            <span class="flag-icon">🇪🇸</span> <span class="lang-code">ES</span>
+          </button>
+          <button type="button" class="lang-pill" data-lang="fr" title="Français (France / Monde)">
+            <span class="flag-icon">🇫🇷</span> <span class="lang-code">FR</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="header-badges">
+        <span class="badge-tag" data-i18n="badge_ebi">🏫 Escola Bíblica Infantil (EBI)</span>
+        <span class="badge-tag badge-tag-alt" data-i18n="badge_biblical">🕊️ 100% Bíblico & Pedagógico</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-container">
+    
+    <!-- Painel Lateral de Controle (Configurações da Aula) -->
+    <aside class="control-panel no-print">
+      <div class="card panel-card">
+        <h2 data-i18n="panel_title">🎨 Criar Aula Bíblica</h2>
+        <p class="panel-subtitle" data-i18n="panel_subtitle">Indique a referência ou cole o texto escrito do versículo bíblico.</p>
+        
+        <!-- Alternador de Modo de Entrada: Referência vs. Texto Escrito -->
+        <div class="input-mode-tabs">
+          <button type="button" class="mode-tab-btn active" id="tab-mode-ref" data-mode="ref">
+            <span class="tab-icon">📖</span> <span data-i18n="tab_ref">Indicar Versículo</span>
+          </button>
+          <button type="button" class="mode-tab-btn" id="tab-mode-text" data-mode="text">
+            <span class="tab-icon">✍️</span> <span data-i18n="tab_text">Texto Escrito / Trecho</span>
+          </button>
+        </div>
+
+        <!-- MODO 1: Entrada por Referência / Versículo -->
+        <div class="form-group" id="group-passage-ref">
+          <label for="passage-input" class="form-label" data-i18n="label_passage_ref">📖 Referência ou Livro e Capítulo:</label>
+          <input 
+            type="text" 
+            id="passage-input" 
+            placeholder="Ex: João 3:16, Salmo 23, Lucas 15, Filipenses 4:13..." 
+          />
+          <small class="field-hint" data-i18n="hint_passage_ref">Digite o livro e versículo ou o tema da aula.</small>
+        </div>
+
+        <!-- MODO 2: Entrada por Texto Escrito do Versículo -->
+        <div class="form-group hidden" id="group-verse-text">
+          <label for="verse-text-input" class="form-label" data-i18n="label_verse_text">✍️ Texto Escrito do Versículo Bíblico:</label>
+          <textarea 
+            id="verse-text-input" 
+            rows="3" 
+            placeholder="Cole ou digite o versículo sagrado aqui... (Ex: 'Porque Deus amou o mundo de tal maneira...', 'O Senhor é o meu pastor e nada me faltará', 'Deixai vir a mim as criancinhas...')"
+          ></textarea>
+          <small class="field-hint" data-i18n="hint_verse_text">O sistema interpreta o versículo e cria a aula, a ilustração e os exercícios.</small>
+        </div>
+
+        <!-- Faixa Etária (Idade estabelecida para a aula) -->
+        <div class="form-group" id="group-age-select">
+          <label for="age-select" class="form-label" data-i18n="label_age">👶 Faixa Etária da Criança:</label>
+          <select id="age-select">
+            <option value="3-5" data-i18n="opt_age_35">👶 3 a 5 anos (Primeira Infância / Maternal)</option>
+            <option value="6-8" selected data-i18n="opt_age_68">👧 6 a 8 anos (Alfabetização / Primários)</option>
+            <option value="9-12" data-i18n="opt_age_912">🧑 9 a 12 anos (Juniores / Pré-adolescentes)</option>
+          </select>
+        </div>
+
+        <!-- BOTÃO CRIAR A AULA - POSICIONADO LOGO ABAIXO DA INSERÇÃO DA INFORMAÇÃO -->
+        <button id="btn-generate" class="btn-primary btn-generate-prominent">
+          <span class="btn-icon">⚡</span>
+          <span data-i18n="btn_generate">Criar Aula e Atividades</span>
+        </button>
+
+        <div class="panel-divider"></div>
+
+        <!-- Tradução / Versão Bíblica Opcional -->
+        <div class="form-group form-group-compact">
+          <label for="version-select" class="form-label" data-i18n="label_version">📜 Tradução / Versão Bíblica:</label>
+          <select id="version-select">
+            <option value="default" selected data-i18n="opt_version_standard">📖 Tradução Padrão Recomendada</option>
+            <option value="ARC">ARC - Almeida Revista e Corrigida (PT)</option>
+            <option value="NVI">NVI - Nova Versão Internacional (PT / ES / EN)</option>
+            <option value="KJV">KJV - King James Version (EN)</option>
+            <option value="RVR">RVR 1960 - Reina-Valera (ES)</option>
+            <option value="LSG">LSG 1910 - Louis Segond (FR)</option>
+          </select>
+        </div>
+
+        <!-- Aulas Já Criadas / Histórias Populares (1 Clique) -->
+        <div class="form-group">
+          <label class="form-label" data-i18n="label_presets">📚 Aulas Já Criadas (1 Clique):</label>
+          <div class="preset-badges" id="preset-container">
+            <button type="button" class="preset-btn active" data-story="joao6">
+              🍞🐟 <span class="p-title">João 6: Pães e Peixes</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="salmo91">
+              🛡️🕊️ <span class="p-title">Salmo 91: Proteção</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="filipenses413">
+              💪✝️ <span class="p-title">Filipenses 4:13: Minha Força</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="lampada">
+              💡📖 <span class="p-title">Salmo 119:105: Lâmpada</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="joao316">
+              ✝️❤️ <span class="p-title">João 3:16: Amor de Deus</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="noe">
+              🚢 <span class="p-title">A Arca de Noé</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="criancas">
+              👶❤️ <span class="p-title">Jesus e as Crianças</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="pastor">
+              🐑 <span class="p-title">O Bom Pastor</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="davi">
+              ⚔️ <span class="p-title">Davi e Golias</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="daniel">
+              🦁 <span class="p-title">Daniel na Cova</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="moises">
+              🌊 <span class="p-title">O Mar Vermelho</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="jonas">
+              🐋 <span class="p-title">Jonas e o Peixe</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="samaritano">
+              🤝 <span class="p-title">O Bom Samaritano</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="criacao">
+              🌍 <span class="p-title">A Criação do Mundo</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="tumulo">
+              🌅 <span class="p-title">O Túmulo Vazio</span>
+            </button>
+            <button type="button" class="preset-btn" data-story="cruz">
+              ✝️ <span class="p-title">O Amor na Cruz</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Configuração Opcional de API Gemini -->
+        <div class="api-key-box">
+          <button type="button" class="btn-link" id="btn-toggle-api">
+            ⚙️ <span data-i18n="btn_toggle_api">Configurar Chave Gemini (Opcional)</span>
+          </button>
+          <div id="api-config-section" class="hidden">
+            <p class="api-help-text" data-i18n="api_help_text">
+              Com o motor inteligente integrado, todas as histórias bíblicas já contam com imagens, atividades e traduções automáticas. Para passagens personalizadas exclusivas via IA avançada, insira sua chave gratuita:
+            </p>
+            <input type="password" id="gemini-api-key" placeholder="Insira sua Google Gemini API Key..." />
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Painel Central de Visualização & Folha de Atividades -->
+    <section class="preview-panel">
+      
+      <!-- Barra Superior de Ações -->
+      <div class="action-bar no-print">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span id="status-badge" data-i18n="status_ready">Material pronto para aula e impressão</span>
+        </div>
+        <div class="action-buttons">
+          <button id="btn-speech" class="btn-action btn-speech" title="Ouvir a história contada em áudio">
+            🔊 <span id="txt-btn-speech" data-i18n="btn_speech">Ouvir História</span>
+          </button>
+          <button id="btn-print" class="btn-action btn-print" title="Imprimir diretamente no formato A4">
+            🖨️ <span data-i18n="btn_print">Imprimir Folha A4</span>
+          </button>
+          <button id="btn-pdf" class="btn-action btn-pdf" title="Baixar arquivo em PDF">
+            📄 <span data-i18n="btn_pdf">Baixar PDF</span>
+          </button>
+          <button id="btn-docx" class="btn-action btn-docx" title="Baixar arquivo editável no Word">
+            📝 <span data-i18n="btn_docx">Baixar Word (.docx)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Notificação Visual de Sucesso / Feedback Dinâmico -->
+      <div id="toast-banner" class="toast-banner no-print hidden"></div>
+
+      <!-- A Folha da Aula / Caderno de Atividades para Impressão -->
+      <article class="worksheet" id="worksheet-content">
+        
+        <!-- Cabeçalho da Folha -->
+        <header class="worksheet-header">
+          <div class="student-info-row">
+            <div class="info-field">
+              <span class="info-label" data-i18n="label_student_name">Nome da Criança:</span>
+              <span class="info-line"></span>
+            </div>
+            <div class="info-field info-field-date">
+              <span class="info-label" data-i18n="label_date">Data:</span>
+              <span class="info-line"></span>
+            </div>
+          </div>
+          
+          <div class="worksheet-title-banner">
+            <div class="title-wrap">
+              <span class="title-icon" id="title-icon">🍞🐟</span>
+              <div>
+                <h1 id="activity-title">A Multiplicação dos Pães e dos Peixes</h1>
+                <div class="meta-badges">
+                  <span class="meta-badge meta-ref" id="activity-ref">João 6:1-14</span>
+                  <span class="meta-badge meta-age" id="activity-age">6 a 8 anos</span>
+                  <span class="meta-badge meta-version" id="activity-version" data-i18n="meta_bible">Bíblia Sagrada</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- 1. TEXTO DIRECIONADO À COMPREENSÃO DA CRIANÇA SEGUNDO A IDADE ESTABELECIDA -->
+        <section class="activity-section sec-story-wrap" id="sec-story">
+          <div class="section-title-bar">
+            <h2>📖 <span data-i18n="sec1_title">1. A Palavra Contada</span></h2>
+            <span class="section-tag" data-i18n="sec1_tag">História Bíblica Adaptada</span>
+          </div>
+
+          <!-- Texto Narrado da História por Idade -->
+          <div class="story-body" id="story-body">
+            <!-- Preenchido via JavaScript de acordo com a faixa etária -->
+          </div>
+
+          <!-- Versículo de Ouro para Memorizar -->
+          <div class="memory-verse-box">
+            <div class="verse-star">⭐</div>
+            <div class="verse-content">
+              <strong data-i18n="label_memory_verse">Versículo para Guardar no Coração:</strong>
+              <blockquote id="memory-verse-text">
+                "Jesus tomou os pães e, havendo dado graças, distribuiu-os pelos que estavam assentados; e do mesmo modo os peixes, tanto quanto eles queriam."
+              </blockquote>
+              <span class="verse-reference" id="memory-verse-ref">— João 6:11</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. CRIAÇÃO DA IMAGEM QUE REPRESENTE O PONTO PRINCIPAL DO TEXTO -->
+        <section class="activity-section sec-pixar-wrap" id="sec-pixar-art">
+          <div class="section-title-bar">
+            <h2>✨ <span data-i18n="sec2_title">2. Ilustração da Palavra</span></h2>
+            <span class="section-tag" data-i18n="sec2_tag">Ponto Principal da Lição</span>
+          </div>
+
+          <!-- Card de Apresentação da Imagem Colorida (3D Pixar) -->
+          <div class="biblical-art-card">
+            <div class="art-frame" id="art-frame-pixar">
+              <img id="story-image-color" src="assets/images/loaves_pixar.jpg" alt="Ilustração da História Bíblica" />
+              <!-- Overlay de Carregamento da IA -->
+              <div class="image-loading-overlay hidden" id="loading-pixar">
+                <div class="spinner"></div>
+                <span class="loading-text" data-i18n="loading_pixar">Gerando ilustração 3D Pixar via IA...</span>
+              </div>
+            </div>
+            <div class="art-caption">
+              <div class="caption-text-row">
+                <strong data-i18n="label_word_image">✨ Imagem da Palavra:</strong> 
+                <span id="story-image-desc">Jesus abençoa o cesto com 5 pães e 2 peixes para alimentar a multidão.</span>
+              </div>
+
+              <!-- Barra de Ferramentas da Imagem 3D Pixar -->
+              <div class="image-studio-toolbar no-print">
+                <div class="theme-picker-group">
+                  <label for="theme-visual-select-pixar" class="theme-select-label">🎨 Tema Visual:</label>
+                  <select id="theme-visual-select-pixar" class="theme-select-inline" title="Escolha a cena temática bíblica para a aula">
+                    <option value="joao6">🍞 João 6: Pães e Peixes</option>
+                    <option value="salmo91">🛡️ Salmo 91: Proteção e Anjos</option>
+                    <option value="filipenses413">💪 Filipenses 4:13: Minha Força</option>
+                    <option value="lampada">💡 Salmo 119:105: Lâmpada e Luz</option>
+                    <option value="joao316">❤️ João 3:16: Amor de Deus</option>
+                    <option value="noe">🚢 A Arca de Noé</option>
+                    <option value="criancas">👶 Jesus e as Crianças</option>
+                    <option value="pastor">🐑 O Bom Pastor</option>
+                    <option value="davi">⚔️ Davi e Golias</option>
+                    <option value="daniel">🦁 Daniel na Cova</option>
+                    <option value="moises">🌊 O Mar Vermelho</option>
+                    <option value="jonas">🐋 Jonas e o Peixe</option>
+                    <option value="samaritano">🤝 O Bom Samaritano</option>
+                    <option value="criacao">🌍 A Criação do Mundo</option>
+                    <option value="tumulo">🌅 O Túmulo Vazio</option>
+                    <option value="cruz">✝️ O Amor na Cruz</option>
+                  </select>
+                </div>
+                <button type="button" class="btn-xs btn-ai-action" id="btn-gen-pixar-ai" title="Gerar nova imagem cinematográfica 3D Pixar via IA">
+                  ⚡ <span data-i18n="btn_gen_ai_pixar">Gerar Imagem com IA</span>
+                </button>
+                <button type="button" class="btn-xs btn-subtle" id="btn-regen-pixar-ai" title="Tentar outra variação com nova semente">
+                  🔄 <span data-i18n="btn_regen_variation">Nova Variação</span>
+                </button>
+                <button type="button" class="btn-xs btn-subtle" id="btn-upload-pixar-trigger" title="Carregar imagem do seu computador">
+                  📁 <span data-i18n="btn_upload_image">Enviar Minha Imagem</span>
+                </button>
+                <input type="file" id="upload-pixar-file" accept="image/*" class="hidden" />
+                <button type="button" class="btn-xs btn-copy-prompt" id="btn-copy-pixar-prompt" title="Copiar prompt profissional para Midjourney, DALL-E, etc.">
+                  📋 <span data-i18n="btn_copy_prompt_pixar">Copiar Prompt</span>
+                </button>
+                <button type="button" class="btn-xs btn-subtle" id="btn-download-pixar" title="Baixar esta imagem em alta resolução">
+                  ⬇️ <span data-i18n="btn_download_image">Baixar Imagem</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. CRIAÇÃO DA IMAGEM PARA SER PINTADA (IGUAL/CORRESPONDENTE À IMAGEM ILUSTRADA) -->
+        <section class="activity-section sec-coloring-wrap" id="sec-coloring">
+          <div class="section-title-bar">
+            <h2>🖍️ <span data-i18n="sec3_title">3. Hora de Colorir!</span></h2>
+            <span class="section-tag" data-i18n="sec3_tag">Desenho Fiel à Passagem</span>
+          </div>
+
+          <p class="section-instructions" id="coloring-instructions" data-i18n="sec3_instructions">
+            Pinte bem bonito este desenho correspondente à história bíblica:
+          </p>
+
+          <div class="coloring-sheet-box">
+            <div class="coloring-image-frame" id="coloring-image-frame">
+              <img id="coloring-image" src="assets/images/loaves_coloring.jpg" alt="Desenho para Colorir em Preto e Branco" />
+              <!-- Overlay de Carregamento da IA para Colorir -->
+              <div class="image-loading-overlay hidden" id="loading-coloring">
+                <div class="spinner"></div>
+                <span class="loading-text" data-i18n="loading_coloring">Criando desenho para colorir (traço puro P&B)...</span>
+              </div>
+            </div>
+            
+            <div class="coloring-footer-info">
+              <span id="coloring-caption" data-i18n="coloring_caption_default">Linhas pretas nítidas sobre fundo branco — perfeito para lápis de cor e giz de cera!</span>
+              
+              <!-- Barra de Ferramentas de Colorir -->
+              <div class="coloring-btn-group no-print">
+                <div class="theme-picker-group">
+                  <label for="theme-visual-select-coloring" class="theme-select-label">🖍️ Tema:</label>
+                  <select id="theme-visual-select-coloring" class="theme-select-inline" title="Trocar cena do desenho para colorir">
+                    <option value="joao6">🍞 João 6: Pães e Peixes</option>
+                    <option value="salmo91">🛡️ Salmo 91: Proteção e Anjos</option>
+                    <option value="filipenses413">💪 Filipenses 4:13: Minha Força</option>
+                    <option value="lampada">💡 Salmo 119:105: Lâmpada e Luz</option>
+                    <option value="joao316">❤️ João 3:16: Amor de Deus</option>
+                    <option value="noe">🚢 A Arca de Noé</option>
+                    <option value="criancas">👶 Jesus e as Crianças</option>
+                    <option value="pastor">🐑 O Bom Pastor</option>
+                    <option value="davi">⚔️ Davi e Golias</option>
+                    <option value="daniel">🦁 Daniel na Cova</option>
+                    <option value="moises">🌊 O Mar Vermelho</option>
+                    <option value="jonas">🐋 Jonas e o Peixe</option>
+                    <option value="samaritano">🤝 O Bom Samaritano</option>
+                    <option value="criacao">🌍 A Criação do Mundo</option>
+                    <option value="tumulo">🌅 O Túmulo Vazio</option>
+                    <option value="cruz">✝️ O Amor na Cruz</option>
+                  </select>
+                </div>
+                <button type="button" class="btn-xs btn-ai-action" id="btn-gen-coloring-ai" title="Gerar contorno em preto e branco puro com IA">
+                  ⚡ <span data-i18n="btn_gen_ai_coloring">Gerar Desenho com IA</span>
+                </button>
+                <button type="button" class="btn-xs btn-subtle" id="btn-regen-coloring-ai" title="Tentar outra variação de desenho">
+                  🔄 <span data-i18n="btn_regen_variation">Nova Variação</span>
+                </button>
+                <button type="button" class="btn-xs btn-subtle" id="btn-filter-lineart" title="Acentuar traços e remover cinzas via filtro inteligente de Canvas">
+                  🖌️ <span data-i18n="btn_filter_lineart">Acentuar Traço P&B</span>
+                </button>
+                <button type="button" class="btn-xs btn-subtle" id="btn-upload-coloring-trigger" title="Carregar desenho para colorir do seu computador">
+                  📁 <span data-i18n="btn_upload_drawing">Enviar Meu Desenho</span>
+                </button>
+                <input type="file" id="upload-coloring-file" accept="image/*" class="hidden" />
+                <button type="button" class="btn-xs btn-copy-prompt" id="btn-copy-coloring-prompt" title="Copiar prompt para geradores de imagens">
+                  📋 <span data-i18n="btn_copy_prompt_coloring">Copiar Prompt</span>
+                </button>
+                <button type="button" class="btn-xs btn-subtle" id="btn-download-coloring" title="Baixar desenho para imprimir separadamente">
+                  ⬇️ <span data-i18n="btn_download_coloring">Baixar para Colorir</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. GERAÇÃO DA APLICAÇÃO PRÁTICA COM A CRIANÇA -->
+        <section class="activity-section sec-application-wrap" id="sec-lesson">
+          <div class="section-title-bar">
+            <h2>🎯 <span data-i18n="sec4_title">4. Prática & Aplicação da Palavra</span></h2>
+            <span class="section-tag" data-i18n="sec4_tag">Vivendo a Mensagem no Dia a Dia</span>
+          </div>
+          
+          <p class="section-instructions" data-i18n="sec4_instructions">
+            Como você pode colocar essa história da Bíblia em prática na sua vida? Veja as três áreas:
+          </p>
+
+          <div class="application-grid">
+            <div class="app-card app-card-home">
+              <div class="app-card-header">
+                <span class="app-icon">🏠</span>
+                <h3 data-i18n="app_home_title">Em Casa (Família)</h3>
+              </div>
+              <p id="app-home-text">
+                Ajudar a mamãe e o papai sem reclamar e partilhar meus brinquedos com meus irmãos com alegria!
+              </p>
+            </div>
+
+            <div class="app-card app-card-school">
+              <div class="app-card-header">
+                <span class="app-icon">🎒</span>
+                <h3 data-i18n="app_school_title">Na Escola (Recreio)</h3>
+              </div>
+              <p id="app-school-text">
+                Quando ver um colega sem lanche ou material, repartir com amor assim como o menino repartiu seus pãezinhos.
+              </p>
+            </div>
+
+            <div class="app-card app-card-heart">
+              <div class="app-card-header">
+                <span class="app-icon">❤️</span>
+                <h3 data-i18n="app_heart_title">No Coração (Amizades)</h3>
+              </div>
+              <p id="app-heart-text">
+                Não ser egoísta! Lembrar que quando entregamos o pouco que temos a Jesus, Ele multiplica com bênçãos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Oração da Criança -->
+          <div class="prayer-card">
+            <div class="prayer-icon">🙏</div>
+            <div class="prayer-body">
+              <strong data-i18n="label_prayer">Minha Oração com Jesus:</strong>
+              <p id="prayer-text">
+                "Querido Senhor Jesus, obrigado por cuidar de mim todos os dias. Ensina o meu coraçãozinho a ser generoso e a repartir o que tenho com alegria. Coloco tudo o que sou em Tuas mãos. Amém!"
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. O CAÇA-PALAVRAS COM AS 5 PALAVRAS PRINCIPAIS DO TEXTO -->
+        <section class="activity-section sec-wordsearch-wrap" id="sec-words">
+          <div class="section-title-bar">
+            <h2>🔍 <span data-i18n="sec5_title">5. Caça-Palavras Bíblico</span></h2>
+            <span class="section-tag" data-i18n="sec5_tag">5 Palavras da Mensagem</span>
+          </div>
+
+          <div class="wordsearch-header-row">
+            <p class="section-instructions" data-i18n="sec5_instructions">
+              Encontre na grade as <strong>5 palavras-chave</strong> que aprendemos na história:
+            </p>
+            <button type="button" class="btn-xs no-print" id="btn-toggle-answers">
+              👁️ <span data-i18n="btn_toggle_answers">Mostrar / Ocultar Respostas</span>
+            </button>
+          </div>
+
+          <div class="wordsearch-layout">
+            <div class="wordsearch-grid" id="wordsearch-grid">
+              <!-- Grid dinâmico gerado via JS -->
+            </div>
+
+            <div class="wordsearch-sidebar">
+              <h4 data-i18n="label_words_to_find">🎯 Palavras a Encontrar:</h4>
+              <ul class="wordsearch-tags" id="wordsearch-tags">
+                <!-- 5 Palavras preenchidas via JS -->
+              </ul>
+              <div class="wordsearch-tip" data-i18n="tip_wordsearch">
+                💡 <em>Dica: No computador ou celular, você pode clicar nas letras para marcar!</em>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. O QUIZ COM BASE NO TEXTO ENSINADO DE MÚLTIPLA ESCOLHA -->
+        <section class="activity-section sec-quiz-wrap" id="sec-quiz">
+          <div class="section-title-bar">
+            <h2>❓ <span data-i18n="sec6_title">6. Quiz Bíblico</span></h2>
+            <span class="section-tag" data-i18n="sec6_tag">Perguntas da Palavra</span>
+          </div>
+
+          <p class="section-instructions" data-i18n="sec6_instructions">
+            Marque um <strong>( X )</strong> na resposta certa de acordo com a história da Bíblia:
+          </p>
+
+          <div class="quiz-list" id="quiz-container">
+            <!-- Perguntas geradas dinamicamente via JS -->
+          </div>
+        </section>
+
+        <!-- 7. DESAFIO PRÁTICO DA SEMANA (Ligado à Palavra) -->
+        <section class="activity-section sec-challenge-wrap" id="sec-craft">
+          <div class="section-title-bar">
+            <h2>🏆 <span data-i18n="sec7_title">7. Desafio Prático da Semana</span></h2>
+            <span class="section-tag" data-i18n="sec7_tag">Para Colar na Geladeira</span>
+          </div>
+
+          <div class="challenge-card">
+            <div class="challenge-badge">🌟 <span data-i18n="badge_weekly_mission">Minha Missão com Jesus Esta Semana:</span></div>
+            <p class="challenge-description" id="challenge-text">
+              "Esta semana vou praticar a generosidade: vou repartir com alegria um lanche ou brinquedo com um amigo ou irmão que precise, lembrando do milagre de Jesus!"
+            </p>
+
+            <div class="signature-row">
+              <div class="signature-block">
+                <span class="sig-line"></span>
+                <span class="sig-label" data-i18n="sig_child">Assinatura da Criança</span>
+              </div>
+              <div class="signature-block">
+                <span class="sig-line"></span>
+                <span class="sig-label" data-i18n="sig_guardian">Assinatura do Responsável</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 7: GABARITO & GUIA DO PROFESSOR (Uso Exclusivo do Professor) -->
+        <section class="activity-section teacher-guide-wrap" id="sec-teacher-guide">
+          <div class="teacher-guide-header">
+            <h3>📋 <span data-i18n="teacher_guide_title">Gabarito Oficial & Dicas do Professor</span></h3>
+            <span class="guide-tag" data-i18n="teacher_guide_tag">Uso do Educador</span>
+          </div>
+          <div class="teacher-guide-body">
+            <div class="guide-col">
+              <strong data-i18n="label_quiz_answers">Respostas do Quiz:</strong>
+              <div id="teacher-quiz-answers"></div>
+            </div>
+            <div class="guide-col">
+              <strong data-i18n="label_words_answers">Palavras do Caça-Palavras:</strong>
+              <div id="teacher-words-answers"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Rodapé da Folha -->
+        <footer class="worksheet-footer">
+          <p>🌟 <strong>BibleKids</strong> • <span data-i18n="footer_text">Educando corações na Palavra de Deus • Uso liberado para Escolas Bíblicas, Igrejas e Famílias</span></p>
+        </footer>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- Elemento de Canvas Invisível para Processamento e Filtro de Imagem (Linework P&B) -->
+  <canvas id="hidden-process-canvas" style="display:none;"></canvas>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1300" width="1000" height="1300">
+  <defs>
+    <style>
+      .outline { stroke: #1a1a1a; stroke-width: 5px; stroke-linecap: round; stroke-linejoin: round; fill: #ffffff; }
+      .thick-outline { stroke: #1a1a1a; stroke-width: 7px; stroke-linecap: round; stroke-linejoin: round; fill: #ffffff; }
+      .thin-line { stroke: #1a1a1a; stroke-width: 3.5px; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+      .dashed-line { stroke: #1a1a1a; stroke-width: 3px; stroke-dasharray: 8,8; fill: none; }
+      .title-text { font-family: 'Fredoka', 'Nunito', 'Arial Rounded MT Bold', sans-serif; font-weight: 800; font-size: 38px; fill: #1a1a1a; text-anchor: middle; }
+      .subtitle-text { font-family: 'Nunito', Arial, sans-serif; font-weight: 700; font-size: 22px; fill: #1a1a1a; text-anchor: middle; }
+      .verse-text { font-family: 'Nunito', Arial, sans-serif; font-style: italic; font-weight: 600; font-size: 20px; fill: #1a1a1a; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Clean pure white background -->
+  <rect width="1000" height="1300" fill="#ffffff" />
+
+  <!-- Outer Coloring Border for Kids -->
+  <rect x="25" y="25" width="950" height="1250" rx="25" class="thick-outline" />
+  <rect x="40" y="40" width="920" height="1220" rx="18" class="dashed-line" />
+
+  <!-- Top Title Banner -->
+  <path d="M 120 70 L 880 70 Q 895 70 895 85 L 895 140 Q 895 155 880 155 L 120 155 Q 105 155 105 140 L 105 85 Q 105 70 120 70 Z" class="thick-outline" />
+  <!-- Banner Ribbon Tails -->
+  <path d="M 105 95 L 60 112 L 105 130 Z" class="outline" />
+  <path d="M 895 95 L 940 112 L 895 130 Z" class="outline" />
+  <text x="500" y="115" class="title-text">A Multiplicação dos Pães e Peixes</text>
+  <text x="500" y="143" class="subtitle-text">⭐ João 6:1-14 • Desenho para Colorir ⭐</text>
+
+  <!-- Celestial Elements (Sun, Clouds, Rays) -->
+  <!-- Friendly Smiling Sun -->
+  <g transform="translate(180, 260)">
+    <!-- Sun Rays -->
+    <line x1="0" y1="-85" x2="0" y2="-60" class="thick-outline" />
+    <line x1="60" y1="-60" x2="42" y2="-42" class="thick-outline" />
+    <line x1="85" y1="0" x2="60" y2="0" class="thick-outline" />
+    <line x1="60" y1="60" x2="42" y2="42" class="thick-outline" />
+    <line x1="0" y1="85" x2="0" y2="60" class="thick-outline" />
+    <line x1="-60" y1="60" x2="-42" y2="42" class="thick-outline" />
+    <line x1="-85" y1="0" x2="-60" y2="0" class="thick-outline" />
+    <line x1="-60" y1="-60" x2="-42" y2="-42" class="thick-outline" />
+    <!-- Sun Face -->
+    <circle cx="0" cy="0" r="48" class="thick-outline" />
+    <!-- Sun Eyes -->
+    <ellipse cx="-16" cy="-8" rx="6" ry="8" fill="#1a1a1a" />
+    <ellipse cx="16" cy="-8" rx="6" ry="8" fill="#1a1a1a" />
+    <!-- Sun Smile -->
+    <path d="M -18 10 Q 0 26 18 10" class="thin-line" />
+    <ellipse cx="-24" cy="12" rx="4" ry="3" class="outline" />
+    <ellipse cx="24" cy="12" rx="4" ry="3" class="outline" />
+  </g>
+
+  <!-- Fluffy Cloud Left -->
+  <path d="M 280 260 C 280 230, 320 220, 340 240 C 360 215, 410 220, 420 245 C 450 245, 460 280, 435 300 C 420 315, 300 315, 280 290 Z" class="outline" />
+
+  <!-- Fluffy Cloud Right -->
+  <path d="M 720 250 C 720 220, 760 210, 780 230 C 800 205, 850 210, 860 235 C 890 235, 900 270, 875 290 C 860 305, 740 305, 720 280 Z" class="outline" />
+
+  <!-- Dove / Birds of Peace in the Sky -->
+  <path d="M 640 230 Q 655 215 670 230 Q 685 215 700 230" class="thick-outline" />
+  <path d="M 330 200 Q 342 188 355 200 Q 367 188 380 200" class="outline" />
+
+  <!-- Rolling Grassy Hillside Background -->
+  <path d="M 40 680 Q 250 560 500 590 T 960 620 L 960 1200 L 40 1200 Z" class="thick-outline" />
+  <path d="M 40 780 Q 350 710 650 760 T 960 740 L 960 1200 L 40 1200 Z" class="outline" />
+
+  <!-- Little Wildflowers on Hills -->
+  <g transform="translate(120, 730)">
+    <circle cx="0" cy="0" r="7" class="outline" />
+    <circle cx="0" cy="-14" r="6" class="outline" />
+    <circle cx="14" cy="0" r="6" class="outline" />
+    <circle cx="0" cy="14" r="6" class="outline" />
+    <circle cx="-14" cy="0" r="6" class="outline" />
+    <path d="M 0 14 Q 5 35 0 50" class="thin-line" />
+    <path d="M 0 35 Q 12 28 16 35" class="outline" />
+  </g>
+  <g transform="translate(860, 710)">
+    <circle cx="0" cy="0" r="7" class="outline" />
+    <circle cx="0" cy="-14" r="6" class="outline" />
+    <circle cx="14" cy="0" r="6" class="outline" />
+    <circle cx="0" cy="14" r="6" class="outline" />
+    <circle cx="-14" cy="0" r="6" class="outline" />
+    <path d="M 0 14 Q -5 35 0 50" class="thin-line" />
+    <path d="M 0 35 Q -12 28 -16 35" class="outline" />
+  </g>
+
+  <!-- ============================================== -->
+  <!-- MAIN THEME: THE BASKET WITH 5 LOAVES & 2 FISH -->
+  <!-- ============================================== -->
+
+  <g id="main-basket-group" transform="translate(500, 680)">
+
+    <!-- Divine Blessing Rays Behind Basket -->
+    <path d="M -220 -180 L -300 -260" class="thick-outline" />
+    <path d="M -140 -240 L -180 -340" class="thick-outline" />
+    <path d="M 0 -270 L 0 -380" class="thick-outline" />
+    <path d="M 140 -240 L 180 -340" class="thick-outline" />
+    <path d="M 220 -180 L 300 -260" class="thick-outline" />
+
+    <!-- Little Miracle Stars -->
+    <g transform="translate(-260, -140)"><path d="M 0 -18 L 4 -5 L 17 -5 L 7 4 L 11 17 L 0 9 L -11 17 L -7 4 L -17 -5 L -4 -5 Z" class="outline" /></g>
+    <g transform="translate(260, -140)"><path d="M 0 -18 L 4 -5 L 17 -5 L 7 4 L 11 17 L 0 9 L -11 17 L -7 4 L -17 -5 L -4 -5 Z" class="outline" /></g>
+    <g transform="translate(-160, -310)"><path d="M 0 -14 L 3 -4 L 13 -4 L 5 3 L 8 13 L 0 7 L -8 13 L -5 3 L -13 -4 L -3 -4 Z" class="outline" /></g>
+    <g transform="translate(160, -310)"><path d="M 0 -14 L 3 -4 L 13 -4 L 5 3 L 8 13 L 0 7 L -8 13 L -5 3 L -13 -4 L -3 -4 Z" class="outline" /></g>
+
+    <!-- BACK 3 LOAVES (Pães do fundo) -->
+    <!-- Loaf 1 (Left Back) -->
+    <g transform="translate(-170, -140) rotate(-15)">
+      <path d="M -60 -35 Q 0 -65 60 -35 Q 80 0 60 35 Q 0 55 -60 35 Q -80 0 -60 -35 Z" class="thick-outline" />
+      <path d="M -30 -20 Q -25 0 -20 20" class="thin-line" />
+      <path d="M 0 -25 Q 5 0 10 25" class="thin-line" />
+      <path d="M 30 -20 Q 35 0 40 20" class="thin-line" />
+    </g>
+
+    <!-- Loaf 2 (Center Back) -->
+    <g transform="translate(0, -170)">
+      <path d="M -70 -40 Q 0 -75 70 -40 Q 90 0 70 40 Q 0 65 -70 40 Q -90 0 -70 -40 Z" class="thick-outline" />
+      <path d="M -35 -25 Q -30 0 -25 25" class="thin-line" />
+      <path d="M 0 -30 Q 0 0 0 30" class="thin-line" />
+      <path d="M 35 -25 Q 30 0 25 25" class="thin-line" />
+    </g>
+
+    <!-- Loaf 3 (Right Back) -->
+    <g transform="translate(170, -140) rotate(15)">
+      <path d="M -60 -35 Q 0 -65 60 -35 Q 80 0 60 35 Q 0 55 -60 35 Q -80 0 -60 -35 Z" class="thick-outline" />
+      <path d="M -30 -20 Q -35 0 -40 20" class="thin-line" />
+      <path d="M 0 -25 Q -5 0 -10 25" class="thin-line" />
+      <path d="M 30 -20 Q 25 0 20 20" class="thin-line" />
+    </g>
+
+    <!-- FRONT 2 LOAVES (Pães da frente) -->
+    <!-- Loaf 4 (Left Front) -->
+    <g transform="translate(-100, -80) rotate(-8)">
+      <path d="M -75 -40 Q 0 -70 75 -40 Q 95 0 75 40 Q 0 60 -75 40 Q -95 0 -75 -40 Z" class="thick-outline" />
+      <path d="M -40 -22 Q -35 0 -30 22" class="thin-line" />
+      <path d="M -5 -25 Q 0 0 5 25" class="thin-line" />
+      <path d="M 35 -22 Q 40 0 45 22" class="thin-line" />
+    </g>
+
+    <!-- Loaf 5 (Right Front) -->
+    <g transform="translate(100, -80) rotate(8)">
+      <path d="M -75 -40 Q 0 -70 75 -40 Q 95 0 75 40 Q 0 60 -75 40 Q -95 0 -75 -40 Z" class="thick-outline" />
+      <path d="M -35 -22 Q -40 0 -45 22" class="thin-line" />
+      <path d="M 5 -25 Q 0 0 -5 25" class="thin-line" />
+      <path d="M 40 -22 Q 35 0 30 22" class="thin-line" />
+    </g>
+
+    <!-- TWO CUTE HAPPY FISH (Os Dois Peixinhos) -->
+    <!-- Fish 1 (Left Fish) -->
+    <g transform="translate(-130, -10) rotate(-15)">
+      <!-- Tail -->
+      <path d="M -110 5 L -150 -25 Q -135 5 -150 35 Z" class="thick-outline" />
+      <!-- Fin Top -->
+      <path d="M -30 -38 Q -10 -65 20 -40 Z" class="outline" />
+      <!-- Fin Bottom -->
+      <path d="M -20 38 Q 0 65 30 38 Z" class="outline" />
+      <!-- Body -->
+      <path d="M -110 0 C -70 -50, 40 -45, 90 -5 C 95 0, 95 10, 90 15 C 40 55, -70 50, -110 10 Z" class="thick-outline" />
+      <!-- Gills -->
+      <path d="M 35 -20 Q 20 0 35 20" class="thin-line" />
+      <!-- Eye -->
+      <circle cx="60" cy="-8" r="9" class="thick-outline" />
+      <circle cx="63" cy="-10" r="4" fill="#1a1a1a" />
+      <!-- Smile -->
+      <path d="M 75 8 Q 65 22 55 12" class="thick-outline" />
+      <!-- Scales Details -->
+      <path d="M -10 -15 Q 5 -5 -10 5" class="thin-line" />
+      <path d="M -40 -10 Q -25 0 -40 10" class="thin-line" />
+      <path d="M -15 10 Q 0 20 -15 30" class="thin-line" />
+      <!-- Water bubbles -->
+      <circle cx="105" cy="-25" r="7" class="outline" />
+      <circle cx="118" cy="-40" r="5" class="outline" />
+    </g>
+
+    <!-- Fish 2 (Right Fish) -->
+    <g transform="translate(130, -5) rotate(12) scale(-1, 1)">
+      <!-- Tail -->
+      <path d="M -110 5 L -150 -25 Q -135 5 -150 35 Z" class="thick-outline" />
+      <!-- Fin Top -->
+      <path d="M -30 -38 Q -10 -65 20 -40 Z" class="outline" />
+      <!-- Fin Bottom -->
+      <path d="M -20 38 Q 0 65 30 38 Z" class="outline" />
+      <!-- Body -->
+      <path d="M -110 0 C -70 -50, 40 -45, 90 -5 C 95 0, 95 10, 90 15 C 40 55, -70 50, -110 10 Z" class="thick-outline" />
+      <!-- Gills -->
+      <path d="M 35 -20 Q 20 0 35 20" class="thin-line" />
+      <!-- Eye -->
+      <circle cx="60" cy="-8" r="9" class="thick-outline" />
+      <circle cx="63" cy="-10" r="4" fill="#1a1a1a" />
+      <!-- Smile -->
+      <path d="M 75 8 Q 65 22 55 12" class="thick-outline" />
+      <!-- Scales Details -->
+      <path d="M -10 -15 Q 5 -5 -10 5" class="thin-line" />
+      <path d="M -40 -10 Q -25 0 -40 10" class="thin-line" />
+      <path d="M -15 10 Q 0 20 -15 30" class="thin-line" />
+      <!-- Water bubbles -->
+      <circle cx="105" cy="-25" r="7" class="outline" />
+      <circle cx="118" cy="-40" r="5" class="outline" />
+    </g>
+
+    <!-- THE LARGE WOVEN WICKER BASKET (O Cesto Trançado) -->
+    <!-- Basket Rim -->
+    <path d="M -310 10 Q 0 -25 310 10 Q 330 25 310 40 Q 0 75 -310 40 Q -330 25 -310 10 Z" class="thick-outline" />
+    <!-- Braided pattern on rim -->
+    <path d="M -290 18 Q -260 38 -230 18 Q -200 38 -170 18 Q -140 38 -110 18 Q -80 38 -50 18 Q -20 38 10 18 Q 40 38 70 18 Q 100 38 130 18 Q 160 38 190 18 Q 220 38 250 18 Q 280 38 300 20" class="thin-line" />
+
+    <!-- Basket Body -->
+    <path d="M -290 40 C -260 160, -220 250, -180 270 Q 0 290 180 270 C 220 250, 260 160, 290 40 Z" class="thick-outline" />
+
+    <!-- Woven Wicker Texture Lines (Horizontal Weave) -->
+    <path d="M -270 90 Q 0 135 270 90" class="outline" />
+    <path d="M -240 145 Q 0 190 240 145" class="outline" />
+    <path d="M -210 200 Q 0 245 210 200" class="outline" />
+
+    <!-- Woven Wicker Vertical Cross-hatches for Coloring -->
+    <!-- Row 1 -->
+    <line x1="-240" y1="48" x2="-230" y2="92" class="thin-line" />
+    <line x1="-180" y1="55" x2="-170" y2="100" class="thin-line" />
+    <line x1="-120" y1="60" x2="-110" y2="108" class="thin-line" />
+    <line x1="-60" y1="63" x2="-50" y2="112" class="thin-line" />
+    <line x1="0" y1="65" x2="0" y2="114" class="thin-line" />
+    <line x1="60" y1="63" x2="50" y2="112" class="thin-line" />
+    <line x1="120" y1="60" x2="110" y2="108" class="thin-line" />
+    <line x1="180" y1="55" x2="170" y2="100" class="thin-line" />
+    <line x1="240" y1="48" x2="230" y2="92" class="thin-line" />
+
+    <!-- Row 2 -->
+    <line x1="-215" y1="96" x2="-200" y2="150" class="thin-line" />
+    <line x1="-155" y1="104" x2="-140" y2="160" class="thin-line" />
+    <line x1="-95" y1="110" x2="-80" y2="168" class="thin-line" />
+    <line x1="-35" y1="114" x2="-20" y2="172" class="thin-line" />
+    <line x1="35" y1="114" x2="20" y2="172" class="thin-line" />
+    <line x1="95" y1="110" x2="80" y2="168" class="thin-line" />
+    <line x1="155" y1="104" x2="140" y2="160" class="thin-line" />
+    <line x1="215" y1="96" x2="200" y2="150" class="thin-line" />
+
+    <!-- Row 3 -->
+    <line x1="-175" y1="155" x2="-160" y2="208" class="thin-line" />
+    <line x1="-115" y1="165" x2="-100" y2="220" class="thin-line" />
+    <line x1="-55" y1="172" x2="-40" y2="228" class="thin-line" />
+    <line x1="5" y1="174" x2="20" y2="230" class="thin-line" />
+    <line x1="65" y1="172" x2="80" y2="228" class="thin-line" />
+    <line x1="125" y1="165" x2="140" y2="220" class="thin-line" />
+    <line x1="185" y1="155" x2="195" y2="208" class="thin-line" />
+
+    <!-- Basket Handles -->
+    <path d="M -300 30 C -360 40, -360 120, -280 100" class="thick-outline" />
+    <path d="M 300 30 C 360 40, 360 120, 280 100" class="thick-outline" />
+  </g>
+
+  <!-- TWO OF THE 12 SMALL BASKETS AT SIDES (Simbolizando os 12 cestos de sobras) -->
+  <!-- Left Small Basket -->
+  <g transform="translate(160, 920) scale(0.65)">
+    <path d="M -120 -40 Q 0 -60 120 -40 Q 140 0 120 40 Q 0 60 -120 40 Q -140 0 -120 -40 Z" class="thick-outline" />
+    <path d="M -110 30 C -90 120, -70 170, -50 180 Q 0 190 50 180 C 70 170, 90 120, 110 30 Z" class="thick-outline" />
+    <path d="M -100 80 Q 0 110 100 80" class="outline" />
+    <path d="M -80 130 Q 0 155 80 130" class="outline" />
+    <!-- Overflowing bread top -->
+    <ellipse cx="-30" cy="-35" rx="35" ry="25" class="thick-outline" />
+    <ellipse cx="30" cy="-35" rx="35" ry="25" class="thick-outline" />
+    <text x="0" y="240" font-family="'Nunito', sans-serif" font-weight="800" font-size="28px" fill="#1a1a1a" text-anchor="middle">12 Cestos</text>
+  </g>
+
+  <!-- Right Small Basket -->
+  <g transform="translate(840, 920) scale(0.65)">
+    <path d="M -120 -40 Q 0 -60 120 -40 Q 140 0 120 40 Q 0 60 -120 40 Q -140 0 -120 -40 Z" class="thick-outline" />
+    <path d="M -110 30 C -90 120, -70 170, -50 180 Q 0 190 50 180 C 70 170, 90 120, 110 30 Z" class="thick-outline" />
+    <path d="M -100 80 Q 0 110 100 80" class="outline" />
+    <path d="M -80 130 Q 0 155 80 130" class="outline" />
+    <!-- Overflowing bread top -->
+    <ellipse cx="-30" cy="-35" rx="35" ry="25" class="thick-outline" />
+    <ellipse cx="30" cy="-35" rx="35" ry="25" class="thick-outline" />
+    <text x="0" y="240" font-family="'Nunito', sans-serif" font-weight="800" font-size="28px" fill="#1a1a1a" text-anchor="middle">De Sobras!</text>
+  </g>
+
+  <!-- Bottom Memory Verse Plaque -->
+  <g transform="translate(500, 1160)">
+    <rect x="-420" y="-45" width="840" height="90" rx="16" class="thick-outline" />
+    <text x="0" y="-12" class="verse-text">"Jesus tomou os pães e, havendo dado graças, distribuiu-os..."</text>
+    <text x="0" y="22" class="verse-text" font-weight="800">— João 6:11</text>
+  </g>
+
+  <!-- Fun Checklist for the child -->
+  <g transform="translate(500, 1245)">
+    <text x="0" y="0" class="subtitle-text" font-size="18px">🖍️ Pinte: [ ] 5 Pãezinhos  [ ] 2 Peixinhos  [ ] Cesto de Palha  [ ] Sol Brilhante</text>
+  </g>
+
+</svg>
