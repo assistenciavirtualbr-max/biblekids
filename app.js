@@ -6707,6 +6707,172 @@ const STORIES_DB = {
       ],
       "challenge": "Cette semaine, je vais mémoriser le Psaume 119:105 et remercier Dieu pour Sa lumière bienveillante !"
     }
+  },
+
+  "pesca": {
+    "icon": "⛵🐟",
+    "imageColor": "assets/images/pesca_pixar.jpg",
+    "imageColoring": "assets/images/pesca_coloring.jpg",
+    "pt": {
+      "title": "A Pesca Maravilhosa",
+      "ref": "Lucas 5:1-11",
+      "imageColorDesc": "Jesus no barco de Pedro, abençoando a pesca com redes transbordando de peixes no Lago de Genesaré.",
+      "imageColoringDesc": "Desenho para colorir fiel: Jesus no barco com Simão Pedro puxando as redes cheias de peixes.",
+      "verse": {
+        "text": "Disse-lhe Jesus: Faze-te ao mar alto e lançai as vossas redes para pescar.",
+        "ref": "Lucas 5:4"
+      },
+      "storyByAge": {
+        "3-5": "Jesus entrou no barquinho do pescador Pedro. Pedro tinha passado a noite inteira tentando pescar, mas não pegou nenhum peixinho e estava cansado. Jesus sorriu com muito amor e disse: 'Jogue a rede de novo na água!'. Pedro confiou em Jesus e obedeceu. E quando puxou a rede, puxa vida: vieram tantos peixinhos pulando de alegria que o barco quase encheu! Pedro ficou tão feliz que agradeceu a Jesus e decidiu segui-Lo para sempre!",
+        "6-8": "Junto ao Lago de Genesaré, uma multidão se apertava para ouvir os ensinamentos de Jesus. O Mestre entrou no barco de Simão Pedro e ensinou as pessoas dali. Depois, disse a Pedro: 'Vá para o mar alto e lancem as redes'. Pedro respondeu: 'Mestre, trabalhamos a noite toda e nada pegamos; mas, sob a Tua palavra, lançarei as redes'. Quando fizeram isso, apanharam uma quantidade tão grande de peixes que as redes começaram a se romper! Eles chamaram os amigos do outro barco para ajudar e os dois barcos ficaram cheios. Pedro caiu de joelhos diante de Jesus, maravilhado. E Jesus lhe disse: 'Não temas; de agora em diante serás pescador de homens'. Eles deixaram tudo e seguiram Jesus!",
+        "9-12": "O relato de Lucas 5:1-11 nos ensina sobre fé prática, obediência radical e propósito de vida. Pedro era um pescador profissional que conhecia cada detalhe do Lago de Genesaré, mas enfrentava o cansaço do fracasso após uma noite infrutífera. Quando Jesus ordena lançar as redes em pleno dia, a razão humana dizia que era inútil, mas Pedro escolheu obedecer à autoridade de Cristo: 'Sob a Tua palavra, lançarei as redes'. O milagre foi tão abundante que exigiu parceria e cooperação entre os barcos. Diante da santidade e do poder de Deus, Pedro reconheceu sua pequenez, mas Jesus transformou sua vocação: 'Não temas; de agora em diante serás pescador de homens'. Seguir a Cristo significa confiar em Sua voz mesmo nas circunstâncias mais improváveis."
+      },
+      "application": {
+        "home": "Obedecer aos pais de primeira e com alegria, mesmo quando estiver com preguiça ou cansado, assim como Pedro obedeceu a Jesus.",
+        "school": "Trabalhar em equipe com os colegas, ajudar quem estiver com dificuldades e compartilhar as tarefas com boa vontade.",
+        "heart": "Confiar que Jesus tem o controle de todas as coisas e que Ele tem um propósito especial e maravilhoso para a minha vida."
+      },
+      "prayer": "Querido Senhor Jesus, obrigado porque Tua Palavra é poderosa e sempre cumpre o que promete. Ensina meu coração a obedecer à Tua voz com fé e alegria, mesmo quando as coisas parecerem difíceis. Quero Te seguir todos os dias e cumprir o Teu plano para mim. Em Teu nome, Amém!",
+      "words": ["JESUS", "BARCO", "REDES", "PEIXES", "PEDRO"],
+      "quiz": [
+        {
+          "question": "O que Pedro disse quando Jesus mandou lançar as redes novamente?",
+          "options": ["Sob a Tua palavra lançarei as redes", "Não vou porque não há peixes aqui", "Vou dormir primeiro"],
+          "answerIndex": 0
+        },
+        {
+          "question": "O que aconteceu quando os pescadores obedeceram à ordem de Jesus?",
+          "options": ["As redes se encheram de tantos peixes que quase rompiam", "Não veio peixe nenhum", "O barco quebrou"],
+          "answerIndex": 0
+        },
+        {
+          "question": "Qual nova missão Jesus entregou a Pedro após o milagre?",
+          "options": ["De agora em diante serás pescador de homens", "Comprar mais barcos para vender peixes", "Construir uma cabana no lago"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "Esta semana vou praticar a obediência e a cooperação: vou ajudar em casa e na escola com alegria, lembrando da Pesca Maravilhosa!"
+    },
+    "en": {
+      "title": "The Miraculous Catch",
+      "ref": "Luke 5:1-11",
+      "imageColorDesc": "Jesus in Simon Peter's boat with nets overflowing with fish on the Lake of Gennesaret.",
+      "imageColoringDesc": "Coloring book page: Jesus on the fishing boat with Simon Peter hauling the full nets.",
+      "verse": {
+        "text": "Put out into deep water, and let down the nets for a catch.",
+        "ref": "Luke 5:4"
+      },
+      "storyByAge": {
+        "3-5": "Jesus stepped into Peter's boat. Peter had fished all night and caught nothing. Jesus smiled and said: 'Throw your nets again!'. Peter trusted Jesus and obeyed. Suddenly, the net was full of so many happy jumping fish! Peter was amazed and decided to follow Jesus everywhere!",
+        "6-8": "By the Lake of Gennesaret, crowds gathered to hear Jesus. Jesus taught from Simon Peter's boat, then said: 'Put out into deep water and let down your nets'. Peter answered: 'Master, we worked hard all night and caught nothing; but because You say so, I will let down the nets'. A great miracle happened! They caught so many fish that both boats were filled. Jesus told Peter: 'Don't be afraid; from now on you will fish for people'. They left everything and followed Him!",
+        "9-12": "Luke 5:1-11 demonstrates practical faith, radical obedience, and divine calling. Simon Peter was a seasoned fisherman exhausted after a fruitless night. Yet when Jesus commanded him to launch into the deep, Peter chose obedience over exhaustion: 'Because You say so, I will'. The miracle exceeded all expectations, requiring partnership between boats. Confronted with Jesus' divine authority, Peter was humbled. Jesus elevated his life purpose from catching fish to fishing for souls. True discipleship means trusting Jesus' word beyond human logic."
+      },
+      "application": {
+        "home": "Obey parents cheerfully right away, even when tired, just as Peter trusted and obeyed Jesus.",
+        "school": "Work in teams, call classmates to help in hard tasks, and encourage others in their studies.",
+        "heart": "Trust that God has full control and holds an extraordinary purpose for my future."
+      },
+      "prayer": "Lord Jesus, thank You for Your powerful Word. Teach my heart to obey You with faith and joy. Help me trust You in all things and follow Your calling for my life. Amen!",
+      "words": ["JESUS", "BOAT", "NETS", "FISH", "PETER"],
+      "quiz": [
+        {
+          "question": "What did Peter say when Jesus told him to cast the nets?",
+          "options": ["Because You say so, I will let down the nets", "I am too tired to try", "There are no fish in the lake"],
+          "answerIndex": 0
+        },
+        {
+          "question": "What happened when they let down their nets in faith?",
+          "options": ["They caught so many fish their nets began to break", "Nothing happened", "The nets were lost"],
+          "answerIndex": 0
+        },
+        {
+          "question": "What life mission did Jesus give to Peter?",
+          "options": ["From now on you will fish for people", "To buy bigger fishing boats", "To retire by the seaside"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "This week I will practice prompt obedience and teamwork at home and school, remembering Jesus' miracle!"
+    },
+    "es": {
+      "title": "La Pesca Milagrosa",
+      "ref": "Lucas 5:1-11",
+      "imageColorDesc": "Jesús en la barca de Pedro con redes desbordantes de peces en el Lago de Genesaret.",
+      "imageColoringDesc": "Dibujo para colorear: Jesús en la barca con Simón Pedro sacando las redes llenas de peces.",
+      "verse": {
+        "text": "Boga mar adentro, y echad vuestras redes para pescar.",
+        "ref": "Lucas 5:4"
+      },
+      "storyByAge": {
+        "3-5": "Jesús subió a la barca de Pedro. Pedro había pescado toda la noche sin atrapar nada. Pero Jesús le dijo: '¡Echa de nuevo las redes!'. Pedro obedeció con fe. ¡Y las redes se llenaron de tantos peces que saltaban de alegría! Pedro y sus amigos se alegraron y decidieron seguir a Jesús con todo el corazón.",
+        "6-8": "Junto al lago de Genesaret, Jesús enseñaba a la multitud desde la barca de Simón Pedro. Al terminar, le dijo a Pedro: 'Boga mar adentro y echad vuestras redes'. Pedro respondió: 'Maestro, toda la noche hemos trabajado y nada hemos pescado; pero en Tu palabra echaré la red'. ¡El milagro fue asombroso! La red se llenó de tantos peces que casi se rompía. Llenaron dos barcas. Pedro cayó de rodillas maravillado. Jesús le dijo: 'No temas; desde ahora serás pescador de hombres'. Y dejándolo todo, le siguieron.",
+        "9-12": "Lucas 5:1-11 nos enseña acerca de la fe viva y el llamado divino. Pedro era un pescador experto que había trabajado arduamente toda la noche sin fruto alguno. Sin embargo, ante la instrucción de Jesús, declaró: 'En Tu palabra echaré la red'. La obediencia trajo una bendición desbordante que requirió la ayuda de los compañeros. Al contemplar la majestad de Cristo, Pedro reconoció su necesidad espiritual. Jesús lo comisionó: 'De ahora en adelante serás pescador de hombres'. Dejar las barcas representa priorizar el Reino de Dios con valentía y propósito."
+      },
+      "application": {
+        "home": "Obedecer a mis padres con alegría y prontitud, confiando como Pedro confió en Jesús.",
+        "school": "Trabajar en equipo con mis compañeros y brindar ayuda a quien lo necesite en el aula.",
+        "heart": "Saber que Jesús tiene el control y que Él tiene un plan maravilloso para mi vida."
+      },
+      "prayer": "Señor Jesús, gracias por Tu Palabra viva. Enséñame a confiar en Ti y a obedecer con prontitud y alegría. Deseo seguirte todos los días de mi vida. ¡Amén!",
+      "words": ["JESUS", "BARCA", "REDES", "PECES", "PEDRO"],
+      "quiz": [
+        {
+          "question": "¿Qué respondió Pedro cuando Jesús le dijo que echara las redes?",
+          "options": ["En Tu palabra echaré la red", "No lo haré porque estoy cansado", "El mar no tiene peces"],
+          "answerIndex": 0
+        },
+        {
+          "question": "¿Qué sucedió al obedecer la palabra de Jesús?",
+          "options": ["Las redes se llenaron de peces hasta desbordar", "No atraparon ningún pez", "Se rompió la barca"],
+          "answerIndex": 0
+        },
+        {
+          "question": "¿Qué misión especial le dio Jesús a Simón Pedro?",
+          "options": ["Desde ahora serás pescador de hombres", "Vender más pescado en el mercado", "Quedarse en la orilla"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "¡Esta semana practicaré la obediencia y el servicio a los demás recordando la pesca milagrosa!"
+    },
+    "fr": {
+      "title": "La Pêche Miraculeuse",
+      "ref": "Luc 5:1-11",
+      "imageColorDesc": "Jésus dans la barque de Pierre avec des filets remplis de poissons au lac de Génésareth.",
+      "imageColoringDesc": "Coloriage fidèle : Jésus dans la barque avec Simon Pierre tirant les filets pleins de poissons.",
+      "verse": {
+        "text": "Avance en pleine eau, et jetez vos filets pour pêcher.",
+        "ref": "Luc 5:4"
+      },
+      "storyByAge": {
+        "3-5": "Jésus est monté dans la barque de Pierre. Pierre avait pêché toute la nuit sans rien attrapar. Jésus lui dit avec douceur : 'Jette à nouveau tes filets !'. Pierre a obéi. Et soudain, les filets se sont remplis d'une multitude de poissons ! Pierre a compris que Jésus est le Seigneur et L'a suivi avec joie.",
+        "6-8": "Au bord du lac de Génésareth, la foule se pressait pour écouter la Parole de Dieu. Jésus monta dans la barque de Simon Pierre et enseigna. Puis Il dit à Pierre : 'Avance en pleine eau et jetez vos filets'. Pierre répondit : 'Maître, nous avons peiné toute la nuit sans rien prendre ; mais sur Ta parole, je jetterai les filets'. Le miracle s'accomplit ! Les filets étaient si remplis qu'ils menaçaient de se rompre. Pierre tomba aux genoux de Jésus. Jésus lui dit : 'Sois sans crainte ; désormais ce sont des hommes que tu prendras'. Ils laissèrent tout et Le suivirent.",
+        "9-12": "Le récit de Luc 5:1-11 révèle la puissance de l'obéissance et de l'appel divin. Après une nuit stérile et épuisante, Simon Pierre accepte de faire confiance à la parole du Christ : 'Sur Ta parole, je jetterai le filet'. Le miracle qui en découle dépasse toute prévision humaine. Devant la sainteté de Jésus, Pierre est saisi de crainte respectueuse. Jésus transforme alors son métier terrestre en une mission éternelle : 'Désormais, tu seras pêcheur d'hommes'. Suivre Jésus implique de Lui remettre nos barques pour accomplir Son plan."
+      },
+      "application": {
+        "home": "Obéir à mes parents avec le sourire dès la première demande, comme Pierre a obéi à Jésus.",
+        "school": "Travailler en équipe avec bienveillance et tendre la main à mes camarades.",
+        "heart": "Garder confiance en Jésus et savoir qu'Il a un dessein d'amour pour ma vie."
+      },
+      "prayer": "Seigneur Jésus, merci pour Ta Parole qui fait des merveilles. Donne-moi un cœur obéissant et généreux. Je veux Te suivre avec joie. Amen !",
+      "words": ["JESUS", "BARQUE", "FILETS", "POISSON", "PIERRE"],
+      "quiz": [
+        {
+          "question": "Que répond Pierre quand Jésus lui demande de jeter les filets ?",
+          "options": ["Sur Ta parole, je jetterai les filets", "Je refuse car je suis fatigué", "Il n'y a plus de poissons"],
+          "answerIndex": 0
+        },
+        {
+          "question": "Que s'est-il passé lorsque Pierre a obéi ?",
+          "options": ["Les filets se sont remplis de poissons au point de se rompre", "Rien du tout", "La barque a coulé"],
+          "answerIndex": 0
+        },
+        {
+          "question": "Quelle mission Jésus confie-t-Il à Pierre ?",
+          "options": ["Désormais tu seras pêcheur d'hommes", "Acheter plus de barques", "Arrêter de travailler"],
+          "answerIndex": 0
+        }
+      ],
+      "challenge": "Cette semaine, je choisis d'obéir avec joie et de coopérer en famille et à l'école !"
+    }
   }
 };
 
@@ -6727,11 +6893,13 @@ const PRESET_TITLES = {
   joao316: { pt: "João 3:16: Amor de Deus", en: "John 3:16: God's Love", es: "Juan 3:16: Amor de Dios", fr: "Jean 3:16 : Amour de Dieu" },
   salmo91: { pt: "Salmo 91: Proteção", en: "Psalm 91: Protection", es: "Salmo 91: Protección", fr: "Psaume 91 : Protection" },
   filipenses413: { pt: "Filipenses 4:13: Minha Força", en: "Philippians 4:13: Strength", es: "Filipenses 4:13: Fuerza", fr: "Philippiens 4:13 : Force" },
-  lampada: { pt: "Salmo 119:105: Lâmpada", en: "Psalm 119:105: Lamp", es: "Salmo 119:105: Lámpara", fr: "Psaume 119:105 : Lampe" }
+  lampada: { pt: "Salmo 119:105: Lâmpada", en: "Psalm 119:105: Lamp", es: "Salmo 119:105: Lámpara", fr: "Psaume 119:105 : Lampe" },
+  pesca: { pt: "Lucas 5: Pesca Maravilhosa", en: "Luke 5: Miraculous Catch", es: "Lucas 5: Pesca Milagrosa", fr: "Luc 5 : Pêche Miraculeuse" }
 };
 
 const THEME_GALLERY = {
   joao6: { color: "assets/images/loaves_pixar.jpg", coloring: "assets/images/loaves_coloring.jpg" },
+  pesca: { color: "assets/images/pesca_pixar.jpg", coloring: "assets/images/pesca_coloring.jpg" },
   salmo91: { color: "assets/images/salmo91_pixar.jpg", coloring: "assets/images/salmo91_coloring.jpg" },
   filipenses413: { color: "assets/images/filipenses_pixar.jpg", coloring: "assets/images/filipenses_coloring.jpg" },
   lampada: { color: "assets/images/lampada_pixar.jpg", coloring: "assets/images/lampada_coloring.jpg" },
@@ -6786,7 +6954,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentLang = savedLang;
   }
   setLanguage(currentLang);
-  loadStory("joao6");
+  loadStory("pesca");
 });
 
 // --- 6. CONFIGURAÇÃO DE EVENTOS ---
@@ -7311,6 +7479,18 @@ function renderTeacherGuide(localized) {
 function pickBestThematicImages(text) {
   const lower = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
+  // 0. Lucas 5:1-11 / A Pesca Maravilhosa / Barco de Pedro / Redes
+  if (lower.includes("lucas 5") || lower.includes("luke 5") || lower.includes("luc 5") || 
+      lower.includes("pesca") || lower.includes("pescador") || lower.includes("catch") || 
+      lower.includes("barco") || lower.includes("boat") || lower.includes("rede") || lower.includes("net") ||
+      lower.includes("genesare") || lower.includes("peixe") || lower.includes("fish")) {
+    return {
+      color: "assets/images/pesca_pixar.jpg",
+      coloring: "assets/images/pesca_coloring.jpg",
+      desc: "Jesus no barco de Simão Pedro com redes transbordando de peixes na Pesca Maravilhosa."
+    };
+  }
+
   // 1. Salmo 119:105 / Lâmpada e Luz nos Passos / Bíblia Guia
   if (lower.includes("lampada") || lower.includes("lamp") || lower.includes("lampe") || lower.includes("lampara") || 
       lower.includes("salmo 119") || lower.includes("psalm 119") || lower.includes("psaume 119") || 
@@ -7529,6 +7709,12 @@ function handleGenerate() {
   }
 
   // 2. Mapeamento inteligente para os 12 temas clássicos
+  if (p.includes("lucas 5") || p.includes("luke 5") || p.includes("luc 5") || 
+      p.includes("pesca maravilhosa") || p.includes("miraculous catch") || p.includes("pesca milagrosa") || 
+      p.includes("pescador de homens") || p.includes("lanca as redes") || p.includes("mar alto") || p.includes("genesare")) {
+    loadStoryDirect("pesca");
+    return;
+  }
   if (p.includes("mateus 19") || p.includes("matthew 19") || p.includes("mateo 19") || p.includes("matthieu 19") || 
       p.includes("deixai vir a mim") || p.includes("let the little children") || p.includes("dejad a los ninos")) {
     loadStoryDirect("criancas");
