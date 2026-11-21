@@ -7667,11 +7667,27 @@ function renderTeacherGuide(localized) {
 function pickBestThematicImages(text) {
   const lower = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-  // 0. Lucas 5:1-11 / A Pesca Maravilhosa / Barco de Pedro / Redes
-  if (lower.includes("lucas 5") || lower.includes("luke 5") || lower.includes("luc 5") || 
-      lower.includes("pesca") || lower.includes("pescador") || lower.includes("catch") || 
+    // 0. Lucas 5:17-26 / Marcos 2 / A Cura do Paralítico / 4 Amigos / Telhado
+  if (lower.includes("paralit") || lower.includes("telhado") || lower.includes("leito") || lower.includes("maca") ||
+      lower.includes("quatro amigos") || lower.includes("4 amigos") || lower.includes("amigos desceram") ||
+      lower.includes("lucas 5:17") || lower.includes("lucas 5:18") || lower.includes("lucas 5:19") || lower.includes("lucas 5:20") ||
+      lower.includes("lucas 5:21") || lower.includes("lucas 5:22") || lower.includes("lucas 5:23") || lower.includes("lucas 5:24") ||
+      lower.includes("lucas 5:25") || lower.includes("lucas 5:26") || lower.includes("marcos 2") || lower.includes("mark 2") ||
+      lower.includes("mateus 9") || lower.includes("matthew 9") ||
+      lower.includes("cura do paralitico") || lower.includes("healing of the paralytic") || lower.includes("roof")) {
+    return {
+      color: "assets/images/paralitico_pixar.jpg",
+      coloring: "assets/images/paralitico_coloring.jpg",
+      desc: "Jesus curando com amor o homem descido pelo telhado por seus 4 fiéis amigos."
+    };
+  }
+
+  // 0b. Lucas 5:1-11 / A Pesca Maravilhosa / Barco de Pedro / Redes
+  if (lower.includes("pesca") || lower.includes("pescador") || lower.includes("catch") || 
       lower.includes("barco") || lower.includes("boat") || lower.includes("rede") || lower.includes("net") ||
-      lower.includes("genesare") || lower.includes("peixe") || lower.includes("fish")) {
+      lower.includes("genesare") || lower.includes("peixe") || lower.includes("fish") ||
+      lower.includes("lucas 5:1") || lower.includes("lucas 5:2") || lower.includes("lucas 5:3") || lower.includes("lucas 5:4") ||
+      ((lower.includes("lucas 5") || lower.includes("luke 5") || lower.includes("luc 5")) && !lower.includes("paralit") && !lower.includes("17") && !lower.includes("18") && !lower.includes("19") && !lower.includes("20") && !lower.includes("24") && !lower.includes("telhado"))) {
     return {
       color: "assets/images/pesca_pixar.jpg",
       coloring: "assets/images/pesca_coloring.jpg",
@@ -7853,14 +7869,7 @@ function handleGenerate() {
   const passVal = document.getElementById("passage-input").value.trim();
   const textVal = document.getElementById("verse-text-input").value.trim();
 
-  let inputVal = "";
-  if (currentInputMode === "text" && textVal) {
-    inputVal = textVal;
-  } else if (currentInputMode === "ref" && passVal) {
-    inputVal = passVal;
-  } else {
-    inputVal = textVal || passVal;
-  }
+  const inputVal = (passVal || textVal).trim();
 
   if (!inputVal) {
     showToastNotification("Por favor, digite uma referência ou cole o texto do versículo!");
@@ -7896,10 +7905,22 @@ function handleGenerate() {
     return;
   }
 
-  // 2. Mapeamento inteligente para os 12 temas clássicos
-  if (p.includes("lucas 5") || p.includes("luke 5") || p.includes("luc 5") || 
-      p.includes("pesca maravilhosa") || p.includes("miraculous catch") || p.includes("pesca milagrosa") || 
-      p.includes("pescador de homens") || p.includes("lanca as redes") || p.includes("mar alto") || p.includes("genesare")) {
+  // 0. A Cura do Paralítico (Lucas 5:17-26 / Marcos 2 / Mateus 9 / Telhado / 4 Amigos)
+  if (p.includes("paralit") || p.includes("telhado") || p.includes("leito") || p.includes("maca") ||
+      p.includes("quatro amigos") || p.includes("4 amigos") || p.includes("cura do paralitico") ||
+      p.includes("lucas 5:17") || p.includes("lucas 5:18") || p.includes("lucas 5:19") || p.includes("lucas 5:20") ||
+      p.includes("lucas 5:21") || p.includes("lucas 5:22") || p.includes("lucas 5:23") || p.includes("lucas 5:24") ||
+      p.includes("lucas 5:25") || p.includes("lucas 5:26") || p.includes("marcos 2") || p.includes("mark 2") ||
+      p.includes("mateus 9") || p.includes("matthew 9")) {
+    loadStoryDirect("paralitico");
+    return;
+  }
+
+  // 2. Mapeamento inteligente para os temas clássicos
+  if (p.includes("pesca maravilhosa") || p.includes("miraculous catch") || p.includes("pesca milagrosa") || 
+      p.includes("pescador de homens") || p.includes("lanca as redes") || p.includes("mar alto") || p.includes("genesare") ||
+      p.includes("lucas 5:1") || p.includes("lucas 5:2") || p.includes("lucas 5:3") || p.includes("lucas 5:4") ||
+      ((p.includes("lucas 5") || p.includes("luke 5") || p.includes("luc 5")) && !p.includes("paralit") && !p.includes("17") && !p.includes("18") && !p.includes("19") && !p.includes("20") && !p.includes("24") && !p.includes("telhado"))) {
     loadStoryDirect("pesca");
     return;
   }
