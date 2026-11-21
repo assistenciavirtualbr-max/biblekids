@@ -6879,6 +6879,384 @@ const STORIES_DB = {
     }
   }
 ,
+  "tempestade": {
+  "icon": "⛵🌊",
+  "imageColor": "assets/images/pesca_pixar.jpg",
+  "imageColoring": "assets/images/pesca_coloring.jpg",
+  "pt": {
+    "title": "Jesus Acalma a Tempestade",
+    "ref": "Marcos 4:35-41",
+    "imageColorDesc": "Jesus no barco repreendendo os ventos e as ondas, trazendo grande bonança e paz no mar.",
+    "imageColoringDesc": "Desenho para colorir: Jesus com a mão erguida acalmando as ondas fortes ao redor do barco dos discípulos.",
+    "verse": {
+      "text": "Ele se levantou, repreendeu o vento e disse ao mar: Aquiete-se! Acalme-se! O vento se aquietou, e fez-se grande bonança.",
+      "ref": "Marcos 4:39"
+    },
+    "storyByAge": {
+      "3-5": "Jesus e seus amigos entraram num barquinho para passear no mar. Jesus estava com soninho e dormiu num travesseiro macio. De repente, veio um vento bem forte: vuuuush! E as ondas pularam dentro do barco! Os amigos ficaram com medo e acordaram Jesus: 'Mestre, ajude a gente!'. Jesus se levantou com carinho, olhou para o mar e disse: 'Vento e mar, fiquem calminhos!'. Na mesma hora, tudo ficou quietinho e calmo como um espelho. Jesus cuidou de todos com muito amor!",
+      "6-8": "Ao cair da tarde, Jesus disse aos discípulos: 'Vamos passar para o outro lado do lago'. Enquanto navegavam, Jesus adormeceu na popa do barco. De repente, levantou-se um grande temporal com ondas enormes que começaram a encher o barco de água. Apavorados, os discípulos acordaram Jesus gritando: 'Mestre, o Senhor não se importa que nós morramos?'. Jesus levantou-se com autoridade, repreendeu o vento furioso e ordenou ao mar agitado: 'Acalme-se! Fique quieto!'. Imediatamente o vento cessou e fez-se uma grande calmaria. Jesus lhes perguntou com ternura: 'Por que vocês estão com tanto medo? Onde está a sua fé?'.",
+      "9-12": "O relato de Marcos 4:35-41 nos mostra a autoridade soberana do Criador sobre todas as forças da natureza. Em meio a uma tempestade violenta no Mar da Galileia, veteranos pescadores se viram indefesos perante as ondas furiosas, enquanto Jesus descansava em perfeita paz. Ao ser acordado pelo clamor aflito dos discípulos, Cristo demonstrou Seu senhorio divino com apenas uma palavra: 'Silêncio! Calem-se!'. Os elementos obedeceram instantaneamente. Essa passagem nos ensina que, mesmo quando enfrentamos as tempestades mais difíceis da vida, ter Jesus em nosso barco nos garante segurança e paz absoluta."
+    },
+    "application": {
+      "home": "Lembrar que quando temos medo à noite no escuro ou de trovoada, podemos orar e sentir a paz de Jesus.",
+      "school": "Manter a calma e ajudar a acalmar os colegas quando houver confusão ou brigas no recreio.",
+      "heart": "Confiar que não há problema grande demais para o poder de Jesus.",
+      "prayer": "Senhor Jesus, obrigado porque o Senhor cuida de mim em qualquer tempestade. Quando eu sentir medo, lembra-me de que o Senhor está comigo no meu barquinho trazendo paz. Amém!"
+    },
+    "words": [
+      "JESUS",
+      "BARCO",
+      "VENTO",
+      "MAR",
+      "PAZ"
+    ],
+    "quiz": [
+      {
+        "question": "O que Jesus estava fazendo no barco quando a tempestade começou?",
+        "options": [
+          "Dormindo em perfeita paz",
+          "Pescando peixes",
+          "Remando o barco"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "O que Jesus disse com autoridade para o vento e para o mar?",
+        "options": [
+          "Acalme-se! Fique quieto!",
+          "Sopre mais forte!",
+          "Vamos pular na água!"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "O que aconteceu imediatamente após a ordem de Jesus?",
+        "options": [
+          "O vento parou e o mar ficou totalmente calmo",
+          "O barco afundou",
+          "A tempestade aumentou"
+        ],
+        "answerIndex": 0
+      }
+    ],
+    "challenge": "Esta semana vou orar e confiar na paz de Jesus toda vez que sentir medo ou preocupação!"
+  }
+},
+  "zaqueu": {
+  "icon": "🌳✨",
+  "imageColor": "assets/images/children_pixar.jpg",
+  "imageColoring": "assets/images/children_coloring.jpg",
+  "pt": {
+    "title": "Zaqueu: O Encontro na Árvore",
+    "ref": "Lucas 19:1-10",
+    "imageColorDesc": "Jesus olhando com amor para Zaqueu em cima da árvore em Jericó, convidando-se para ir à sua casa.",
+    "imageColoringDesc": "Desenho para colorir: Zaqueu sorrindo em cima dos galhos da árvore acenando para Jesus que passa na rua.",
+    "verse": {
+      "text": "Porque o Filho do Homem veio buscar e salvar o que se havia perdido.",
+      "ref": "Lucas 19:10"
+    },
+    "storyByAge": {
+      "3-5": "Havia um homem chamado Zaqueu que era bem baixinho. Jesus estava passando pela cidade de Jericó e tinha tanta gente alta que Zaqueu não conseguia enxergar Jesus! Sabe o que ele fez? Correu na frente e subiu numa árvore bem alta! Quando Jesus passou bem embaixo, olhou para cima com um sorrisão e chamou: 'Zaqueu, desça depressa, pois hoje vou na sua casa!'. Zaqueu desceu correndo muito feliz. O amor de Jesus encheu o coração de Zaqueu de alegria e bondade!",
+      "6-8": "Em Jericó morava Zaqueu, o chefe dos cobradores de impostos. Ele era muito rico, mas as pessoas não gostavam dele porque ele cobrava dinheiro a mais. Quando soube que Jesus estava chegando, Zaqueu quis muito vê-lo, mas não conseguia por causa da grande multidão, pois era de baixa estatura. Então ele correu adiante e subiu em uma figueira-brava. Quando Jesus chegou àquele lugar, olhou para cima e disse: 'Zaqueu, desça depressa; hoje devo hospedar-me em sua casa'. Zaqueu desceu correndo e o recebeu com muita alegria, decidindo na mesma hora devolver quatro vezes mais a quem havia prejudicado e repartir seus bens com os pobres!",
+      "9-12": "O encontro transformador de Jesus com Zaqueu em Lucas 19 ilustra a essência do Evangelho. Zaqueu era uma figura marginalizada moralmente pela sociedade judaica por colaborar com o Império Romano. Contudo, seu desejo de ver Jesus o levou a vencer a vergonha pública e subir em uma árvore. Jesus o chamou pelo nome e ofereceu comunhão em sua casa. O impacto da graça de Cristo gerou uma conversão genuína e imediata em Zaqueu, demonstrada na restituição e na generosidade. Jesus concluiu declarando que a salvação havia entrado naquela casa, pois 'o Filho do Homem veio buscar e salvar o perdido'."
+    },
+    "application": {
+      "home": "Ser honesto e dividir as coisas com irmãos e pais com alegria.",
+      "school": "Não excluir ninguém por ser diferente ou baixinho, acolhendo todos com amizade.",
+      "heart": "Saber que Jesus conhece nosso nome e sempre nos ama, transformando nossos erros em atitudes boas.",
+      "prayer": "Querido Jesus, obrigado por me conhecer pelo nome e por entrar no meu coração. Ensina-me a ser generoso, honesto e bondoso com todos ao meu redor. Amém!"
+    },
+    "words": [
+      "JESUS",
+      "ZAQUEU",
+      "ARVORE",
+      "CASA",
+      "AMOR"
+    ],
+    "quiz": [
+      {
+        "question": "Por que Zaqueu subiu na árvore em Jericó?",
+        "options": [
+          "Porque era de baixa estatura e queria ver Jesus",
+          "Para fugir de um cachorro",
+          "Para colher frutas"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "O que Jesus disse ao olhar para Zaqueu na árvore?",
+        "options": [
+          "Zaqueu, desce depressa, pois hoje vou à tua casa",
+          "Fique na árvore até mais tarde",
+          "Vá para outro lugar"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "O que Zaqueu decidiu fazer após receber Jesus em sua casa?",
+        "options": [
+          "Repartir seus bens e ser honesto e generoso",
+          "Guardar todo o dinheiro para si",
+          "Continuar cobrando impostos errados"
+        ],
+        "answerIndex": 0
+      }
+    ],
+    "challenge": "Esta semana vou praticar a honestidade e generosidade, compartilhando um brinquedo ou lanche com um amigo!"
+  }
+},
+  "armadura": {
+  "icon": "🛡️⚔️",
+  "imageColor": "assets/images/david_pixar.jpg",
+  "imageColoring": "assets/images/david_coloring.jpg",
+  "pt": {
+    "title": "A Armadura de Deus",
+    "ref": "Efésios 6:10-18",
+    "imageColorDesc": "Uma criança corajosa vestindo a reluzente Armadura de Deus com o Escudo da Fé e a Espada da Palavra.",
+    "imageColoringDesc": "Desenho para colorir: O escudo da fé, o capacete da salvação, a couraça da justiça e a espada da Palavra de Deus.",
+    "verse": {
+      "text": "Revesti-vos de toda a armadura de Deus, para que possais estar firmes contra as astutas ciladas do inimigo.",
+      "ref": "Efésios 6:11"
+    },
+    "storyByAge": {
+      "3-5": "Vocês sabiam que Deus nos dá uma armadura mágica e invisível cheia de luz? Ela tem o Capacete do Pensamento Bom para proteger nossa cabecinha, a Couraça do Coração para guardar o amor, o Escudo da Fé para apagar todo o medo e os sapatinhos da paz para levar sorrisos por onde a gente andar! Quando oramos, ficamos bem fortinhos como soldadinhos de Jesus para fazer o bem todos os dias!",
+      "6-8": "Na carta aos Efésios, o apóstolo Paulo nos ensina a nos vestir como soldados de Deus para vencer o mal com o bem. Essa armadura é espiritual: o Cinto da Verdade nos lembra de nunca mentir; a Couraça da Justiça protege o coração para fazermos o que é certo; os Calçados do Evangelho nos preparam para levar a paz; o Escudo da Fé defende nossos pensamentos contra o medo; o Capacete da Salvação protege nossa mente e a Espada do Espírito é a própria Bíblia Sagrada! Com essa armadura e muita oração, vencemos qualquer dificuldade com vitória!",
+      "9-12": "Em Efésios 6:10-18, a metáfora da Armadura de Deus nos ensina sobre a batalha espiritual do cristão. Não lutamos com armas humanas, mas com a verdade, a justiça, a prontidão do evangelho, a fé inabalável e a salvação em Cristo. A única arma de ataque mencionada é a 'Espada do Espírito, que é a Palavra de Deus' — o mesmo instrumento que Jesus usou para vencer no deserto. Vestir a armadura significa viver diariamente em oração, vigilância moral e confiança absoluta no triunfo da cruz."
+    },
+    "application": {
+      "home": "Usar o Cinto da Verdade: falar sempre a verdade para os pais, mesmo quando errar.",
+      "school": "Calçar a Paz: ser um pacificador no recreio e não participar de fofocas ou brigas.",
+      "heart": "Segurar o Escudo da Fé: orar toda vez que o medo ou a dúvida tentarem entrar no coração.",
+      "prayer": "Senhor meu Deus, coloco hoje a Tua armadura. Protege meus pensamentos, meu coração e meus passos. Dá-me coragem para viver na verdade e no Teu amor. Amém!"
+    },
+    "words": [
+      "ARMADURA",
+      "ESCUDO",
+      "ESPADA",
+      "CAPACETE",
+      "VERDADE"
+    ],
+    "quiz": [
+      {
+        "question": "O que representa a Espada do Espírito na Armadura de Deus?",
+        "options": [
+          "A Palavra de Deus, a Bíblia Sagrada",
+          "Uma espada de ferro afiada",
+          "Um galho de árvore"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "Para que serve o Escudo da Fé?",
+        "options": [
+          "Para apagar todas as dúvidas e medos com confiança em Deus",
+          "Para brincar na praia",
+          "Para esconder coisas"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "O que o Cinto da Verdade nos lembra de praticar todos os dias?",
+        "options": [
+          "Falar sempre a verdade com amor e honestidade",
+          "Contar mentirinhas",
+          "Guardar segredos ruins"
+        ],
+        "answerIndex": 0
+      }
+    ],
+    "challenge": "Esta semana vou falar sempre a verdade em casa e na escola, vestindo o Cinto da Verdade de Deus!"
+  }
+},
+  "pedroaguas": {
+  "icon": "🌊👣",
+  "imageColor": "assets/images/pesca_pixar.jpg",
+  "imageColoring": "assets/images/pesca_coloring.jpg",
+  "pt": {
+    "title": "Pedro Anda sobre as Águas",
+    "ref": "Mateus 14:22-33",
+    "imageColorDesc": "Jesus segurando com a mão firme e cheia de amor o apóstolo Pedro sobre as águas do mar da Galileia.",
+    "imageColoringDesc": "Desenho para colorir: Jesus estendendo a mão para segurar Pedro por cima das ondas do mar.",
+    "verse": {
+      "text": "Mas Jesus imediatamente lhes disse: Coragem! Sou eu. Não tenham medo!",
+      "ref": "Mateus 14:27"
+    },
+    "storyByAge": {
+      "3-5": "No meio da noite escura, os amigos de Jesus estavam remando no mar. De repente, viram Jesus andando por cima da água como se fosse chão firme! Pedro ficou tão emocionado que pediu para ir até Jesus. Pedro saiu do barquinho e começou a andar na água também! Mas quando olhou para o vento forte, ficou com medinho e começou a afundar. Ele gritou: 'Jesus, me salva!'. Na mesma hora, Jesus estendeu a mão bem forte, segurou Pedro com carinho e o colocou em segurança no barco. Jesus nunca nos deixa cair!",
+      "6-8": "De madrugada, enquanto o barco dos discípulos enfrentava ventos contrários no mar, Jesus foi até eles andando sobre as águas. Vendo aquilo, os discípulos ficaram apavorados pensando ser um fantasma, mas Jesus disse com voz calma: 'Coragem! Sou eu. Não tenham medo!'. Pedro então desafiou: 'Senhor, se é o Senhor mesmo, mande-me ir ter contigo por cima das águas'. Jesus disse: 'Venha!'. Pedro desceu do barco e deu vários passos sobre a água! Mas quando sentiu o vento forte, teve medo e começou a afundar, gritando: 'Senhor, salva-me!'. Imediatamente Jesus estendeu a mão, o segurou e disse: 'Homem de pequena fé, por que você duvidou?'.",
+      "9-12": "O episódio de Mateus 14:22-33 é uma das mais profundas lições sobre o foco da fé. Pedro ousou sair da zona de conforto do barco e experimentou o sobrenatural ao andar sobre as águas, mantendo os olhos fitos em Jesus. Entretanto, ao desviar o olhar para a fúria das circunstâncias (o vento e as ondas), a dúvida o fez submergir. O ponto culminante é a prontidão da graça: ao menor clamor de socorro ('Senhor, salva-me!'), a mão de Cristo o resgatou instantaneamente. Esse milagre nos ensina que a vitória sobre as tempestades depende de onde fixamos nossos olhos."
+    },
+    "application": {
+      "home": "Pedir ajuda a Jesus e aos pais sem vergonha toda vez que cometer um erro ou estiver com medo.",
+      "school": "Manter a fé e a calma diante de provas difíceis ou tarefas escolares desafiadoras.",
+      "heart": "Olhar sempre para Jesus em vez de olhar para o tamanho dos problemas.",
+      "prayer": "Senhor Jesus, obrigado porque Tua mão forte está sempre pronta para me segurar. Ensina-me a manter meus olhos no Senhor e nunca duvidar do Teu cuidado. Amém!"
+    },
+    "words": [
+      "JESUS",
+      "PEDRO",
+      "AGUAS",
+      "BARCO",
+      "FE"
+    ],
+    "quiz": [
+      {
+        "question": "Como Jesus foi ao encontro dos discípulos no meio da noite?",
+        "options": [
+          "Andando sobre as águas do mar",
+          "Em uma canoa rápida",
+          "Nadando de braçada"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "O que fez Pedro começar a afundar depois de ter andado na água?",
+        "options": [
+          "Ele tirou os olhos de Jesus e olhou com medo para o vento forte",
+          "O sapato dele era pesado",
+          "Ele cansou de andar"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "O que Jesus fez assim que Pedro gritou: 'Senhor, salva-me!'?",
+        "options": [
+          "Estendeu a mão imediatamente e o segurou com segurança",
+          "Esperou ele se molhar todo",
+          "Mandou ele nadar até o barco"
+        ],
+        "answerIndex": 0
+      }
+    ],
+    "challenge": "Esta semana vou manter meus olhos e pensamentos em Jesus toda vez que enfrentar uma tarefa difícil!"
+  }
+},
+  "fruto": {
+  "icon": "🍇🍎",
+  "imageColor": "assets/images/children_pixar.jpg",
+  "imageColoring": "assets/images/children_coloring.jpg",
+  "pt": {
+    "title": "O Fruto do Espírito Santo",
+    "ref": "Gálatas 5:22-23",
+    "imageColorDesc": "Crianças alegres colhendo frutos saborosos sob a luz do sol, representando as virtudes do Espírito de Deus.",
+    "imageColoringDesc": "Desenho para colorir: Árvore frutífera com corações e frutos com palavras de amor, alegria e paz.",
+    "verse": {
+      "text": "Mas o fruto do Espírito é: amor, alegria, paz, paciência, amabilidade, bondade, fidelidade, mansidão e domínio próprio.",
+      "ref": "Gálatas 5:22"
+    },
+    "storyByAge": {
+      "3-5": "Uma macieira dá maçãs bem docinhas e uma laranjeira dá laranjas saborosas, não é? O nosso coraçãozinho com Jesus também é como uma árvore linda cheia de frutos especiais! O Espírito Santo coloca no nosso coração o amor para abraçar, a alegria para sorrir, a paz para não brigar e a paciência para esperar nossa vez. Quando somos bondosos com os outros, todo mundo sente o docinho do amor de Jesus!",
+      "6-8": "Em Gálatas 5, a Bíblia compara a vida com Deus a um pomar fértil. Quando deixamos o Espírito Santo cuidar do nosso coração, nascem frutos espirituais preciosos: Amor para cuidar de todos; Alegria que não depende de brinquedos; Paz no meio das brigas; Paciência quando as coisas demoram; Amabilidade para com os colegas; Bondade em nossas atitudes; Fidelidade aos compromissos; Mansidão nas palavras e Domínio Próprio para não fazer birra nem perder a calma!",
+      "9-12": "Gálatas 5:22-23 nos apresenta o caráter de Cristo que o Espírito Santo reproduz nos crentes. O termo original está no singular ('o fruto'), indicando que essas nove virtudes compõem uma única unidade harmoniosa. O fruto do Espírito contrasta diretamente com as atitudes egoístas da natureza humana. Viver pelo Espírito não é mero esforço de força de vontade, mas o resultado natural de permanecer conectado a Cristo, a videira verdadeira (João 15), produzindo impacto prático na sociedade e na família."
+    },
+    "application": {
+      "home": "Praticar a Paciência e o Domínio Próprio: não fazer birra e obedecer aos pais na primeira vez.",
+      "school": "Dar o Fruto da Amabilidade: tratar todos os colegas com respeito e elogiar um amigo.",
+      "heart": "Pedir ao Espírito Santo todos os dias para encher o coração com amor e paz.",
+      "prayer": "Espírito Santo de Deus, cuida da minha vida como um belo jardim. Faz crescer no meu coração muito amor, paciência, alegria e bondade com todos ao meu redor. Amém!"
+    },
+    "words": [
+      "AMOR",
+      "ALEGRIA",
+      "PAZ",
+      "BONDADE",
+      "ESPIRITO"
+    ],
+    "quiz": [
+      {
+        "question": "Quem faz nascer as belas qualidades do fruto em nosso coração?",
+        "options": [
+          "O Espírito Santo de Deus",
+          "O vento do outono",
+          "As árvores do parque"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "Qual dessas virtudes faz parte do Fruto do Espírito?",
+        "options": [
+          "Amor, alegria, paz e paciência",
+          "Egoísmo, mentira e raiva",
+          "Preguiça e desobediência"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "O que significa ter 'domínio próprio' na escola e em casa?",
+        "options": [
+          "Saber controlar as próprias emoções e não agir com raiva",
+          "Mandar em todo mundo",
+          "Fazer o que der na cabeça"
+        ],
+        "answerIndex": 0
+      }
+    ],
+    "challenge": "Esta semana vou praticar a paciência e a mansidão: respirar fundo e responder com calma quando alguém me chatear!"
+  }
+},
+  "lazaro": {
+  "icon": "✨🌅",
+  "imageColor": "assets/images/tomb_pixar.jpg",
+  "imageColoring": "assets/images/tomb_coloring.jpg",
+  "pt": {
+    "title": "A Ressurreição de Lázaro",
+    "ref": "João 11:1-44",
+    "imageColorDesc": "Jesus chamando Lázaro para fora do sepulcro, demonstrando Seu poder sobre a vida e a morte.",
+    "imageColoringDesc": "Desenho para colorir: Lázaro saindo do túmulo com faixas nos braços, abraçando suas irmãs Marta e Maria sob a luz do sol.",
+    "verse": {
+      "text": "Disse-lhe Jesus: Eu sou a ressurreição e a vida. Aquele que crê em mim, ainda que morra, viverá.",
+      "ref": "João 11:25"
+    },
+    "storyByAge": {
+      "3-5": "Marta e Maria tinham um irmão muito querido chamado Lázaro, que ficou doente e dormiu o sono da morte. Todos estavam chorando muito tristes. Mas Jesus chegou e disse: 'Não chorem, eu sou a Vida!'. Jesus foi até onde Lázaro estava e chamou com voz cheia de amor: 'Lázaro, venha para fora!'. E adivinha? Lázaro acordou, abriu os olhinhos e saiu andando vivinho da silva! Todos pularam de alegria e abraçaram Jesus com lágrimas de felicidade!",
+      "6-8": "Em Betânia, uma família muito amiga de Jesus enfrentava grande tristeza: Lázaro havia falecido há quatro dias. Quando Jesus chegou, Marta e Maria choravam. Jesus também se emocionou e chorou com elas, mostrando Sua profunda compaixão. Jesus mandou retirar a pedra da entrada do túmulo e, após orar ao Pai do céu, bradou com voz forte e soberana: 'Lázaro, vem para fora!'. Para espanto e alegria de todos, aquele que estava morto saiu envolto em faixas, vivo e saudável! Foi um milagre tremendo que mostrou que Jesus é o Dono da vida!",
+      "9-12": "O milagre da ressurreição de Lázaro em João 11 é o sétimo e mais impactante sinal do ministério público de Jesus antes de Sua própria paixão. Diante do túmulo fechado por quatro dias, Jesus pronunciou a declaração messiânica: 'Eu sou a ressurreição e a vida'. Ele demonstrou tanto Sua perfeita humanidade (ao chorar diante da dor humana) quanto Sua plena divindade ao ordenar à morte que soltasse sua presa. Esse sinal provou de forma irrefutável que a autoridade de Cristo transcende os limites biológicos da existência humana."
+    },
+    "application": {
+      "home": "Consolar e abraçar a família quando alguém estiver triste ou passando por um momento difícil.",
+      "school": "Lembrar aos colegas com esperança que Jesus tem poder para transformar tristezas em alegria.",
+      "heart": "Confiar plenamente que em Jesus temos a vida eterna e nenhuma dor é definitiva.",
+      "prayer": "Senhor Jesus, obrigado porque o Senhor é a Ressurreição e a Vida. Quando eu ou minha família passarmos por momentos tristes, enche nosso coração com Tua esperança e vitória. Amém!"
+    },
+    "words": [
+      "JESUS",
+      "LAZARO",
+      "VIDA",
+      "MARTA",
+      "MILAGRE"
+    ],
+    "quiz": [
+      {
+        "question": "Quem eram as duas irmãs de Lázaro?",
+        "options": [
+          "Marta e Maria",
+          "Sara e Rebeca",
+          "Raquel e Léia"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "O que Jesus ordenou em alta voz diante do túmulo?",
+        "options": [
+          "Lázaro, vem para fora!",
+          "Fechem bem a pedra!",
+          "Vamos embora para casa!"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "question": "O que aconteceu assim que Jesus chamou por Lázaro?",
+        "options": [
+          "Lázaro ressuscitou e saiu vivo e com saúde",
+          "Nada aconteceu",
+          "O túmulo caiu"
+        ],
+        "answerIndex": 0
+      }
+    ],
+    "challenge": "Esta semana vou levar uma palavra de esperança e um abraço carinhoso a alguém que esteja triste ou preocupado!"
+  }
+},
   "betesda": {
     "icon": "🛏️💧",
     "imageColor": "assets/images/bethesda_pixar.jpg",
@@ -7229,6 +7607,12 @@ const PRESET_TITLES = {
   salmo91: { pt: "Salmo 91: Proteção", en: "Psalm 91: Protection", es: "Salmo 91: Protección", fr: "Psaume 91 : Protection" },
   filipenses413: { pt: "Filipenses 4:13: Minha Força", en: "Philippians 4:13: Strength", es: "Filipenses 4:13: Fuerza", fr: "Philippiens 4:13 : Force" },
   lampada: { pt: "Salmo 119:105: Lâmpada", en: "Psalm 119:105: Lamp", es: "Salmo 119:105: Lámpara", fr: "Psaume 119:105 : Lampe" },
+    tempestade: { pt: "Marcos 4: Jesus Acalma a Tempestade", en: "Mark 4: Calms the Storm", es: "Marcos 4: Calma la Tempestad", fr: "Marc 4 : Calme la Tempête" },
+  zaqueu: { pt: "Lucas 19: Zaqueu na Árvore", en: "Luke 19: Zacchaeus", es: "Lucas 19: Zaqueo", fr: "Luc 19 : Zachée" },
+  armadura: { pt: "Efésios 6: A Armadura de Deus", en: "Ephesians 6: Armor of God", es: "Efesios 6: La Armadura de Dios", fr: "Éphésiens 6 : L'Armure de Dieu" },
+  pedroaguas: { pt: "Mateus 14: Pedro Anda nas Águas", en: "Matthew 14: Peter on Water", es: "Mateo 14: Pedro sobre las Aguas", fr: "Matthieu 14 : Pierre sur les Eaux" },
+  fruto: { pt: "Gálatas 5: O Fruto do Espírito", en: "Galatians 5: Fruit of the Spirit", es: "Gálatas 5: Fruto del Espíritu", fr: "Galates 5 : Fruit de l'Esprit" },
+  lazaro: { pt: "João 11: A Ressurreição de Lázaro", en: "John 11: Raising of Lazarus", es: "Juan 11: Resurrección de Lázaro", fr: "Jean 11 : Résurrection de Lazare" },
   betesda: { pt: "João 5: Tanque de Betesda", en: "John 5: Pool of Bethesda", es: "Juan 5: Estanque de Betesda", fr: "Jean 5 : Piscine de Béthesda" },
   paralitico: { pt: "Lucas 5: Cura do Paralítico", en: "Luke 5: Healing of Paralytic", es: "Lucas 5: Curación del Paralítico", fr: "Luc 5 : Guérison du Paralytique" },
   pesca: { pt: "Lucas 5: Pesca Maravilhosa", en: "Luke 5: Miraculous Catch", es: "Lucas 5: Pesca Milagrosa", fr: "Luc 5 : Pêche Miraculeuse" }
@@ -7236,6 +7620,12 @@ const PRESET_TITLES = {
 
 const THEME_GALLERY = {
   joao6: { color: "assets/images/loaves_pixar.jpg", coloring: "assets/images/loaves_coloring.jpg" },
+    tempestade: { color: "assets/images/pesca_pixar.jpg", coloring: "assets/images/pesca_coloring.jpg" },
+  zaqueu: { color: "assets/images/children_pixar.jpg", coloring: "assets/images/children_coloring.jpg" },
+  armadura: { color: "assets/images/david_pixar.jpg", coloring: "assets/images/david_coloring.jpg" },
+  pedroaguas: { color: "assets/images/pesca_pixar.jpg", coloring: "assets/images/pesca_coloring.jpg" },
+  fruto: { color: "assets/images/children_pixar.jpg", coloring: "assets/images/children_coloring.jpg" },
+  lazaro: { color: "assets/images/tomb_pixar.jpg", coloring: "assets/images/tomb_coloring.jpg" },
   betesda: { color: "assets/images/bethesda_pixar.jpg", coloring: "assets/images/bethesda_coloring.jpg" },
   paralitico: { color: "assets/images/paralitico_pixar.jpg", coloring: "assets/images/paralitico_coloring.jpg" },
   pesca: { color: "assets/images/pesca_pixar.jpg", coloring: "assets/images/pesca_coloring.jpg" },
@@ -7834,6 +8224,64 @@ function renderTeacherGuide(localized) {
 function pickBestThematicImages(text) {
   const lower = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
+  // Tempestade no Mar / Marcos 4 / Jesus acalma o vento
+  if (lower.includes("tempestade") || lower.includes("vento") || lower.includes("acalma") ||
+      lower.includes("marcos 4") || lower.includes("storm") || lower.includes("ondas")) {
+    return {
+      color: "assets/images/pesca_pixar.jpg",
+      coloring: "assets/images/pesca_coloring.jpg",
+      desc: "Jesus acalmando com autoridade as ondas e os ventos fortes no barco."
+    };
+  }
+
+  // Zaqueu / Árvore / Jericó / Lucas 19
+  if (lower.includes("zaqueu") || lower.includes("zacchaeus") || lower.includes("arvore") || lower.includes("sicomoro") ||
+      lower.includes("lucas 19") || lower.includes("luke 19") || lower.includes("cobrador")) {
+    return {
+      color: "assets/images/children_pixar.jpg",
+      coloring: "assets/images/children_coloring.jpg",
+      desc: "Jesus chamando Zaqueu com amor nos galhos da árvore em Jericó."
+    };
+  }
+
+  // Armadura de Deus / Efésios 6 / Escudo / Espada / Capacete
+  if (lower.includes("armadura") || lower.includes("armor") || lower.includes("efesios 6") || lower.includes("ephesians 6") ||
+      lower.includes("capacete") || lower.includes("espada do espirito")) {
+    return {
+      color: "assets/images/david_pixar.jpg",
+      coloring: "assets/images/david_coloring.jpg",
+      desc: "A reluzente Armadura de Deus com o Escudo da Fé e a Espada da Palavra."
+    };
+  }
+
+  // Pedro andando sobre as águas / Mateus 14
+  if (lower.includes("pedro") && (lower.includes("agua") || lower.includes("afund") || lower.includes("mar") || lower.includes("mateus 14"))) {
+    return {
+      color: "assets/images/pesca_pixar.jpg",
+      coloring: "assets/images/pesca_coloring.jpg",
+      desc: "Jesus segurando Pedro pela mão com amor e firmeza sobre as águas."
+    };
+  }
+
+  // Fruto do Espírito / Gálatas 5 / Amor, alegria, paz
+  if (lower.includes("fruto") || lower.includes("galatas 5") || lower.includes("galatians 5") ||
+      lower.includes("amabilidade") || lower.includes("mansidao") || lower.includes("dominio proprio")) {
+    return {
+      color: "assets/images/children_pixar.jpg",
+      coloring: "assets/images/children_coloring.jpg",
+      desc: "Crianças demonstrando com alegria o fruto do amor, da paz e da bondade."
+    };
+  }
+
+  // Lázaro / Ressurreição / João 11
+  if (lower.includes("lazaro") || lower.includes("lazarus") || lower.includes("joao 11") || lower.includes("john 11") || lower.includes("vem para fora")) {
+    return {
+      color: "assets/images/tomb_pixar.jpg",
+      coloring: "assets/images/tomb_coloring.jpg",
+      desc: "Jesus chamando Lázaro para fora da sepultura com soberano poder e vida."
+    };
+  }
+
     // 0. Lucas 5:17-26 / Marcos 2 / A Cura do Paralítico / 4 Amigos / Telhado
   if (lower.includes("paralit") || lower.includes("telhado") || lower.includes("leito") || lower.includes("maca") ||
       lower.includes("quatro amigos") || lower.includes("4 amigos") || lower.includes("amigos desceram") ||
@@ -8045,6 +8493,47 @@ function handleGenerate() {
   }
 
   const p = (passVal + " " + textVal).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  // Mapeamento Inteligente: Jesus Acalma a Tempestade (Marcos 4 / Mateus 8 / Lucas 8)
+  if (p.includes("tempestade") || p.includes("marcos 4") || p.includes("mark 4") ||
+      p.includes("acalma o mar") || p.includes("vento e o mar") || p.includes("calmaria") ||
+      p.includes("aquiete-se") || p.includes("calma a tempestade")) {
+    loadStoryDirect("tempestade");
+    return;
+  }
+
+  // Mapeamento Inteligente: Zaqueu (Lucas 19)
+  if (p.includes("zaqueu") || p.includes("zacchaeus") || p.includes("sicomoro") ||
+      p.includes("arvore") && p.includes("jesus") || p.includes("lucas 19") || p.includes("luke 19")) {
+    loadStoryDirect("zaqueu");
+    return;
+  }
+
+  // Mapeamento Inteligente: Armadura de Deus (Efésios 6)
+  if (p.includes("armadura") || p.includes("armor of god") || p.includes("efesios 6") || p.includes("ephesians 6") ||
+      p.includes("capacete da salvacao") || p.includes("escudo da fe") || p.includes("espada do espirito")) {
+    loadStoryDirect("armadura");
+    return;
+  }
+
+  // Mapeamento Inteligente: Pedro Anda nas Águas (Mateus 14)
+  if (p.includes("pedro") && (p.includes("agua") || p.includes("mar") || p.includes("mateus 14") || p.includes("afund") || p.includes("ondas"))) {
+    loadStoryDirect("pedroaguas");
+    return;
+  }
+
+  // Mapeamento Inteligente: O Fruto do Espírito (Gálatas 5)
+  if (p.includes("fruto do espirito") || p.includes("fruit of the spirit") || p.includes("galatas 5") || p.includes("galatians 5") ||
+      p.includes("dominio proprio") || p.includes("mansidao e bondade")) {
+    loadStoryDirect("fruto");
+    return;
+  }
+
+  // Mapeamento Inteligente: A Ressurreição de Lázaro (João 11)
+  if (p.includes("lazaro") || p.includes("lazarus") || p.includes("joao 11") || p.includes("john 11") || p.includes("vem para fora")) {
+    loadStoryDirect("lazaro");
+    return;
+  }
 
   // 0a. A Cura no Tanque de Betesda (João 5:1-15 / Tanque / Betesda / 38 anos / Paralítico de Betesda)
   if (p.includes("betesda") || p.includes("bethesda") || p.includes("tanque") || p.includes("pool") ||
