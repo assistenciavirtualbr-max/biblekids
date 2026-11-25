@@ -1,11 +1,6 @@
 @echo off
-title BibleKids - Gerador de Aulas Biblicas
+title BibleKids Studio - Gerador de Aula em 1 Clique
 cd /d "%~dp0"
-echo ========================================================
-echo   📖 BibleKids - Gerador de Aulas Biblicas Infantis
-echo   Idiomas: Portugues, Ingles, Espanhol, Frances
-echo   Servidor Local: http://localhost:8090
-echo ========================================================
-start "" http://localhost:8090/index.html
-python -m http.server 8090
-pause
+echo Abrindo o BibleKids Studio no seu navegador...
+start "" "index.html"
+exit

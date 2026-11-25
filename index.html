@@ -3,645 +3,2021 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BibleKids - Gerador de Atividades Bíblicas Infantis</title>
+  <title>BibleKids Studio • Gerador de Aula Bíblica em 1 Clique</title>
   
-  <!-- Fontes Google: Fredoka (Títulos Infantis) e Nunito (Leitura Confortável) -->
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css?v=2.4">
-  
-  <!-- Bibliotecas Locais para Exportação Offline -->
-  <script src="assets/html2pdf.bundle.min.js"></script>
-  <script src="assets/docx.umd.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            bible: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            },
+            kid: {
+              indigo: '#4f46e5',
+              purple: '#7c3aed',
+              amber: '#f59e0b',
+              sky: '#0284c7'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Configuração A4 e Anti-Quebra Indesejada de Página */
+    @page {
+      size: A4 portrait;
+      margin: 8mm 10mm 8mm 10mm;
+    }
+
+    /* ========================================================================== */
+    /* SIMULAÇÃO VISUAL DA FOLHA DE IMPRESSÃO A4 NA TELA (WYSIWYG FIEL) */
+    /* ========================================================================== */
+    @media screen {
+      body {
+        background-color: #f1f5f9 !important;
+      }
+
+      #aula-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 36px !important;
+        margin: 20px auto 40px auto !important;
+        max-width: 100% !important;
+      }
+
+      .print-page {
+        width: 100% !important;
+        max-width: 210mm !important;
+        min-height: 285mm !important;
+        background-color: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 14px !important;
+        box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(15, 23, 42, 0.05) !important;
+        padding: 9mm 11mm !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        margin: 0 auto !important;
+      }
+
+      /* Folha 1 - Enquadramento fiel */
+      #folha-1 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        gap: 12px !important;
+      }
+      #folha-1 #story-image {
+        max-height: 120mm !important;
+        width: 100% !important;
+        object-fit: cover !important;
+      }
+
+      /* Folha 2 - Enquadramento fiel */
+      #folha-2 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+      }
+      #folha-2 #story-image-coloring {
+        max-height: 85mm !important;
+        width: 100% !important;
+        object-fit: contain !important;
+      }
+      #folha-2 .grid-cell {
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+        font-size: 0.72rem !important;
+        line-height: 1.25rem !important;
+      }
+      #folha-2 #quiz-container {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+      }
+
+      /* Folha 3 - Proporção Otimizada: Storyboard em Destaque (~50%) + Aplicação (~25%) + Tarefa (~25%) */
+      #folha-3 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        gap: 14px !important;
+        min-height: 285mm !important;
+      }
+      #folha-3 > div:not(.sheet-tag-header) {
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+      }
+      #folha-3 > div.folha3-card-storyboard {
+        flex: 1.8 1 0 !important; /* Ganha destaque maior e proporções ampliadas */
+      }
+      #folha-3 > div.folha3-card-aplicacao,
+      #folha-3 > div.folha3-card-tarefa {
+        flex: 1 1 0 !important;
+      }
+      #folha-3 #storyboard-quadros-grid {
+        flex: 1 !important;
+        min-height: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+      }
+      #folha-3 #storyboard-quadros-grid img {
+        max-height: 105mm !important;
+        max-width: 100% !important;
+        height: auto !important;
+        width: auto !important;
+        object-fit: contain !important;
+      }
+
+      /* Folha 4 - Gabarito e Planejamento do Professor (Preenchimento Completo A4) */
+      #folha-4 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        gap: 16px !important;
+        min-height: 285mm !important;
+        box-sizing: border-box !important;
+      }
+      #folha-4 .folha4-obs-container {
+        flex: 1 1 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        min-height: 0 !important;
+      }
+      #folha-4 .folha4-obs-card {
+        flex: 1 1 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        min-height: 0 !important;
+      }
+      #folha-4 textarea.folha4-textarea {
+        flex: 1 1 0 !important;
+        min-height: 180px !important;
+      }
+    }
+
+    .sheet-tag-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #64748b;
+      letter-spacing: 0.05em;
+    }
+
+    @media print {
+      .no-print, .no-print-temp { 
+        display: none !important; 
+      }
+      
+      html, body { 
+        background: white !important; 
+        color: #0f172a !important; 
+        padding: 0 !important; 
+        margin: 0 !important; 
+        width: 100% !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      #aula-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+      }
+
+      /* REGRA DE OURO: CADA FOLHA FICA EM EXATAMENTE 1 PÁGINA A4 SEM QUEBRAR */
+      .print-page { 
+        page-break-inside: avoid !important; 
+        break-inside: avoid !important; 
+        page-break-after: always !important; 
+        break-after: page !important; 
+        max-height: 275mm !important;
+        box-sizing: border-box !important;
+        box-shadow: none !important; 
+        margin: 0 !important; 
+        padding: 3mm 0 !important;
+        border: none !important;
+        overflow: hidden !important;
+      }
+      
+      .print-page:last-child {
+        page-break-after: auto !important;
+        break-after: auto !important;
+      }
+
+      /* FOLHA 1 - EQUILÍBRIO HARMONIOSO A4 (SEM ESPAÇO VAZIO EMBAIXO) */
+      #folha-1 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        height: 272mm !important;
+        max-height: 272mm !important;
+        box-sizing: border-box !important;
+        padding: 4mm 0 !important;
+        gap: 12px !important;
+      }
+      #folha-1 #story-image {
+        max-height: 122mm !important;
+        width: auto !important;
+        object-fit: cover !important;
+        margin: 0 auto !important;
+      }
+      #folha-1 #story-verse {
+        font-size: 10.5pt !important;
+        line-height: 1.4 !important;
+      }
+      #folha-1 #story-text {
+        font-size: 10.5pt !important;
+        line-height: 1.45 !important;
+      }
+      #folha-1 #story-text p {
+        margin-bottom: 6px !important;
+      }
+
+      /* FOLHA 2 - DESENHO HORIZONTAL + CAÇA COM PALAVRAS AO LADO + QUIZ EM 3 COLUNAS */
+      #folha-2 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        height: 272mm !important;
+        max-height: 272mm !important;
+        box-sizing: border-box !important;
+        padding: 2mm 0 3mm 0 !important;
+        overflow: hidden !important;
+      }
+      #folha-2 #story-image-coloring {
+        max-height: 85mm !important;
+        width: auto !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+        margin: 0 auto !important;
+      }
+      #folha-2 .grid-cell {
+        width: 1.15rem !important;
+        height: 1.15rem !important;
+        font-size: 0.68rem !important;
+        line-height: 1.15rem !important;
+        font-weight: 800 !important;
+      }
+      #folha-2 #wordsearch-list > div {
+        padding: 1.5px 5px !important;
+        font-size: 7pt !important;
+      }
+      #folha-2 #quiz-container {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+      }
+      #folha-2 #quiz-container > div {
+        padding: 4px 5px !important;
+        border-radius: 6px !important;
+      }
+      #folha-2 #quiz-container p {
+        font-size: 6.8pt !important;
+        line-height: 1.15 !important;
+        margin-bottom: 2px !important;
+      }
+      #folha-2 #quiz-container label {
+        padding: 1px 3px !important;
+        font-size: 6.2pt !important;
+        line-height: 1.1 !important;
+        margin-bottom: 1px !important;
+      }
+
+      /* FOLHA 3 - STORYBOARD EM DESTAQUE (~50%) + APLICAÇÃO + TAREFA NA MESMA FOLHA */
+      #folha-3 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        height: 272mm !important;
+        max-height: 272mm !important;
+        box-sizing: border-box !important;
+        padding: 2mm 0 !important;
+        gap: 3.5mm !important;
+        overflow: hidden !important;
+      }
+      #folha-3 > div:not(.sheet-tag-header) {
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+        padding: 2.5mm 3.5mm !important;
+        overflow: hidden !important;
+      }
+      #folha-3 > div.folha3-card-storyboard {
+        flex: 1.8 1 0 !important;
+      }
+      #folha-3 > div.folha3-card-aplicacao,
+      #folha-3 > div.folha3-card-tarefa {
+        flex: 1 1 0 !important;
+      }
+      #folha-3 #storyboard-quadros-grid {
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+      }
+      #folha-3 #storyboard-quadros-grid img {
+        max-height: 98mm !important;
+        max-width: 100% !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+      }
+      #folha-3 #story-application,
+      #folha-3 #weekly-challenge {
+        font-size: 9pt !important;
+        line-height: 1.3 !important;
+      }
+
+      /* FOLHA 4 - GABARITO PROFESSOR (FORMATO FIEL AO PC EM 1 FOLHA A4 COMPLETA) */
+      #folha-4 {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        height: 272mm !important;
+        max-height: 272mm !important;
+        box-sizing: border-box !important;
+        padding: 4mm 0 !important;
+        gap: 3.5mm !important;
+        overflow: hidden !important;
+        background: white !important;
+      }
+      #folha-4 .folha4-obs-container {
+        flex: 1 1 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        min-height: 0 !important;
+      }
+      #folha-4 .folha4-obs-card {
+        flex: 1 1 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        min-height: 0 !important;
+        padding: 3mm 4mm !important;
+      }
+      #folha-4 textarea.folha4-textarea {
+        flex: 1 1 0 !important;
+        min-height: 48mm !important;
+        font-size: 8.5pt !important;
+        line-height: 1.35 !important;
+      }
+    }
+
+    /* Estilos de tela */
+    .grid-cell {
+      width: 1.85rem;
+      height: 1.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      border: 1px solid #e2e8f0;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+    .grid-cell.highlight {
+      background-color: #fef08a !important;
+      color: #854d0e !important;
+      font-weight: 900 !important;
+      border-color: #eab308 !important;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans">
 
-  <!-- Top Navigation / Header -->
-  <header class="app-header no-print">
-    <div class="header-container">
-      <div class="logo">
-        <span class="logo-icon">📖✨</span>
-        <div class="logo-text">
-          <h1>BibleKids</h1>
-          <p id="ui-header-subtitle" data-i18n="header_subtitle">Gerador de Aulas e Atividades Bíblicas Infantis</p>
+  <!-- TOP HEADER -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm no-print">
+    <div class="max-w-[1680px] mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
+          <i data-lucide="book-open-check" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h1 class="font-display font-black text-lg sm:text-xl text-slate-900 leading-tight flex items-center gap-2">
+            <span>BibleKids Studio</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold uppercase tracking-wider">Fácil 1-Clique</span>
+          </h1>
+          <p class="text-xs text-slate-500">Gerador Completo de Aulas Bíblicas para Ministério Infantil e EBD</p>
         </div>
       </div>
 
-      <!-- Seletor Multilíngue (4 Idiomas: PT, EN, ES, FR) -->
-      <div class="header-lang-switcher" id="lang-switcher">
-        <span class="lang-label" data-i18n="lang_label">🌍 Idioma / Language:</span>
-        <div class="lang-pill-group">
-          <button type="button" class="lang-pill active" data-lang="pt" title="Português (Brasil)">
-            <span class="flag-icon">🇧🇷</span> <span class="lang-code">PT</span>
-          </button>
-          <button type="button" class="lang-pill" data-lang="en" title="English (Global)">
-            <span class="flag-icon">🇺🇸</span> <span class="lang-code">EN</span>
-          </button>
-          <button type="button" class="lang-pill" data-lang="es" title="Español (América Latina / España)">
-            <span class="flag-icon">🇪🇸</span> <span class="lang-code">ES</span>
-          </button>
-          <button type="button" class="lang-pill" data-lang="fr" title="Français (France / Monde)">
-            <span class="flag-icon">🇫🇷</span> <span class="lang-code">FR</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="header-badges">
-        <span class="badge-tag" data-i18n="badge_ebi">🏫 Escola Bíblica Infantil (EBI)</span>
-        <span class="badge-tag badge-tag-alt" data-i18n="badge_biblical">🕊️ 100% Bíblico & Pedagógico</span>
+      <!-- SELETOR DE IDIOMA -->
+      <div class="flex items-center gap-2">
+        <label for="select-lang" class="text-xs font-semibold text-slate-500 hidden sm:inline flex items-center gap-1">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i> Idioma:
+        </label>
+        <select id="select-lang" onchange="alterarIdioma(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-xl px-3 py-2 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer">
+          <option value="pt">🇧🇷 Português</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="es">🇪🇸 Español</option>
+          <option value="fr">🇫🇷 Français</option>
+        </select>
       </div>
     </div>
   </header>
 
-  <!-- Main Content Layout -->
-  <main class="main-container">
-    
-    <!-- Painel Lateral de Controle (Configurações da Aula) -->
-    <aside class="control-panel no-print">
-      <div class="card panel-card">
-        <h2 data-i18n="panel_title">🎨 Criar Aula Bíblica</h2>
-        <p class="panel-subtitle" data-i18n="panel_subtitle">Indique a referência ou cole o texto escrito do versículo bíblico.</p>
+  <!-- MAIN WRAPPER: COLUNA LATERAL ESQUERDA + CONTEÚDO PRINCIPAL À DIREITA -->
+  <div class="w-full max-w-[1680px] mx-auto px-4 sm:px-6 py-6 flex flex-col lg:flex-row items-start gap-6">
+
+    <!-- COLUNA DA ESQUERDA: TÍTULOS PRONTOS (HISTÓRIAS BÍBLICAS) -->
+    <aside class="w-full lg:w-72 xl:w-80 shrink-0 lg:sticky lg:top-20 space-y-4 no-print">
+      <div class="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-sm space-y-3.5">
         
-        <!-- Alternador de Modo de Entrada: Referência vs. Texto Escrito -->
-        <div class="input-mode-tabs">
-          <button type="button" class="mode-tab-btn active" id="tab-mode-ref" data-mode="ref">
-            <span class="tab-icon">📖</span> <span data-i18n="tab_ref">Indicar Versículo</span>
-          </button>
-          <button type="button" class="mode-tab-btn" id="tab-mode-text" data-mode="text">
-            <span class="tab-icon">✍️</span> <span data-i18n="tab_text">Texto Escrito / Trecho</span>
-          </button>
+        <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-black shadow-inner">📚</span>
+            <div>
+              <h2 class="font-display font-black text-sm text-slate-900 leading-tight">Títulos Prontos</h2>
+              <span class="text-[10px] text-slate-400 font-bold">12 Lições em 3 Folhas A4</span>
+            </div>
+          </div>
+          <span class="text-[9px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">
+            1-Clique
+          </span>
         </div>
 
-        <!-- MODO 1: Entrada por Referência / Versículo -->
-        <div class="form-group" id="group-passage-ref">
-          <label for="passage-input" class="form-label" data-i18n="label_passage_ref">📖 Referência ou Livro e Capítulo:</label>
+        <!-- Barra de Busca Rápida de Títulos -->
+        <div class="relative">
+          <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
           <input 
             type="text" 
-            id="passage-input" 
-            placeholder="Ex: João 3:16, Salmo 23, Lucas 15, Filipenses 4:13..." 
+            id="input-filtro-sidebar"
+            oninput="filtrarTitulosSidebar(this.value)"
+            placeholder="Filtrar títulos..." 
+            class="w-full pl-8 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:border-indigo-500 shadow-inner"
           />
-          <small class="field-hint" data-i18n="hint_passage_ref">Digite o livro e versículo ou o tema da aula.</small>
         </div>
 
-        <!-- MODO 2: Entrada por Texto Escrito do Versículo -->
-        <div class="form-group hidden" id="group-verse-text">
-          <label for="verse-text-input" class="form-label" data-i18n="label_verse_text">✍️ Texto Escrito do Versículo Bíblico:</label>
-          <textarea 
-            id="verse-text-input" 
-            rows="3" 
-            placeholder="Cole ou digite o versículo sagrado aqui... (Ex: 'Porque Deus amou o mundo de tal maneira...', 'O Senhor é o meu pastor e nada me faltará', 'Deixai vir a mim as criancinhas...')"
-          ></textarea>
-          <small class="field-hint" data-i18n="hint_verse_text">O sistema interpreta o versículo e cria a aula, a ilustração e os exercícios.</small>
+        <!-- Lista com Scroll de Títulos Clicáveis -->
+        <div id="lista-titulos-sidebar" class="space-y-1.5 max-h-[calc(100vh-270px)] overflow-y-auto pr-1">
+          <!-- Gerado dinamicamente via JavaScript -->
         </div>
 
-        <!-- Faixa Etária (Idade estabelecida para a aula) -->
-        <div class="form-group" id="group-age-select">
-          <label for="age-select" class="form-label" data-i18n="label_age">👶 Faixa Etária da Criança:</label>
-          <select id="age-select">
-            <option value="3-5" data-i18n="opt_age_35">👶 3 a 5 anos (Primeira Infância / Maternal)</option>
-            <option value="6-8" selected data-i18n="opt_age_68">👧 6 a 8 anos (Alfabetização / Primários)</option>
-            <option value="9-12" data-i18n="opt_age_912">🧑 9 a 12 anos (Juniores / Pré-adolescentes)</option>
-          </select>
-        </div>
-
-        <!-- BOTÃO CRIAR A AULA - POSICIONADO LOGO ABAIXO DA INSERÇÃO DA INFORMAÇÃO -->
-        <button id="btn-generate" class="btn-primary btn-generate-prominent">
-          <span class="btn-icon">⚡</span>
-          <span data-i18n="btn_generate">Criar Aula e Atividades</span>
-        </button>
-
-        <div class="panel-divider"></div>
-
-        <!-- Tradução / Versão Bíblica Opcional -->
-        <div class="form-group form-group-compact">
-          <label for="version-select" class="form-label" data-i18n="label_version">📜 Tradução / Versão Bíblica:</label>
-          <select id="version-select">
-            <option value="default" selected data-i18n="opt_version_standard">📖 Tradução Padrão Recomendada</option>
-            <option value="ARC">ARC - Almeida Revista e Corrigida (PT)</option>
-            <option value="NVI">NVI - Nova Versão Internacional (PT / ES / EN)</option>
-            <option value="KJV">KJV - King James Version (EN)</option>
-            <option value="RVR">RVR 1960 - Reina-Valera (ES)</option>
-            <option value="LSG">LSG 1910 - Louis Segond (FR)</option>
-          </select>
-        </div>
-
-        <!-- Aulas Já Criadas / Histórias Populares (1 Clique) -->
-        <div class="form-group">
-          <label class="form-label" data-i18n="label_presets">📚 Aulas Já Criadas (1 Clique):</label>
-          <div class="preset-badges" id="preset-container">
-            <button type="button" class="preset-btn" data-story="betesda">
-              🛏️💧 <span class="p-title">João 5: Tanque de Betesda</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="tempestade">
-              ⛵🌊 <span class="p-title">Marcos 4: Jesus Acalma a Tempestade</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="zaqueu">
-              🌳✨ <span class="p-title">Lucas 19: Zaqueu na Árvore</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="armadura">
-              🛡️⚔️ <span class="p-title">Efésios 6: A Armadura de Deus</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="fruto">
-              🍇🍎 <span class="p-title">Gálatas 5: O Fruto do Espírito</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="lazaro">
-              ✨🌅 <span class="p-title">João 11: Ressurreição de Lázaro</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="paralitico">
-              🛏️✨ <span class="p-title">Lucas 5: Cura do Paralítico</span>
-            </button>
-            <button type="button" class="preset-btn active" data-story="pesca">
-              ⛵🐟 <span class="p-title">Lucas 5: Pesca Maravilhosa</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="joao6">
-              🍞🐟 <span class="p-title">João 6: Pães e Peixes</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="pastor">
-              🐑 <span class="p-title">O Bom Pastor</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="salmo91">
-              🛡️🕊️ <span class="p-title">Salmo 91: Proteção</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="filipenses413">
-              💪✝️ <span class="p-title">Filipenses 4:13: Minha Força</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="lampada">
-              💡📖 <span class="p-title">Salmo 119:105: Lâmpada</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="joao316">
-              ✝️❤️ <span class="p-title">João 3:16: Amor de Deus</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="noe">
-              🚢 <span class="p-title">A Arca de Noé</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="criancas">
-              👶❤️ <span class="p-title">Jesus e as Crianças</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="davi">
-              ⚔️ <span class="p-title">Davi e Golias</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="daniel">
-              🦁 <span class="p-title">Daniel na Cova</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="moises">
-              🌊 <span class="p-title">O Mar Vermelho</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="jonas">
-              🐋 <span class="p-title">Jonas e o Peixe</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="samaritano">
-              🤝 <span class="p-title">O Bom Samaritano</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="criacao">
-              🌍 <span class="p-title">A Criação do Mundo</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="tumulo">
-              🌅 <span class="p-title">O Túmulo Vazio</span>
-            </button>
-            <button type="button" class="preset-btn" data-story="cruz">
-              ✝️ <span class="p-title">O Amor na Cruz</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Configuração Opcional de API Gemini -->
-        <div class="api-key-box">
-          <button type="button" class="btn-link" id="btn-toggle-api">
-            ⚙️ <span data-i18n="btn_toggle_api">Configurar Chave Gemini (Opcional)</span>
-          </button>
-          <div id="api-config-section" class="hidden">
-            <p class="api-help-text" data-i18n="api_help_text">
-              Com o motor inteligente integrado, todas as histórias bíblicas já contam com imagens, atividades e traduções automáticas. Para passagens personalizadas exclusivas via IA avançada, insira sua chave gratuita:
-            </p>
-            <input type="password" id="gemini-api-key" placeholder="Insira sua Google Gemini API Key..." />
-          </div>
+        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-semibold">
+          <span id="contador-titulos-sidebar">12 lições prontas</span>
+          <span class="text-indigo-600 font-bold flex items-center gap-1">
+            <i data-lucide="sparkles" class="w-3 h-3"></i> 3 Folhas A4
+          </span>
         </div>
 
       </div>
     </aside>
 
-    <!-- Painel Central de Visualização & Folha de Atividades -->
-    <section class="preview-panel">
-      
-      <!-- Barra Superior de Ações -->
-      <div class="action-bar no-print">
-        <div class="status-indicator">
-          <span class="status-dot"></span>
-          <span id="status-badge" data-i18n="status_ready">Material pronto para aula e impressão</span>
-        </div>
-        <div class="action-buttons">
-          <button id="btn-speech" class="btn-action btn-speech" title="Ouvir a história contada em áudio">
-            🔊 <span id="txt-btn-speech" data-i18n="btn_speech">Ouvir História</span>
-          </button>
-          <button id="btn-print" class="btn-action btn-print" title="Imprimir diretamente no formato A4">
-            🖨️ <span data-i18n="btn_print">Imprimir Folha A4</span>
-          </button>
-          <button id="btn-pdf" class="btn-action btn-pdf" title="Baixar arquivo em PDF">
-            📄 <span data-i18n="btn_pdf">Baixar PDF</span>
-          </button>
-          <button id="btn-docx" class="btn-action btn-docx" title="Baixar arquivo editável no Word">
-            📝 <span data-i18n="btn_docx">Baixar Word (.docx)</span>
-          </button>
-        </div>
+    <!-- TELA PRINCIPAL (MESMO TAMANHO, POSICIONADA À DIREITA) -->
+    <main class="flex-1 w-full space-y-6 min-w-0 max-w-[1150px]">
+
+    <!-- CARD DO COMANDO ÚNICO (GERADOR RÁPIDO) -->
+    <section class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xl shadow-slate-200/50 space-y-5 no-print relative overflow-hidden">
+      <div class="absolute -top-12 -right-12 w-48 h-48 bg-indigo-50 rounded-full blur-2xl pointer-events-none"></div>
+
+      <div class="space-y-1">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-600 flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-4 h-4"></i> Criador Inteligente de Aulas
+        </span>
+        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">
+          Crie Toda a Sua Aula com <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Apenas 1 Comando</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500">
+          Digite a história, versículo ou palavra bíblica. O sistema gera a história, ilustração colorida, caça-palavras, quiz, aplicação, atividades e gabarito na hora!
+        </p>
       </div>
 
-      <!-- Notificação Visual de Sucesso / Feedback Dinâmico -->
-      <div id="toast-banner" class="toast-banner no-print hidden"></div>
-
-      <!-- A Folha da Aula / Caderno de Atividades para Impressão -->
-      <article class="worksheet" id="worksheet-content">
+      <form id="form-generator" onsubmit="gerarAulaComandoUnico(event)" class="space-y-4 pt-2">
         
-        <!-- Cabeçalho da Folha -->
-        <header class="worksheet-header">
-          <div class="student-info-row">
-            <div class="info-field">
-              <span class="info-label" data-i18n="label_student_name">Nome da Criança:</span>
-              <span class="info-line"></span>
-            </div>
-            <div class="info-field info-field-date">
-              <span class="info-label" data-i18n="label_date">Data:</span>
-              <span class="info-line"></span>
-            </div>
+        <!-- LINHA 1: INPUT DO TEMA / VERSÍCULO -->
+        <div class="relative">
+          <label for="input-tema" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+            Palavra-chave, Tema ou Versículo Bíblico:
+          </label>
+          <div class="relative">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              id="input-tema" 
+              required
+              placeholder="Ex: Davi e Golias, A Criação, Arca de Noé, O Bom Pastor, João 3:16..." 
+              class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-50 border-2 border-slate-200 focus:bg-white focus:border-indigo-600 text-slate-900 font-semibold placeholder:text-slate-400 focus:outline-none transition text-sm sm:text-base shadow-inner"
+              value="Davi e Golias - 1 Samuel 17"
+            >
           </div>
+        </div>
+
+        <!-- LINHA 2: ESTILO VISUAL E BOTÃO PRINCIPAL -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-1">
           
-          <div class="worksheet-title-banner">
-            <div class="title-wrap">
-              <span class="title-icon" id="title-icon">🍞🐟</span>
-              <div>
-                <h1 id="activity-title">A Multiplicação dos Pães e dos Peixes</h1>
-                <div class="meta-badges">
-                  <span class="meta-badge meta-ref" id="activity-ref">João 6:1-14</span>
-                  <span class="meta-badge meta-age" id="activity-age">6 a 8 anos</span>
-                  <span class="meta-badge meta-version" id="activity-version" data-i18n="meta_bible">Bíblia Sagrada</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <!-- 1. TEXTO DIRECIONADO À COMPREENSÃO DA CRIANÇA SEGUNDO A IDADE ESTABELECIDA -->
-        <section class="activity-section sec-story-wrap" id="sec-story">
-          <div class="section-title-bar">
-            <h2>📖 <span data-i18n="sec1_title">1. A Palavra Contada</span></h2>
-            <span class="section-tag" data-i18n="sec1_tag">História Bíblica Adaptada</span>
-          </div>
-
-          <!-- Prompt de Comando Pedagógico (História Adaptada para a Idade Selecionada) -->
-          <div class="pedagogical-prompt-container no-print" id="pedagogical-story-prompt-container">
-            <div class="prompt-header-row">
-              <div class="prompt-title-badge">
-                <span class="badge-icon">⚡</span>
-                <strong>Prompt de Comando Pedagógico:</strong>
-                <span class="prompt-target-age" id="prompt-target-age-label">6 a 8 anos</span>
-              </div>
-              <button type="button" class="btn-xs btn-copy-prompt" id="btn-copy-story-prompt" title="Copiar este comando pedagógico para usar na IA ou preparar aula">
-                📋 <span data-i18n="btn_copy_story_prompt">Copiar Prompt da História</span>
-              </button>
-            </div>
-            <div class="prompt-text-display" id="pedagogical-story-prompt-text">
-              <!-- Gerado dinamicamente via JS de acordo com a idade e passagem -->
+          <!-- Escolha de Estilo Visual -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Estilo da Ilustração:
+            </label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="cursor-pointer border-2 border-slate-200 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/50 p-2.5 rounded-xl flex items-center gap-2 text-xs font-bold text-slate-700 transition">
+                <input type="radio" name="estilo_imagem" value="pixar" checked class="text-indigo-600 focus:ring-0">
+                <span>🎬 Animação 3D</span>
+              </label>
+              <label class="cursor-pointer border-2 border-slate-200 has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/50 p-2.5 rounded-xl flex items-center gap-2 text-xs font-bold text-slate-700 transition">
+                <input type="radio" name="estilo_imagem" value="2d" class="text-indigo-600 focus:ring-0">
+                <span>🎨 2D Infantil</span>
+              </label>
             </div>
           </div>
 
-          <!-- Texto Narrado da História por Idade -->
-          <div class="story-body" id="story-body">
-            <!-- Preenchido via JavaScript de acordo com a faixa etária -->
-          </div>
-
-          <!-- Versículo de Ouro para Memorizar -->
-          <div class="memory-verse-box">
-            <div class="verse-star">⭐</div>
-            <div class="verse-content">
-              <strong data-i18n="label_memory_verse">Versículo para Guardar no Coração:</strong>
-              <blockquote id="memory-verse-text">
-                "Jesus tomou os pães e, havendo dado graças, distribuiu-os pelos que estavam assentados; e do mesmo modo os peixes, tanto quanto eles queriam."
-              </blockquote>
-              <span class="verse-reference" id="memory-verse-ref">— João 6:11</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- 2. CRIAÇÃO DA IMAGEM QUE REPRESENTE O PONTO PRINCIPAL DO TEXTO -->
-        <section class="activity-section sec-pixar-wrap" id="sec-pixar-art">
-          <div class="section-title-bar">
-            <h2>✨ <span data-i18n="sec2_title">2. Ilustração da Palavra</span></h2>
-            <span class="section-tag" data-i18n="sec2_tag">Ponto Principal da Lição</span>
-          </div>
-
-          <!-- Card de Apresentação da Imagem Colorida (3D Pixar) -->
-          <div class="biblical-art-card">
-            <div class="art-frame" id="art-frame-pixar">
-              <img id="story-image-color" src="assets/images/loaves_pixar.jpg" alt="Ilustração da História Bíblica" />
-              <!-- Overlay de Carregamento da IA -->
-              <div class="image-loading-overlay hidden" id="loading-pixar">
-                <div class="spinner"></div>
-                <span class="loading-text" data-i18n="loading_pixar">Gerando ilustração 3D Pixar via IA...</span>
-              </div>
-            </div>
-            <div class="art-caption">
-              <div class="caption-text-row">
-                <strong data-i18n="label_word_image">✨ Imagem da Palavra:</strong> 
-                <span id="story-image-desc">Jesus abençoa o cesto com 5 pães e 2 peixes para alimentar a multidão.</span>
-              </div>
-
-              <!-- Barra de Ferramentas da Imagem 3D Pixar -->
-              <div class="image-studio-toolbar no-print">
-                <div class="theme-picker-group">
-                  <label for="theme-visual-select-pixar" class="theme-select-label">🎨 Tema Visual:</label>
-                  <select id="theme-visual-select-pixar" class="theme-select-inline" title="Escolha a cena temática bíblica para a aula">
-                    <option value="betesda">🛏️💧 João 5: O Paralítico no Tanque de Betesda</option>
-                    <option value="paralitico">🛏️ Lucas 5: A Cura do Paralítico (Telhado)</option>
-                    <option value="pesca" selected>⛵ Lucas 5: A Pesca Maravilhosa</option>
-                    <option value="joao6">🍞 João 6: Pães e Peixes</option>
-                    <option value="salmo91">🛡️ Salmo 91: Proteção e Anjos</option>
-                    <option value="filipenses413">💪 Filipenses 4:13: Minha Força</option>
-                    <option value="lampada">💡 Salmo 119:105: Lâmpada e Luz</option>
-                    <option value="joao316">❤️ João 3:16: Amor de Deus</option>
-                    <option value="noe">🚢 A Arca de Noé</option>
-                    <option value="criancas">👶 Jesus e as Crianças</option>
-                    <option value="pastor">🐑 O Bom Pastor</option>
-                    <option value="davi">⚔️ Davi e Golias</option>
-                    <option value="daniel">🦁 Daniel na Cova</option>
-                    <option value="moises">🌊 O Mar Vermelho</option>
-                    <option value="jonas">🐋 Jonas e o Peixe</option>
-                    <option value="samaritano">🤝 O Bom Samaritano</option>
-                    <option value="criacao">🌍 A Criação do Mundo</option>
-                    <option value="tumulo">🌅 O Túmulo Vazio</option>
-                    <option value="cruz">✝️ O Amor na Cruz</option>
-                  </select>
-                </div>
-                <button type="button" class="btn-xs btn-ai-action" id="btn-gen-pixar-ai" title="Gerar nova imagem cinematográfica 3D Pixar via IA">
-                  ⚡ <span data-i18n="btn_gen_ai_pixar">Gerar Imagem com IA</span>
-                </button>
-                <button type="button" class="btn-xs btn-subtle" id="btn-regen-pixar-ai" title="Tentar outra variação com nova semente">
-                  🔄 <span data-i18n="btn_regen_variation">Nova Variação</span>
-                </button>
-                <button type="button" class="btn-xs btn-subtle" id="btn-upload-pixar-trigger" title="Carregar imagem do seu computador">
-                  📁 <span data-i18n="btn_upload_image">Enviar Minha Imagem</span>
-                </button>
-                <input type="file" id="upload-pixar-file" accept="image/*" class="hidden" />
-                <button type="button" class="btn-xs btn-copy-prompt" id="btn-copy-pixar-prompt" title="Copiar prompt profissional para Midjourney, DALL-E, etc.">
-                  📋 <span data-i18n="btn_copy_prompt_pixar">Copiar Prompt</span>
-                </button>
-                <button type="button" class="btn-xs btn-subtle" id="btn-download-pixar" title="Baixar esta imagem em alta resolução">
-                  ⬇️ <span data-i18n="btn_download_image">Baixar Imagem</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 3. CRIAÇÃO DA IMAGEM PARA SER PINTADA (IGUAL/CORRESPONDENTE À IMAGEM ILUSTRADA) -->
-        <section class="activity-section sec-coloring-wrap" id="sec-coloring">
-          <div class="section-title-bar">
-            <h2>🖍️ <span data-i18n="sec3_title">3. Hora de Colorir!</span></h2>
-            <span class="section-tag" data-i18n="sec3_tag">Desenho Fiel à Passagem</span>
-          </div>
-
-          <p class="section-instructions" id="coloring-instructions" data-i18n="sec3_instructions">
-            Pinte bem bonito este desenho correspondente à história bíblica:
-          </p>
-
-          <div class="coloring-sheet-box">
-            <div class="coloring-image-frame" id="coloring-image-frame">
-              <img id="coloring-image" src="assets/images/loaves_coloring.jpg" alt="Desenho para Colorir em Preto e Branco" />
-              <!-- Overlay de Carregamento da IA para Colorir -->
-              <div class="image-loading-overlay hidden" id="loading-coloring">
-                <div class="spinner"></div>
-                <span class="loading-text" data-i18n="loading_coloring">Criando desenho para colorir (traço puro P&B)...</span>
-              </div>
-            </div>
-            
-            <div class="coloring-footer-info">
-              <span id="coloring-caption" class="hidden" style="display:none!important;"></span>
-              
-              <!-- Barra de Ferramentas de Colorir -->
-              <div class="coloring-btn-group no-print">
-                <div class="theme-picker-group">
-                  <label for="theme-visual-select-coloring" class="theme-select-label">🖍️ Tema:</label>
-                  <select id="theme-visual-select-coloring" class="theme-select-inline" title="Trocar cena do desenho para colorir">
-                    <option value="betesda">🛏️💧 João 5: O Paralítico no Tanque de Betesda</option>
-                    <option value="paralitico">🛏️ Lucas 5: A Cura do Paralítico (Telhado)</option>
-                    <option value="pesca" selected>⛵ Lucas 5: A Pesca Maravilhosa</option>
-                    <option value="joao6">🍞 João 6: Pães e Peixes</option>
-                    <option value="salmo91">🛡️ Salmo 91: Proteção e Anjos</option>
-                    <option value="filipenses413">💪 Filipenses 4:13: Minha Força</option>
-                    <option value="lampada">💡 Salmo 119:105: Lâmpada e Luz</option>
-                    <option value="joao316">❤️ João 3:16: Amor de Deus</option>
-                    <option value="noe">🚢 A Arca de Noé</option>
-                    <option value="criancas">👶 Jesus e as Crianças</option>
-                    <option value="pastor">🐑 O Bom Pastor</option>
-                    <option value="davi">⚔️ Davi e Golias</option>
-                    <option value="daniel">🦁 Daniel na Cova</option>
-                    <option value="moises">🌊 O Mar Vermelho</option>
-                    <option value="jonas">🐋 Jonas e o Peixe</option>
-                    <option value="samaritano">🤝 O Bom Samaritano</option>
-                    <option value="criacao">🌍 A Criação do Mundo</option>
-                    <option value="tumulo">🌅 O Túmulo Vazio</option>
-                    <option value="cruz">✝️ O Amor na Cruz</option>
-                  </select>
-                </div>
-                <button type="button" class="btn-xs btn-ai-action" id="btn-gen-coloring-ai" title="Gerar contorno em preto e branco puro com IA">
-                  ⚡ <span data-i18n="btn_gen_ai_coloring">Gerar Desenho com IA</span>
-                </button>
-                <button type="button" class="btn-xs btn-subtle" id="btn-regen-coloring-ai" title="Tentar outra variação de desenho">
-                  🔄 <span data-i18n="btn_regen_variation">Nova Variação</span>
-                </button>
-                <button type="button" class="btn-xs btn-subtle" id="btn-filter-lineart" title="Acentuar traços e remover cinzas via filtro inteligente de Canvas">
-                  🖌️ <span data-i18n="btn_filter_lineart">Acentuar Traço P&B</span>
-                </button>
-                <button type="button" class="btn-xs btn-subtle" id="btn-upload-coloring-trigger" title="Carregar desenho para colorir do seu computador">
-                  📁 <span data-i18n="btn_upload_drawing">Enviar Meu Desenho</span>
-                </button>
-                <input type="file" id="upload-coloring-file" accept="image/*" class="hidden" />
-                <button type="button" class="btn-xs btn-copy-prompt" id="btn-copy-coloring-prompt" title="Copiar prompt para geradores de imagens">
-                  📋 <span data-i18n="btn_copy_prompt_coloring">Copiar Prompt</span>
-                </button>
-                <button type="button" class="btn-xs btn-subtle" id="btn-download-coloring" title="Baixar desenho para imprimir separadamente">
-                  ⬇️ <span data-i18n="btn_download_coloring">Baixar para Colorir</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 4. GERAÇÃO DA APLICAÇÃO PRÁTICA COM A CRIANÇA -->
-        <section class="activity-section sec-application-wrap" id="sec-lesson">
-          <div class="section-title-bar">
-            <h2>🎯 <span data-i18n="sec4_title">4. Prática & Aplicação da Palavra</span></h2>
-            <span class="section-tag" data-i18n="sec4_tag">Vivendo a Mensagem no Dia a Dia</span>
-          </div>
-          
-          <p class="section-instructions" data-i18n="sec4_instructions">
-            Como você pode colocar essa história da Bíblia em prática na sua vida? Veja as três áreas:
-          </p>
-
-          <div class="application-grid">
-            <div class="app-card app-card-home">
-              <div class="app-card-header">
-                <span class="app-icon">🏠</span>
-                <h3 data-i18n="app_home_title">Em Casa (Família)</h3>
-              </div>
-              <p id="app-home-text">
-                Ajudar a mamãe e o papai sem reclamar e partilhar meus brinquedos com meus irmãos com alegria!
-              </p>
-            </div>
-
-            <div class="app-card app-card-school">
-              <div class="app-card-header">
-                <span class="app-icon">🎒</span>
-                <h3 data-i18n="app_school_title">Na Escola (Recreio)</h3>
-              </div>
-              <p id="app-school-text">
-                Quando ver um colega sem lanche ou material, repartir com amor assim como o menino repartiu seus pãezinhos.
-              </p>
-            </div>
-
-            <div class="app-card app-card-heart">
-              <div class="app-card-header">
-                <span class="app-icon">❤️</span>
-                <h3 data-i18n="app_heart_title">No Coração (Amizades)</h3>
-              </div>
-              <p id="app-heart-text">
-                Não ser egoísta! Lembrar que quando entregamos o pouco que temos a Jesus, Ele multiplica com bênçãos.
-              </p>
+          <!-- Sugestões Rápidas (Chips) -->
+          <div class="sm:col-span-1 lg:col-span-1">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Atalhos Rápidos Populares:
+            </label>
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+              <button type="button" onclick="preencherTema('A Criação do Mundo - Gênesis 1')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-[11px] font-semibold text-slate-700 transition">A Criação</button>
+              <button type="button" onclick="preencherTema('A Arca de Noé - Gênesis 6')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-[11px] font-semibold text-slate-700 transition">Arca de Noé</button>
+              <button type="button" onclick="preencherTema('Davi e Golias - 1 Samuel 17')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-[11px] font-semibold text-slate-700 transition">Davi e Golias</button>
+              <button type="button" onclick="preencherTema('O Bom Pastor - Salmo 23')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-[11px] font-semibold text-slate-700 transition">O Bom Pastor</button>
+              <button type="button" onclick="preencherTema('A Tempestade Acalmada - Marcos 4')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-[11px] font-semibold text-slate-700 transition">Tempestade</button>
+              <button type="button" onclick="preencherTema('A Multiplicação dos Pães - João 6')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-[11px] font-semibold text-slate-700 transition">Pães e Peixes</button>
             </div>
           </div>
 
-          <!-- Oração da Criança -->
-          <div class="prayer-card">
-            <div class="prayer-icon">🙏</div>
-            <div class="prayer-body">
-              <strong data-i18n="label_prayer">Minha Oração com Jesus:</strong>
-              <p id="prayer-text">
-                "Querido Senhor Jesus, obrigado por cuidar de mim todos os dias. Ensina o meu coraçãozinho a ser generoso e a repartir o que tenho com alegria. Coloco tudo o que sou em Tuas mãos. Amém!"
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- 5. O CAÇA-PALAVRAS COM AS 5 PALAVRAS PRINCIPAIS DO TEXTO -->
-        <section class="activity-section sec-wordsearch-wrap" id="sec-words">
-          <div class="section-title-bar">
-            <h2>🔍 <span data-i18n="sec5_title">5. Caça-Palavras Bíblico</span></h2>
-            <span class="section-tag" data-i18n="sec5_tag">5 Palavras da Mensagem</span>
-          </div>
-
-          <div class="wordsearch-header-row">
-            <p class="section-instructions" data-i18n="sec5_instructions">
-              Encontre na grade as <strong>5 palavras-chave</strong> que aprendemos na história:
-            </p>
-            <button type="button" class="btn-xs no-print" id="btn-toggle-answers">
-              👁️ <span data-i18n="btn_toggle_answers">Mostrar / Ocultar Respostas</span>
+          <!-- Botão Gerar Aula Completa -->
+          <div class="sm:col-span-2 lg:col-span-1 flex items-end">
+            <button 
+              type="submit" 
+              id="btn-gerar"
+              class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-700 to-purple-700 hover:from-indigo-500 hover:to-purple-600 text-white font-display font-extrabold text-base shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2 transition transform active:scale-95 cursor-pointer"
+            >
+              <i data-lucide="zap" class="w-5 h-5"></i>
+              <span>CRIAR AULA COMPLETA</span>
             </button>
           </div>
 
-          <div class="wordsearch-layout">
-            <div class="wordsearch-grid" id="wordsearch-grid">
-              <!-- Grid dinâmico gerado via JS -->
-            </div>
+        </div>
 
-            <div class="wordsearch-sidebar">
-              <h4 data-i18n="label_words_to_find">🎯 Palavras a Encontrar:</h4>
-              <ul class="wordsearch-tags" id="wordsearch-tags">
-                <!-- 5 Palavras preenchidas via JS -->
-              </ul>
-              <div class="wordsearch-tip" data-i18n="tip_wordsearch">
-                💡 <em>Dica: No computador ou celular, você pode clicar nas letras para marcar!</em>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 6. O QUIZ COM BASE NO TEXTO ENSINADO DE MÚLTIPLA ESCOLHA -->
-        <section class="activity-section sec-quiz-wrap" id="sec-quiz">
-          <div class="section-title-bar">
-            <h2>❓ <span data-i18n="sec6_title">6. Quiz Bíblico</span></h2>
-            <span class="section-tag" data-i18n="sec6_tag">Perguntas da Palavra</span>
-          </div>
-
-          <p class="section-instructions" data-i18n="sec6_instructions">
-            Marque um <strong>( X )</strong> na resposta certa de acordo com a história da Bíblia:
-          </p>
-
-          <div class="quiz-list" id="quiz-container">
-            <!-- Perguntas geradas dinamicamente via JS -->
-          </div>
-        </section>
-
-        <!-- 7. DESAFIO PRÁTICO DA SEMANA (Ligado à Palavra) -->
-        <section class="activity-section sec-challenge-wrap" id="sec-craft">
-          <div class="section-title-bar">
-            <h2>🏆 <span data-i18n="sec7_title">7. Desafio Prático da Semana</span></h2>
-            <span class="section-tag" data-i18n="sec7_tag">Para Colar na Geladeira</span>
-          </div>
-
-          <div class="challenge-card">
-            <div class="challenge-badge">🌟 <span data-i18n="badge_weekly_mission">Minha Missão com Jesus Esta Semana:</span></div>
-            <p class="challenge-description" id="challenge-text">
-              "Esta semana vou praticar a generosidade: vou repartir com alegria um lanche ou brinquedo com um amigo ou irmão que precise, lembrando do milagre de Jesus!"
-            </p>
-            <!-- Rastreador Semanal da Criança para Geladeira -->
-            <div class="challenge-days-tracker">
-              <span class="tracker-title">📅 Marque os dias que você cumpriu o desafio:</span>
-              <div class="tracker-days-grid">
-                <label class="tracker-day"><input type="checkbox" /> <span>Seg</span></label>
-                <label class="tracker-day"><input type="checkbox" /> <span>Ter</span></label>
-                <label class="tracker-day"><input type="checkbox" /> <span>Qua</span></label>
-                <label class="tracker-day"><input type="checkbox" /> <span>Qui</span></label>
-                <label class="tracker-day"><input type="checkbox" /> <span>Sex</span></label>
-                <label class="tracker-day"><input type="checkbox" /> <span>Sáb</span></label>
-                <label class="tracker-day"><input type="checkbox" /> <span>Dom</span></label>
-              </div>
-            </div>
-
-            <div class="signature-row">
-              <div class="signature-block">
-                <span class="sig-line"></span>
-                <span class="sig-label" data-i18n="sig_child">Assinatura da Criança</span>
-              </div>
-              <div class="signature-block">
-                <span class="sig-line"></span>
-                <span class="sig-label" data-i18n="sig_guardian">Assinatura do Responsável</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- SEÇÃO 7: GABARITO & GUIA DO PROFESSOR (Uso Exclusivo do Professor) -->
-        <section class="activity-section teacher-guide-wrap" id="sec-teacher-guide">
-          <div class="teacher-guide-header">
-            <h3>📋 <span data-i18n="teacher_guide_title">Gabarito Oficial & Dicas do Professor</span></h3>
-            <span class="guide-tag" data-i18n="teacher_guide_tag">Uso do Educador</span>
-          </div>
-          <div class="teacher-guide-body">
-            <div class="guide-col">
-              <strong data-i18n="label_quiz_answers">Respostas do Quiz:</strong>
-              <div id="teacher-quiz-answers"></div>
-            </div>
-            <div class="guide-col">
-              <strong data-i18n="label_words_answers">Palavras do Caça-Palavras:</strong>
-              <div id="teacher-words-answers"></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Rodapé da Folha -->
-        <footer class="worksheet-footer">
-          <p>🌟 <strong>BibleKids</strong> • <span data-i18n="footer_text">Educando corações na Palavra de Deus • Uso liberado para Escolas Bíblicas, Igrejas e Famílias</span></p>
-        </footer>
-
-      </article>
-
+      </form>
     </section>
 
+    <!-- BARRA DE AÇÕES RÁPIDAS DA AULA (IMPRIMIR / COPIAR) -->
+    <div id="action-bar" class="flex flex-wrap items-center justify-between gap-3 bg-white p-4 rounded-2xl border border-slate-200 no-print shadow-sm">
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-xs font-bold text-slate-700" id="status-aula">Aula pronta para aplicação!</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <button onclick="imprimirTodasFolhas()" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-black flex items-center gap-1.5 shadow transition ring-2 ring-slate-900/10">
+          <i data-lucide="printer" class="w-4 h-4 text-emerald-400"></i> Imprimir Tudo (1 Folha por Página A4)
+        </button>
+        <button type="button" onclick="imprimirFolha('folha-1')" title="Imprimir somente a Folha 1 (Palavra & História)" class="px-2.5 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-bold flex items-center gap-1 transition">
+          <i data-lucide="printer" class="w-3.5 h-3.5 text-indigo-600"></i> Folha 1 (Palavra & História)
+        </button>
+        <button type="button" onclick="imprimirFolha('folha-2')" title="Imprimir somente a Folha 2 (Colorir, Caça-Palavras & Quiz)" class="px-2.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 text-xs font-bold flex items-center gap-1 transition">
+          <i data-lucide="printer" class="w-3.5 h-3.5 text-purple-600"></i> Folha 2 (Colorir, Caça & Quiz)
+        </button>
+        <button type="button" onclick="imprimirFolha('folha-3')" title="Imprimir somente a Folha 3 (Storyboard & Aplicação)" class="px-2.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold flex items-center gap-1 transition">
+          <i data-lucide="printer" class="w-3.5 h-3.5 text-amber-700"></i> Folha 3 (Storyboard & Aplicação)
+        </button>
+        <button type="button" onclick="imprimirFolha('folha-4')" title="Imprimir somente a Folha 4 (Gabarito Oficial do Educador)" class="px-2.5 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 text-xs font-bold flex items-center gap-1 transition">
+          <i data-lucide="key" class="w-3.5 h-3.5 text-amber-600"></i> Folha 4 (Gabarito)
+        </button>
+        <button onclick="copiarTextoAula()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 text-xs font-bold flex items-center gap-1 transition">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copiar Texto
+        </button>
+      </div>
+    </div>
+
+    <!-- CONTEÚDO VISUAL DA AULA (FORMATADO PARA TELA E IMPRESSÃO) -->
+    <div id="aula-container" class="space-y-6">
+
+      <!-- ====================================================================== -->
+      <!-- PÁGINA 1: CONFORME DIAGRAMA DO USUÁRIO -->
+      <!-- 1. Palavra na íntegra -->
+      <!-- 2. Imagem ilustrada -->
+      <!-- 3. Palavra em forma de história -->
+      <!-- ====================================================================== -->
+      <section id="folha-1" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm print-page space-y-5">
+        
+        <!-- Identificador da Folha A4 na Tela -->
+        <div class="sheet-tag-header no-print">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider">
+              Folha 1 de 3
+            </span>
+            <span class="text-xs font-bold text-slate-500">Padrão A4 • A Palavra & História</span>
+          </div>
+          <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-md">
+            Visualização Fiel de Impressão
+          </span>
+        </div>
+        
+        <!-- 1. Palavra na íntegra -->
+        <div class="border-2 border-indigo-200 bg-gradient-to-r from-indigo-50/90 to-purple-50/90 p-4 sm:p-5 rounded-2xl space-y-2 shadow-xs">
+          <div class="flex items-center justify-between border-b border-indigo-200/80 pb-2">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-600 mb-0.5">
+                <span id="badge-colecao">Lição Bíblica Infantil</span> • <span id="badge-referencia" class="text-slate-500">1 Samuel 17</span>
+              </div>
+              <h2 id="story-title" class="font-display font-black text-xl sm:text-2xl text-slate-900 leading-tight">
+                Davi e o Gigante Golias
+              </h2>
+            </div>
+            <span id="story-verse-ref" class="text-xs font-black text-indigo-900 bg-white px-2.5 py-1 rounded-full border border-indigo-200 self-start">Salmo 23:1</span>
+          </div>
+
+          <div class="space-y-1 pt-1">
+            <span class="text-xs font-black uppercase tracking-wider text-indigo-700 flex items-center gap-1.5">
+              <i data-lucide="book-marked" class="w-4 h-4"></i> Palavra na Íntegra (Versículo Bíblico):
+            </span>
+            <p id="story-verse" class="text-sm sm:text-base font-bold text-slate-900 italic leading-relaxed">
+              "O Senhor é a minha força e o meu escudo; nele o meu coração confia, e dele recebo ajuda."
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Imagem ilustrada (Em grande destaque visual) -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between no-print pb-0.5">
+            <span class="text-xs font-black uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i> Imagem Ilustrada da Mensagem
+            </span>
+            <a id="btn-download-img" href="assets/images/david_pixar.jpg" download="ilustracao_biblica.jpg" target="_blank" class="px-2.5 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center gap-1 border border-indigo-200 transition shadow-xs">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> Baixar Imagem
+            </a>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden bg-slate-100 border-2 border-slate-200 shadow-sm flex items-center justify-center max-h-[420px]">
+            <img id="story-image" src="assets/images/david_pixar.jpg" alt="Imagem Ilustrada" class="w-full h-auto max-h-[420px] object-cover rounded-xl">
+          </div>
+        </div>
+
+        <!-- 3. Palavra em forma de história -->
+        <div class="border border-slate-200 bg-slate-50/60 p-4 sm:p-5 rounded-2xl space-y-2">
+          <div class="flex items-center gap-2 text-indigo-700 font-bold text-sm">
+            <i data-lucide="book-open" class="w-4 h-4"></i>
+            <span>Palavra em Forma de História (Para as Crianças):</span>
+          </div>
+          <div id="story-text" class="text-slate-700 text-xs sm:text-sm leading-relaxed space-y-2 text-justify">
+            <!-- Parágrafos da história inseridos via JS -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ====================================================================== -->
+      <!-- PÁGINA 2: METADE SUPERIOR DESENHO HORIZONTAL + PARTE INFERIOR CAÇA E QUIZ -->
+      <!-- ====================================================================== -->
+      <section id="folha-2" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-sm print-page space-y-3 print-break">
+        
+        <!-- Identificador da Folha A4 na Tela -->
+        <div class="sheet-tag-header no-print">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-black uppercase tracking-wider">
+              Folha 2 de 3
+            </span>
+            <span class="text-xs font-bold text-slate-500">Padrão A4 • Colorir, Caça & Quiz</span>
+          </div>
+          <span class="text-[10px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-md">
+            Visualização Fiel de Impressão
+          </span>
+        </div>
+        
+        <!-- 1. METADE SUPERIOR DA FOLHA: Ilustração para Colorir na Horizontal -->
+        <div class="border-2 border-rose-200 bg-rose-50/20 p-3 rounded-2xl space-y-1.5">
+          <div class="flex items-center justify-between border-b border-rose-200/80 pb-1">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-700">
+              <i data-lucide="palette" class="w-4 h-4 text-rose-600"></i>
+              <span class="font-black text-xs sm:text-sm">Desenho para Colorir (Pinte a História com Capricho!)</span>
+            </div>
+            <a id="btn-download-coloring" href="assets/images/david_coloring_horizontal.jpg" download="desenho_para_colorir.jpg" target="_blank" class="text-xs font-bold text-rose-700 hover:text-rose-900 no-print flex items-center gap-1 underline">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> Baixar JPG
+            </a>
+          </div>
+
+          <div class="bg-white p-2 rounded-xl border-2 border-dashed border-rose-300 flex items-center justify-center shadow-xs overflow-hidden">
+            <img id="story-image-coloring" src="assets/images/david_coloring_horizontal.jpg" alt="Desenho para Colorir" class="w-full h-auto max-h-[195px] object-contain rounded-lg mx-auto">
+          </div>
+        </div>
+
+        <!-- 2. CAÇA-PALAVRAS (10x10) COM AS 5 PALAVRAS AO SEU LADO -->
+        <div class="border-2 border-purple-200 bg-purple-50/30 p-3 rounded-2xl space-y-1.5">
+          <div class="flex items-center justify-between border-b border-purple-200/80 pb-1">
+            <span class="text-xs font-black uppercase tracking-wider text-purple-900 flex items-center gap-1.5">
+              <i data-lucide="grid" class="w-3.5 h-3.5 text-purple-600"></i> Caça-Palavras Bíblico (10x10)
+            </span>
+            <div class="flex items-center gap-2">
+              <span id="qtd-palavras" class="text-[9px] text-purple-700 font-bold bg-purple-100 px-2 py-0.5 rounded-full border border-purple-200">5 palavras</span>
+              <button type="button" onclick="toggleGabaritoCacaPalavras()" class="text-[10px] font-bold text-purple-600 hover:text-purple-800 no-print flex items-center gap-1">
+                <i data-lucide="eye" class="w-3 h-3"></i> <span id="btn-toggle-caca">Ver Resposta</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Grade 10x10 + Coluna de Palavras ao lado -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 pt-0.5">
+            <!-- Grade do Caça-Palavras -->
+            <div class="inline-block p-1 bg-white rounded-xl border border-slate-300 shadow-xs">
+              <div id="wordsearch-grid" class="flex flex-col gap-0.5">
+                <!-- Células geradas via JS -->
+              </div>
+            </div>
+
+            <!-- Coluna ao Lado com as 5 Palavras -->
+            <div class="flex flex-col justify-center space-y-1.5 min-w-[150px]">
+              <span class="text-[10px] font-black uppercase tracking-wider text-purple-900 border-b border-purple-200 pb-0.5">
+                5 Palavras para Procurar:
+              </span>
+              <div id="wordsearch-list" class="flex flex-col gap-1">
+                <!-- Tags geradas via JS em coluna -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. QUIZ BÍBLICO LOGO ABAIXO DO CAÇA-PALAVRAS (EM 3 COLUNAS SEM QUEBRA) -->
+        <div class="border-2 border-indigo-200 bg-indigo-50/30 p-3 rounded-2xl space-y-2">
+          <div class="flex items-center justify-between border-b border-indigo-200/80 pb-1">
+            <span class="text-xs font-black uppercase tracking-wider text-indigo-900 flex items-center gap-1.5">
+              <i data-lucide="help-circle" class="w-3.5 h-3.5 text-indigo-600"></i> Quiz Bíblico da Lição
+            </span>
+            <span class="text-[9px] font-black text-indigo-800 bg-indigo-100 px-2 py-0.5 rounded-full border border-indigo-200">Marque um (X)</span>
+          </div>
+
+          <!-- Container com as 3 perguntas distribuídas lado a lado -->
+          <div id="quiz-container" class="grid grid-cols-1 md:grid-cols-3 gap-2">
+            <!-- 3 Questões geradas via JS -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ====================================================================== -->
+      <!-- PÁGINA 3: 3 TERÇOS PROPORCIONAIS (STORYBOARD 1/3 + CORAÇÃO 1/3 + TAREFA 1/3) -->
+      <!-- ====================================================================== -->
+      <section id="folha-3" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-sm print-page space-y-3.5 print-break">
+        
+        <!-- Identificador da Folha A4 na Tela -->
+        <div class="sheet-tag-header no-print">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-amber-500 text-white text-[10px] font-black uppercase tracking-wider">
+              Folha 3 de 3
+            </span>
+            <span class="text-xs font-bold text-slate-500">Padrão A4 • Storyboard & Aplicação</span>
+          </div>
+          <span class="text-[10px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-md">
+            Visualização Fiel de Impressão (Storyboard Ampliado + Aplicação & Tarefa)
+          </span>
+        </div>
+        
+        <!-- 1. PRIMEIRO BLOCO: STORYBOARD DA MENSAGEM (AMPLIADO EM DESTAQUE) -->
+        <div class="folha3-card-storyboard border-2 border-amber-300/80 bg-amber-50/20 p-2.5 sm:p-3 rounded-2xl flex flex-col justify-between space-y-1.5 overflow-hidden shadow-xs">
+          <div class="flex items-center justify-between border-b border-amber-200/80 pb-1.5">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-amber-500 text-white text-[11px] font-black uppercase tracking-wider">
+                Storyboard Ampliado
+              </span>
+              <h3 class="font-display font-black text-sm sm:text-base text-slate-900">
+                1. A História em Cenas (HQ com Falas)
+              </h3>
+            </div>
+            <button type="button" onclick="alternarModoStoryboard()" class="text-xs font-bold text-amber-800 hover:text-amber-950 no-print flex items-center gap-1 bg-amber-100 px-2.5 py-1 rounded-lg border border-amber-300 transition shadow-2xs">
+              <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-amber-600"></i>
+              <span id="btn-storyboard-modo-label">Ver em 5 Quadros</span>
+            </button>
+          </div>
+
+          <!-- Container do Storyboard (Preenche com proporção maior) -->
+          <div id="storyboard-quadros-grid" class="flex-1 min-h-0 w-full flex items-center justify-center overflow-hidden pt-0.5">
+            <!-- Cenas inseridas dinamicamente via JS -->
+          </div>
+        </div>
+
+        <!-- 2. SEGUNDO BLOCO: APLICAÇÃO DA PALAVRA NO CORAÇÃO -->
+        <div class="folha3-card-aplicacao border-2 border-indigo-200 bg-gradient-to-r from-indigo-50/90 to-purple-50/80 p-3 sm:p-3.5 rounded-2xl flex flex-col justify-between space-y-1.5 shadow-xs">
+          <div class="flex items-center justify-between border-b border-indigo-200/80 pb-1.5">
+            <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-indigo-900">
+              <i data-lucide="heart-handshake" class="w-4 h-4 text-indigo-600"></i>
+              <span>2. Aplicação da Palavra no Coração (Para Viver Todo Dia):</span>
+            </div>
+            <span class="text-[10px] font-bold text-indigo-700 bg-white px-2 py-0.5 rounded-full border border-indigo-200 shadow-2xs">Vida Prática</span>
+          </div>
+
+          <div class="space-y-1.5 flex-1 flex flex-col justify-center">
+            <p id="story-application" class="text-xs sm:text-sm text-indigo-950 font-medium leading-relaxed bg-white/70 p-2.5 rounded-xl border border-indigo-100">
+              <!-- Inserido dinamicamente via JS -->
+            </p>
+            <div class="bg-indigo-100/60 p-2 rounded-xl border border-indigo-200/80 flex items-start gap-2 text-xs text-indigo-900">
+              <span class="text-sm">🙏</span>
+              <div>
+                <strong class="font-black text-indigo-950">Minha Oração Diária:</strong>
+                <p class="italic text-indigo-900 leading-snug">"Querido Deus, quando eu sentir medo ou incerteza, enche meu coração da Tua coragem e me ajuda a confiar sempre no Teu amor. Amém!"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. TERCEIRO BLOCO: TAREFA DE APLICAÇÃO NA SEMANA -->
+        <div class="folha3-card-tarefa border-2 border-emerald-300/80 bg-gradient-to-r from-emerald-50 to-teal-50/70 p-3 sm:p-3.5 rounded-2xl flex flex-col justify-between space-y-1.5 shadow-xs">
+          <div class="flex items-center justify-between border-b border-emerald-200/80 pb-1.5">
+            <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-900">
+              <i data-lucide="home" class="w-4 h-4 text-emerald-600"></i>
+              <span>3. Tarefa de Aplicação na Semana (Missão em Família):</span>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-800 bg-white px-2 py-0.5 rounded-full border border-emerald-200 shadow-2xs">Segunda a Domingo</span>
+          </div>
+          
+          <div class="space-y-2 flex-1 flex flex-col justify-center">
+            <p id="weekly-challenge" class="text-xs sm:text-sm text-emerald-950 font-medium leading-relaxed bg-white/70 p-3 rounded-xl border border-emerald-100">
+              <!-- Inserido dinamicamente via JS -->
+            </p>
+
+            <!-- Acompanhamento diário da semana -->
+            <div class="pt-1.5 border-t border-emerald-200/70 flex flex-wrap items-center justify-between gap-1 text-[11px] font-bold text-emerald-950">
+              <span class="text-[10px] uppercase text-emerald-800 font-black">Check-in Diário em Família:</span>
+              <div class="flex items-center gap-1.5">
+                <span class="px-2.5 py-1 rounded-lg border border-emerald-300 bg-white shadow-2xs text-[11px]">Seg [ ]</span>
+                <span class="px-2.5 py-1 rounded-lg border border-emerald-300 bg-white shadow-2xs text-[11px]">Ter [ ]</span>
+                <span class="px-2.5 py-1 rounded-lg border border-emerald-300 bg-white shadow-2xs text-[11px]">Qua [ ]</span>
+                <span class="px-2.5 py-1 rounded-lg border border-emerald-300 bg-white shadow-2xs text-[11px]">Qui [ ]</span>
+                <span class="px-2.5 py-1 rounded-lg border border-emerald-300 bg-white shadow-2xs text-[11px]">Sex [ ]</span>
+                <span class="px-2.5 py-1 rounded-lg border border-emerald-300 bg-white shadow-2xs text-[11px]">Sáb [ ]</span>
+                <span class="px-2.5 py-1 rounded-lg border border-emerald-300 bg-white shadow-2xs text-[11px]">Dom [ ]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- FOLHA 4: GABARITO EXCLUSIVO DO PROFESSOR -->
+      <section id="folha-4" class="bg-white text-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm print-page space-y-5 print-break folha-professor-area">
+        
+        <div class="border-b border-slate-200 pb-3 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 border border-amber-200 flex items-center justify-center font-bold text-base shadow-2xs">
+              🗝️
+            </div>
+            <div>
+              <h3 class="font-display font-black text-lg sm:text-xl text-slate-900 leading-tight">
+                Folha do Professor • Gabarito Oficial
+              </h3>
+              <p class="text-xs text-slate-500 font-medium">Respostas do Quiz e coordenadas das palavras no Caça-Palavras</p>
+            </div>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-[11px] font-bold">
+            Uso Exclusivo do Educador
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          
+          <!-- Gabarito do Quiz -->
+          <div class="space-y-2.5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Gabarito das Perguntas do Quiz:
+            </h4>
+            <div id="gabarito-quiz" class="space-y-2 text-xs">
+              <!-- Respostas preenchidas via JS com cores suaves -->
+            </div>
+          </div>
+
+          <!-- Gabarito do Caça-Palavras -->
+          <div class="space-y-2.5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              <i data-lucide="compass" class="w-4 h-4 text-indigo-600"></i> Localização no Caça-Palavras:
+            </h4>
+            <div id="gabarito-caca" class="space-y-2 text-xs">
+              <!-- Coordenadas preenchidas via JS com cores suaves -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CAMPO DE OBSERVAÇÕES GERAIS PARA O PROFESSOR (EXPANDIDO ATÉ O FIM DA FOLHA) -->
+        <div class="folha4-obs-container pt-3.5 border-t border-slate-200 flex-1 flex flex-col justify-between space-y-2.5 min-h-0">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+              <i data-lucide="clipboard-pen-line" class="w-4 h-4 text-amber-600"></i> Observações Gerais & Diário do Educador:
+            </h4>
+            <span class="text-[10px] text-slate-400 font-semibold italic">Registro pedagógico, frequência, orações e avaliação da aula</span>
+          </div>
+
+          <div class="folha4-obs-card bg-amber-50/40 rounded-2xl border border-amber-200/90 p-3 sm:p-4 flex-1 flex flex-col justify-between space-y-2.5 min-h-0 shadow-xs">
+            
+            <!-- Linha 1: Metadados da Aula -->
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 text-xs">
+              <div>
+                <label class="block font-bold text-slate-700 text-[11px] mb-1">📅 Data da Aula:</label>
+                <input type="text" placeholder="Ex: 24/11/2026" class="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-500 shadow-2xs">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 text-[11px] mb-1">👥 Turma / Crianças:</label>
+                <input type="text" placeholder="Ex: Maternal (15 presentes)" class="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-500 shadow-2xs">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 text-[11px] mb-1">⭐ Dinâmica Utilizada:</label>
+                <input type="text" placeholder="Ex: Dramatização e oração" class="w-full bg-white border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-500 shadow-2xs">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 text-[11px] mb-1">❤️ Nível de Engajamento:</label>
+                <div class="flex items-center gap-1 pt-0.5 text-slate-600 text-[11px]">
+                  <span class="px-2 py-1 bg-white border border-slate-200 rounded-lg text-[10px] font-bold text-slate-700">[ ] Alto</span>
+                  <span class="px-2 py-1 bg-white border border-slate-200 rounded-lg text-[10px] font-bold text-slate-700">[ ] Médio</span>
+                  <span class="px-2 py-1 bg-white border border-slate-200 rounded-lg text-[10px] font-bold text-slate-700">[ ] Atenção</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Linha 2: Área de Texto Ampla para Anotações da Turma (Expande até o fim) -->
+            <div class="flex-1 flex flex-col min-h-0 space-y-1">
+              <label class="block font-bold text-slate-700 text-[11px]">📝 Anotações Didáticas, Testemunhos e Avaliação da Aula:</label>
+              <textarea placeholder="Escreva aqui observações sobre a participação das crianças, pedidos de oração da turma, pontos para reforçar na próxima semana, crianças que precisaram de apoio ou anotações didáticas..." class="folha4-textarea w-full flex-1 min-h-[140px] sm:min-h-[170px] bg-white border border-slate-200 rounded-xl p-3 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-500 shadow-2xs leading-relaxed resize-none"></textarea>
+            </div>
+
+            <!-- Linha 3: Checklist Prático do Educador (Fim da Folha) -->
+            <div class="pt-2 border-t border-amber-200/70 flex flex-wrap items-center justify-between gap-2 text-[11px]">
+              <span class="font-bold text-slate-700 flex items-center gap-1">
+                <i data-lucide="check-square" class="w-3.5 h-3.5 text-amber-600"></i> Checklist do Educador para a Semana:
+              </span>
+              <div class="flex flex-wrap items-center gap-2 text-slate-600 font-medium text-[10px]">
+                <span class="px-2 py-0.5 bg-white border border-amber-200 rounded-md font-semibold text-slate-700">[ ] Enviar desafio aos pais</span>
+                <span class="px-2 py-0.5 bg-white border border-amber-200 rounded-md font-semibold text-slate-700">[ ] Orar pelos pedidos da turma</span>
+                <span class="px-2 py-0.5 bg-white border border-amber-200 rounded-md font-semibold text-slate-700">[ ] Preparar material da próxima aula</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
   </main>
+  </div>
 
-  <!-- Elemento de Canvas Invisível para Processamento e Filtro de Imagem (Linework P&B) -->
-  <canvas id="hidden-process-canvas" style="display:none;"></canvas>
+  <!-- RODAPÉ -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500 no-print">
+    <div class="max-w-[1680px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>BibleKids Studio &copy; 2026 • Ferramenta Simples de Criação em 1 Clique.</p>
+      <div class="flex items-center gap-4 text-slate-400">
+        <span>🇧🇷 Português</span>
+        <span>🇺🇸 English</span>
+        <span>🇪🇸 Español</span>
+        <span>🇫🇷 Français</span>
+      </div>
+    </div>
+  </footer>
 
-  <script src="app.js?v=2.4"></script>
+  <!-- SCRIPT ENGINE BIBLEKIDS RÁPIDO & SIMPLES -->
+  <script>
+    // --- ESTADO GLOBAL DA APLICAÇÃO ---
+    let idiomaAtual = 'pt';
+    let bibliotecaLocal = [];
+    let aulaAtual = null;
+    let gridCacaPalavras = [];
+    let palavrasPosicionadas = [];
+    let mostrarSolucaoCaca = false;
+
+    // --- BANCO EMBUTIDO DOS 12 PRINCIPAIS TEMAS (FALLBACK ULTRA-RÁPIDO) ---
+    const TEMAS_PADRAO = {
+      davi: {
+        titulo: { pt: "Davi e o Gigante Golias", en: "David and Goliath", es: "David y el Gigante Goliat", fr: "David et le Géant Goliath" },
+        referencia: "1 Samuel 17",
+        versiculo: {
+          pt: "O Senhor é a minha força e o meu escudo; nele o meu coração confia.",
+          en: "The Lord is my strength and my shield; my heart trusts in him.",
+          es: "El Señor es mi fuerza y mi escudo; en él confía mi corazón.",
+          fr: "L'Éternel est ma force et mon bouclier; en lui mon cœur se confie."
+        },
+        versiculo_ref: "Salmo 28:7",
+        imagem_pixar: "assets/images/david_pixar.jpg",
+        imagem_2d: "assets/images/david_coloring_horizontal.jpg",
+        palavras_caca: {
+          pt: ["DAVI", "GOLIAS", "PEDRA", "CORAGEM", "VITORIA"],
+          en: ["DAVID", "GOLIATH", "STONE", "COURAGE", "VICTORY"],
+          es: ["DAVID", "GOLIAT", "PIEDRA", "CORAJE", "VICTORIA"],
+          fr: ["DAVID", "GOLIATH", "PIERRE", "COURAGE", "VICTOIRE"]
+        },
+        historia: {
+          pt: "Davi era um jovem pastor de ovelhas muito alegre e que amava a Deus. Um dia, um gigante chamado Golias apareceu para assustar todo o exército. Todos os soldados fortes tremiam de medo, mas Davi sabia que Deus é maior do que qualquer problema! Com apenas uma fundinha e cinco pedras do riacho, Davi avançou no nome do Senhor. A pedrinha acertou o gigante e ele caiu! Davi venceu porque confiou de todo coração em Deus.",
+          en: "David was a cheerful young shepherd who loved God with all his heart. One day, a giant warrior named Goliath came to terrify the whole army. All the soldiers were shaking with fear, but David knew that God is bigger than any giant! With only a sling and five smooth stones from the stream, David trusted in the Lord. One small stone hit the giant, and he fell! David won because he trusted God completely.",
+          es: "David era un joven pastor de ovejas muy alegre que amaba a Dios. Un día, un gigante llamado Goliat vino a asustar a todo el ejército. Todos los soldados temblaban de miedo, ¡pero David sabía que Dios es más grande que cualquier gigante! Con solo una honda y cinco piedras lisas del río, David avanzó en el nombre del Señor. La piedra golpeó al gigante y cayó. David venció porque confió de todo corazón en Dios.",
+          fr: "David était un jeune berger joyeux qui aimait Dieu de tout son cœur. Un jour, un géant nommé Goliath est venu effrayer toute l'armée. Tous les soldats tremblaient de peur, mais David savait que Dieu est plus grand que tous les géants ! Avec seulement une fronde et cinq pierres polies du ruisseau, David s'avança au nom du Seigneur. Une petite pierre frappa le géant et il tomba ! David a gagné parce qu'il a fait confiance à Dieu."
+        },
+        aplicacao: {
+          pt: "Quando você sentir medo do escuro, de provas na escola ou de um momento difícil, lembre-se: Deus é maior que qualquer 'gigante' e está sempre com você!",
+          en: "Whenever you feel scared of the dark, school tests, or hard times, remember: God is bigger than any 'giant' and He is always by your side!",
+          es: "Cuando sientas miedo a la oscuridad, a un examen o a un momento difícil, recuerda: ¡Dios es más grande que cualquier gigante y siempre está contigo!",
+          fr: "Chaque fois que tu as peur de l'obscurité ou d'un moment difficile, souviens-toi : Dieu est plus grand que tous les géants et Il est toujours avec toi !"
+        },
+        quiz: {
+          pt: [
+            { p: "Qual era a profissão de Davi antes de enfrentar o gigante?", o: ["Pescador", "Pastor de ovelhas", "Carpinteiro"], c: 1, j: "1 Samuel 17:15 – Davi apascentava as ovelhas de seu pai." },
+            { p: "O que Davi pegou no riacho para usar em sua funda?", o: ["5 pedrinhas lisas", "Um escudo de ferro", "Uma espada de ouro"], c: 0, j: "1 Samuel 17:40 – Davi escolheu cinco seixos lisos no ribeiro." },
+            { p: "Em nome de quem Davi foi lutar contra Golias?", o: ["Em seu próprio nome", "Em nome do Senhor dos Exércitos", "Em nome do rei Saul"], c: 1, j: "1 Samuel 17:45 – Davi disse: 'Eu venho contra ti em nome do Senhor dos Exércitos'." }
+          ],
+          en: [
+            { p: "What was David's job before facing Goliath?", o: ["Fisherman", "Shepherd", "Carpenter"], c: 1, j: "1 Samuel 17:15 – David kept his father's sheep." },
+            { p: "What did David pick up from the stream for his sling?", o: ["5 smooth stones", "An iron shield", "A golden sword"], c: 0, j: "1 Samuel 17:40 – David chose five smooth stones from the stream." },
+            { p: "In whose name did David go to fight Goliath?", o: ["In his own name", "In the name of the Lord of Hosts", "In king Saul's name"], c: 1, j: "1 Samuel 17:45 – David said: 'I come against you in the name of the Lord Almighty'." }
+          ],
+          es: [
+            { p: "¿Cuál era el trabajo de David antes de enfrentar a Goliat?", o: ["Pescador", "Pastor de ovejas", "Carpintero"], c: 1, j: "1 Samuel 17:15 – David cuidaba las ovejas de su padre." },
+            { p: "¿Qué recogió David del arroyo para su honda?", o: ["5 piedras lisas", "Un escudo de hierro", "Una espada dorada"], c: 0, j: "1 Samuel 17:40 – David escogió cinco piedras lisas del arroyo." },
+            { p: "¿En nombre de quién fue David a luchar contra Goliat?", o: ["En su propio nombre", "En nombre del Señor de los Ejércitos", "En nombre del rey Saúl"], c: 1, j: "1 Samuel 17:45 – David dijo: 'Vengo a ti en el nombre del Señor de los Ejércitos'." }
+          ],
+          fr: [
+            { p: "Quel était le métier de David avant d'affronter Goliath ?", o: ["Pêcheur", "Berger", "Charpentier"], c: 1, j: "1 Samuel 17:15 – David gardait les brebis de son père." },
+            { p: "Qu'a ramassé David dans le ruisseau pour sa fronde ?", o: ["5 pierres polies", "Un bouclier de fer", "Une épée en or"], c: 0, j: "1 Samuel 17:40 – David choisit cinq pierres polies dans le ruisseau." },
+            { p: "Au nom de qui David est-il allé combattre Goliath ?", o: ["En son propre nom", "Au nom de l'Éternel des armées", "Au nom du roi Saül"], c: 1, j: "1 Samuel 17:45 – David dit : 'Je viens au nom de l'Éternel des armées'." }
+          ]
+        },
+        atividades: {
+          pt: [
+            { tit: "🎭 Dramatização da Vitória", desc: "Peça para uma criança ser Davi e outra Golias. Use uma bolinha de meia para a funda e ensene com alegria a confiança em Deus." },
+            { tit: "🎨 A Funda de Papel e Pedrinhas", desc: "Faça um desenho de 5 pedras no papel e escreva dentro de cada uma: Fé, Oração, Amor, Coragem e Palavra de Deus." },
+            { tit: "🏃 Jogo do Alvo da Fé", desc: "Coloque um copo descartável a 2 metros e dê 3 bolinhas de papel para as crianças acertarem, simbolizando a pontaria guiada por Deus." },
+            { tit: "🧠 Memorização com Palmas", desc: "Repita o versículo chave rimando com palmas ritmadas até toda a turma memorizar." },
+            { tit: "🙏 Roda de Oração da Coragem", desc: "Cada criança fala um medo pequeno que tem e todos oram juntos pedindo a coragem do Senhor." }
+          ],
+          en: [
+            { tit: "🎭 Goliath Drama", desc: "Have one child play David and another play Goliath. Use a soft ball for the sling to celebrate trusting in God." },
+            { tit: "🎨 5 Faith Stones Craft", desc: "Draw 5 stones on paper and write inside each one: Faith, Prayer, Love, Courage, and God's Word." },
+            { tit: "🏃 Faith Target Game", desc: "Set up a cup 2 meters away and let kids toss 3 paper balls into it, showing God gives accuracy and courage." },
+            { tit: "🧠 Rhythm Verse Memorization", desc: "Recite the memory verse with rhythmic handclaps until every child learns it by heart." },
+            { tit: "🙏 Courage Prayer Circle", desc: "Each child shares one fear they face, and the group prays together asking for God's courage." }
+          ],
+          es: [
+            { tit: "🎭 Dramatización de David", desc: "Un niño hace de David y otro de Goliat. Usen una pelota de papel suave para escenificar la confianza en Dios." },
+            { tit: "🎨 Las 5 Piedras de la Fe", desc: "Dibujen 5 piedras en una hoja y escriban dentro: Fe, Oración, Amor, Coraje y Palabra de Dios." },
+            { tit: "🏃 Tiro al Blanco de la Fe", desc: "Coloquen un vaso a 2 metros para que los niños lancen bolitas de papel, recordando que Dios guía nuestras manos." },
+            { tit: "🧠 Memorización con Palmas", desc: "Repitan el versículo clave con palmas rítmicas hasta que toda la clase se lo aprenda." },
+            { tit: "🙏 Círculo de Oración de Coraje", desc: "Cada niño comparte un temor y oran juntos pidiendo la valentía de Dios." }
+          ],
+          fr: [
+            { tit: "🎭 Saynète de David et Goliath", desc: "Un enfant joue David et un autre Goliath. Utilisez une balle en mousse pour la fronde afin d'enseigner la confiance en Dieu." },
+            { tit: "🎨 Les 5 Pierres de la Foi", desc: "Dessinez 5 pierres sur une feuille et écrivez à l'intérieur : Foi, Prière, Amour, Courage et Parole de Dieu." },
+            { tit: "🏃 Jeu de Cible de la Foi", desc: "Placez un gobelet à 2 mètres et demandez aux enfants de lancer 3 boules de papier pour apprendre la persévérance." },
+            { tit: "🧠 Mémorisation en Rythme", desc: "Répétez le verset en tapant dans les mains jusqu'à ce que tous les enfants le sachent par cœur." },
+            { tit: "🙏 Cercle de Prière du Courage", desc: "Chaque enfant partage une petite peur et tous prient ensemble pour recevoir la paix et le courage de Dieu." }
+          ]
+        },
+        desafio: {
+          pt: "Esta semana, sempre que você sentir medo na escola ou antes de dormir, diga em voz alta: 'Com Deus, eu sou forte e corajoso!'.",
+          en: "This week, whenever you feel scared at school or before bed, say out loud: 'With God, I am strong and courageous!'.",
+          es: "Esta semana, cuando sientas miedo en la escuela o antes de dormir, di en voz alta: '¡Con Dios, soy fuerte y valiente!'.",
+          fr: "Cette semaine, chaque fois que tu as peur à l'école ou avant de dormir, dis à voix haute : 'Avec Dieu, je suis fort et courageux !'."
+        }
+      },
+      criacao: {
+        titulo: { pt: "A Criação do Mundo", en: "The Creation of the World", es: "La Creación del Mundo", fr: "La Création du Monde" },
+        referencia: "Gênesis 1",
+        versiculo: {
+          pt: "No princípio criou Deus os céus e a terra.",
+          en: "In the beginning God created the heavens and the earth.",
+          es: "En el principio creó Dios los cielos y la tierra.",
+          fr: "Au commencement, Dieu créa les cieux et la terre."
+        },
+        versiculo_ref: "Gênesis 1:1",
+        imagem_pixar: "assets/images/creation_pixar.jpg",
+        imagem_2d: "assets/images/creation_coloring.jpg",
+        palavras_caca: {
+          pt: ["DEUS", "LUZ", "TERRA", "MARES", "VIDA"],
+          en: ["GOD", "LIGHT", "EARTH", "SEAS", "LIFE"],
+          es: ["DIOS", "LUZ", "TIERRA", "MARES", "VIDA"],
+          fr: ["DIEU", "LUMIERE", "TERRE", "MERS", "VIE"]
+        },
+        historia: {
+          pt: "No começo de tudo, não havia nada. Estava tudo escuro e vazio. Então Deus disse com Sua voz poderosa: 'Haja luz!' E a luz brilhou! Deus separou o dia da noite, fez os céus azuis, juntou as águas e fez brotar a terra com árvores e flores coloridas. Criou o sol, a lua, os peixinhos do mar, os passarinhos e todos os animais. E por último, com muito carinho, Deus criou o ser humano para cuidar com amor de toda a criação!",
+          en: "In the beginning, there was nothing. Everything was dark and empty. Then God spoke with His mighty voice: 'Let there be light!' And light shone! God separated day from night, made the blue sky, gathered the waters, and filled the earth with colorful trees and flowers. He made the sun, the moon, fish, birds, and animals. And finally, with great love, He created humans to care for all creation!",
+          es: "Al principio no había nada. Todo estaba oscuro y vacío. Entonces Dios dijo con su voz poderosa: '¡Hágase la luz!' ¡Y la luz brilló! Dios separó el día de la noche, hizo los cielos, reunió las aguas e hizo brotar árboles y flores. Creó el sol, la luna, los peces, las aves y todos los animales. ¡Y por último, con mucho amor, creó al ser humano para cuidar toda su creación!",
+          fr: "Au commencement, il n'y avait rien. Tout était sombre et vide. Alors Dieu parla d'une voix puissante : 'Que la lumière soit !' Et la lumière brilla ! Dieu sépara le jour de la nuit, fit le ciel bleu, rassembla les eaux et couvrit la terre d'arbres et de fleurs. Il créa le soleil, la lune, les poissons, les oiseaux et tous les animaux. Et avec un amour infini, Il créa l'homme et la femme pour prendre soin de la création !"
+        },
+        aplicacao: {
+          pt: "O mundo foi feito por Deus com muito capricho para nós. Devemos cuidar bem da natureza, dos animaizinhos e das pessoas ao nosso redor!",
+          en: "God created the world with so much care for us. We should take good care of nature, animals, and the people around us!",
+          es: "El mundo fue hecho por Dios con mucho amor para nosotros. ¡Debemos cuidar la naturaleza, los animales y a las personas!",
+          fr: "Dieu a créé le monde avec amour pour nous. Nous devons prendre soin de la nature, des animaux et de tous ceux qui nous entourent !"
+        },
+        quiz: {
+          pt: [
+            { p: "O que Deus ordenou no primeiro dia?", o: ["Haja luz!", "Haja animais!", "Hajam carros!"], c: 0, j: "Gênesis 1:3 – Deus disse 'Haja luz', e houve luz." },
+            { p: "Quem Deus criou para cuidar da terra e dos animais?", o: ["Os anjos", "O ser humano", "Os gigantes"], c: 1, j: "Gênesis 1:26 – Deus criou o homem e a mulher à Sua imagem." },
+            { p: "Como Deus viu tudo o que tinha feito?", o: ["Viu que era muito bom", "Viu que faltava pintar", "Viu que estava feio"], c: 0, j: "Gênesis 1:31 – E viu Deus tudo quanto tinha feito, e eis que era muito bom." }
+          ],
+          en: [
+            { p: "What did God command on the first day?", o: ["Let there be light!", "Let there be animals!", "Let there be cars!"], c: 0, j: "Genesis 1:3 – God said 'Let there be light', and there was light." },
+            { p: "Who did God create to care for the earth?", o: ["Angels", "Humans", "Giants"], c: 1, j: "Genesis 1:26 – God created mankind in His own image." },
+            { p: "How did God describe everything He made?", o: ["It was very good", "It was incomplete", "It was boring"], c: 0, j: "Genesis 1:31 – God saw all that He had made, and it was very good." }
+          ],
+          es: [
+            { p: "¿Qué ordenó Dios el primer día?", o: ["¡Hágase la luz!", "¡Que haya animales!", "¡Que haya autos!"], c: 0, j: "Génesis 1:3 – Y dijo Dios: 'Sea la luz', y fue la luz." },
+            { p: "¿A quién creó Dios para cuidar la tierra?", o: ["A los ángeles", "Al ser humano", "A los gigantes"], c: 1, j: "Génesis 1:26 – Dios creó al hombre y a la mujer a su imagen." },
+            { p: "¿Cómo vio Dios todo lo que había hecho?", o: ["Vio que era muy bueno", "Vio que faltaba pintar", "Vio que estaba mal"], c: 0, j: "Génesis 1:31 – Y vio Dios todo lo que había hecho, y era muy bueno." }
+          ],
+          fr: [
+            { p: "Qu'a ordonné Dieu le premier jour ?", o: ["Que la lumière soit !", "Que les animaux soient !", "Que les voitures soient !"], c: 0, j: "Genèse 1:3 – Dieu dit : 'Que la lumière soit !' Et la lumière fut." },
+            { p: "Qui Dieu a-t-il créé pour prendre soin de la terre ?", o: ["Les anges", "L'être humain", "Les géants"], c: 1, j: "Genèse 1:26 – Dieu créa l'homme et la femme à son image." },
+            { p: "Comment Dieu a-t-il trouvé toute son œuvre ?", o: ["C'était très bon", "C'était incomplet", "C'était triste"], c: 0, j: "Genèse 1:31 – Dieu vit tout ce qu'il avait fait et voici, cela était très bon." }
+          ]
+        },
+        atividades: {
+          pt: [
+            { tit: "🎨 Desenho dos 7 Dias", desc: "Divida uma folha em quadrantes e deixe as crianças desenharem o sol, as plantas e os animais." },
+            { tit: "🌱 Plantando a Sementinha", desc: "Plante feijão no algodão com as crianças para que acompanhem o milagre do crescimento da vida criado por Deus." },
+            { tit: "🎭 Mímica dos Animais", desc: "Uma criança imita um animal criado por Deus e as outras tentam adivinhar qual é." },
+            { tit: "🧠 Cantinho da Gratidão", desc: "Cada criança agradece a Deus por uma coisa linda da natureza (as frutas, os pássaros, o mar)." },
+            { tit: "🙏 Oração pelo Planeta", desc: "Oração agradecendo a Deus pelo mundo lindo e prometendo cuidar com carinho da criação." }
+          ],
+          en: [
+            { tit: "🎨 7 Days Drawing", desc: "Divide paper into squares and have kids draw the sun, trees, animals, and flowers." },
+            { tit: "🌱 Seed Planting", desc: "Plant bean seeds in wet cotton so kids can witness God's gift of growing life." },
+            { tit: "🎭 Animal Charades", desc: "Children act out animals created by God while the group guesses what it is." },
+            { tit: "🧠 Gratitude Corner", desc: "Each child thanks God for their favorite creation (fruits, ocean, butterflies)." },
+            { tit: "🙏 Prayer for Nature", desc: "A prayer thanking God for our beautiful world and promising to be good stewards." }
+          ],
+          es: [
+            { tit: "🎨 Dibujo de los 7 Días", desc: "Dividan una hoja en secciones y dibujen el sol, los mares y los animales." },
+            { tit: "🌱 Semillita en Algodón", desc: "Planten un frijol en algodón para ver crecer la vida que Dios diseñó." },
+            { tit: "🎭 Mímica de Animales", desc: "Un niño imita a un animal de la creación y los demás adivinan." },
+            { tit: "🧠 Rincón de Gratitud", desc: "Cada niño da gracias a Dios por algo especial de la naturaleza." },
+            { tit: "🙏 Oración por la Creación", desc: "Oración dando gracias por el mundo y comprometiéndose a cuidarlo." }
+          ],
+          fr: [
+            { tit: "🎨 Dessin de la Création", desc: "Divisez une feuille en sections pour dessiner le soleil, les fleurs et les animaux." },
+            { tit: "🌱 La Petite Graine", desc: "Plantez une graine dans du coton humide pour observer le miracle de la vie créé par Dieu." },
+            { tit: "🎭 Mime des Animaux", desc: "Un enfant mime un animal créé par Dieu et les autres essaient de deviner." },
+            { tit: "🧠 Cercle de Gratitude", desc: "Chaque enfant remercie Dieu pour une merveille de la nature (les étoiles, la mer)." },
+            { tit: "🙏 Prière pour la Terre", desc: "Prière pour remercier Dieu de ce monde magnifique et apprendre à le protéger." }
+          ]
+        },
+        desafio: {
+          pt: "Esta semana, regue uma plantinha ou ajude a cuidar de um animalzinho em casa, lembrando de agradecer a Deus pela Criação!",
+          en: "This week, water a plant or help care for a pet at home, remembering to thank God for His wonderful Creation!",
+          es: "Esta semana, riega una planta o cuida a una mascota en casa, ¡recordando agradecer a Dios por su Creación!",
+          fr: "Cette semaine, arrose une plante ou prends soin d'un animal à la maison, en remerciant Dieu pour sa Création !"
+        }
+      }
+    };
+
+    // --- CONTROLE DA COLUNA LATERAL ESQUERDA (TÍTULOS PRONTOS) ---
+    const LISTA_TITULOS_SIDEBAR = [
+      { id: 'davi', num: 1, titulo: 'Davi e o Gigante Golias', ref: '1 Samuel 17', tag: 'Salmo 28:7', busca: 'Davi e Golias - 1 Samuel 17' },
+      { id: 'criacao', num: 2, titulo: 'A Criação do Mundo', ref: 'Gênesis 1–2', tag: 'O começo de tudo', busca: 'A Criação do Mundo - Gênesis 1' },
+      { id: 'noe', num: 3, titulo: 'A Arca de Noé', ref: 'Gênesis 6–9', tag: 'Obediência e Fé', busca: 'A Arca de Noé - Gênesis 6' },
+      { id: 'daniel', num: 4, titulo: 'Daniel na Cova dos Leões', ref: 'Daniel 6', tag: 'Oração e Coragem', busca: 'Daniel na Cova dos Leões - Daniel 6' },
+      { id: 'pastor', num: 5, titulo: 'O Bom Pastor', ref: 'Salmo 23', tag: 'Cuidado de Deus', busca: 'O Bom Pastor - Salmo 23' },
+      { id: 'tempestade', num: 6, titulo: 'A Tempestade Acalmada', ref: 'Marcos 4', tag: 'Paz e Poder', busca: 'A Tempestade Acalmada - Marcos 4' },
+      { id: 'paes', num: 7, titulo: 'A Multiplicação dos Pães', ref: 'João 6', tag: 'Milagre e Partilha', busca: 'A Multiplicação dos Pães - João 6' },
+      { id: 'samaritano', num: 8, titulo: 'O Bom Samaritano', ref: 'Lucas 10', tag: 'Amor ao Próximo', busca: 'O Bom Samaritano - Lucas 10' },
+      { id: 'filhoprodigo', num: 9, titulo: 'O Filho Pródigo', ref: 'Lucas 15', tag: 'Perdão do Pai', busca: 'O Filho Pródigo - Lucas 15' },
+      { id: 'moises', num: 10, titulo: 'Moisés e o Mar Vermelho', ref: 'Êxodo 14', tag: 'Livramento Divino', busca: 'Moisés e o Mar Vermelho - Êxodo 14' },
+      { id: 'jonas', num: 11, titulo: 'Jonas e o Grande Peixe', ref: 'Jonas 1–2', tag: 'Segunda Chance', busca: 'Jonas e o Grande Peixe - Jonas 1' },
+      { id: 'ressurreicao', num: 12, titulo: 'A Ressurreição de Jesus', ref: 'Mateus 28', tag: 'Ele Vive!', busca: 'A Ressurreição de Jesus - Mateus 28' }
+    ];
+
+    let itemSidebarAtivo = 'davi';
+
+    function renderizarTitulosSidebar(filtro = '') {
+      const container = document.getElementById('lista-titulos-sidebar');
+      const contador = document.getElementById('contador-titulos-sidebar');
+      if (!container) return;
+
+      const f = (filtro || '').trim().toLowerCase();
+      const filtrados = LISTA_TITULOS_SIDEBAR.filter(t => 
+        !f || 
+        t.titulo.toLowerCase().includes(f) || 
+        t.ref.toLowerCase().includes(f) || 
+        t.tag.toLowerCase().includes(f)
+      );
+
+      if (contador) {
+        contador.innerText = `${filtrados.length} lições prontas`;
+      }
+
+      if (filtrados.length === 0) {
+        container.innerHTML = `
+          <div class="p-4 text-center text-xs text-slate-400">
+            Nenhum título encontrado com "${filtro}".
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtrados.map(item => {
+        const isAtivo = item.id === itemSidebarAtivo;
+        const bgClass = isAtivo 
+          ? 'bg-indigo-50/90 border-2 border-indigo-600 shadow-2xs' 
+          : 'bg-white hover:bg-slate-50 border border-slate-200/90 shadow-2xs';
+        const numClass = isAtivo 
+          ? 'bg-indigo-600 text-white' 
+          : 'bg-slate-100 text-slate-600';
+        const titleClass = isAtivo ? 'text-indigo-950 font-black' : 'text-slate-800 font-bold';
+        const subClass = isAtivo ? 'text-indigo-700 font-semibold' : 'text-slate-400 font-medium';
+
+        return `
+          <div 
+            onclick="selecionarTituloSidebar('${item.id}', '${item.busca.replace(/'/g, "\\'")}')"
+            class="p-2.5 rounded-2xl ${bgClass} cursor-pointer transition flex items-center justify-between group"
+            title="Carregar lição: ${item.titulo}"
+          >
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="w-7 h-7 rounded-lg ${numClass} flex items-center justify-center text-xs font-black shrink-0 transition">
+                ${item.num}
+              </span>
+              <div class="min-w-0">
+                <h3 class="font-display text-xs ${titleClass} truncate">${item.titulo}</h3>
+                <p class="text-[10px] ${subClass} truncate">${item.ref} • ${item.tag}</p>
+              </div>
+            </div>
+            ${isAtivo ? '<span class="w-2 h-2 rounded-full bg-indigo-600 shrink-0"></span>' : '<span class="text-[9px] font-bold text-slate-400 group-hover:text-indigo-600 transition">A4</span>'}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filtrarTitulosSidebar(termo) {
+      renderizarTitulosSidebar(termo);
+    }
+
+    function selecionarTituloSidebar(id, busca) {
+      itemSidebarAtivo = id;
+      preencherTema(busca);
+      const inputFiltro = document.getElementById('input-filtro-sidebar');
+      renderizarTitulosSidebar(inputFiltro ? inputFiltro.value : '');
+    }
+
+    function atualizarSelecaoSidebar(termoBusca) {
+      const termoNorm = (termoBusca || '').toLowerCase();
+      const match = LISTA_TITULOS_SIDEBAR.find(t => {
+        if (termoNorm.includes(t.id)) return true;
+        if (termoNorm.includes(t.ref.toLowerCase())) return true;
+        const palavrasChave = t.titulo.toLowerCase().split(/\s+/).filter(w => w.length > 3 && !['lição', 'sobre', 'para'].includes(w));
+        return palavrasChave.some(p => termoNorm.includes(p));
+      });
+      if (match) {
+        itemSidebarAtivo = match.id;
+        const inputFiltro = document.getElementById('input-filtro-sidebar');
+        renderizarTitulosSidebar(inputFiltro ? inputFiltro.value : '');
+      }
+    }
+
+    // --- CARREGAMENTO INICIAL ---
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      carregarBibliotecaCompleta();
+      renderizarTitulosSidebar();
+      // Renderiza aula inicial padrão
+      executarCriacao("Davi e Golias - 1 Samuel 17", "pixar", idiomaAtual);
+    });
+
+    async function carregarBibliotecaCompleta() {
+      try {
+        const resp = await fetch('data/biblioteca_biblica.json');
+        if (resp.ok) {
+          bibliotecaLocal = await resp.json();
+          console.log(`[OK] Biblioteca bíblica carregada: ${bibliotecaLocal.length} histórias disponíveis.`);
+        }
+      } catch (e) {
+        console.warn("[Aviso] Modo offline ou local; utilizando base embutida otimizada.");
+      }
+    }
+
+    function alterarIdioma(novoIdioma) {
+      idiomaAtual = novoIdioma;
+      const temaAtual = document.getElementById('input-tema').value;
+      const estilo = document.querySelector('input[name="estilo_imagem"]:checked').value;
+      executarCriacao(temaAtual, estilo, idiomaAtual);
+    }
+
+    function preencherTema(tema) {
+      document.getElementById('input-tema').value = tema;
+      const estilo = document.querySelector('input[name="estilo_imagem"]:checked').value;
+      executarCriacao(tema, estilo, idiomaAtual);
+    }
+
+    function gerarAulaComandoUnico(e) {
+      if (e) e.preventDefault();
+      const tema = document.getElementById('input-tema').value.trim();
+      const estilo = document.querySelector('input[name="estilo_imagem"]:checked').value;
+      if (!tema) return;
+      executarCriacao(tema, estilo, idiomaAtual);
+    }
+
+    // --- MOTOR CENTRAL DE GERAÇÃO EM 1 CLIQUE ---
+    function executarCriacao(termoBusca, estiloVisual, lang) {
+      const termoNorm = termoBusca.toLowerCase();
+      let dadosAula = null;
+
+      // Mapeamento enriquecido com imagens locais de colorir e pixar
+      const mapaImagensLocais = {
+        noe: { pixar: "assets/images/noe_arca_pixar.jpg", coloring: "assets/images/noe_arca_coloring_169.jpg", storyboard: "assets/images/storybird_noe_completo.jpg" },
+        pastor: { pixar: "assets/images/shepherd_pixar_169.jpg", coloring: "assets/images/shepherd_coloring_169.jpg" },
+        tempestade: { pixar: "assets/images/jesus_acalma_tempestade_pixar.jpg", coloring: "assets/images/jesus_acalma_tempestade_coloring.jpg" },
+        paes: { pixar: "assets/images/multiplicacao_paes_pixar.jpg", coloring: "assets/images/multiplicacao_paes_coloring.jpg" },
+        jonas: { pixar: "assets/images/jonah_pixar_169.jpg", coloring: "assets/images/jonah_coloring_169.jpg", storyboard: "assets/images/storybird_jonas_completo.jpg" },
+        daniel: { pixar: "assets/images/daniel_pixar_169.jpg", coloring: "assets/images/daniel_coloring_169.jpg" },
+        samaritano: { pixar: "assets/images/samaritan_pixar_169.jpg", coloring: "assets/images/samaritan_coloring_169.jpg" },
+        moises: { pixar: "assets/images/moses_pixar_169.jpg", coloring: "assets/images/moses_coloring_169.jpg" },
+        ressurreicao: { pixar: "assets/images/tomb_pixar_169.jpg", coloring: "assets/images/tomb_coloring_169.jpg" },
+        filhoprodigo: { pixar: "assets/images/filhoprodigo_pixar.jpg", coloring: "assets/images/filhoprodigo_coloring.jpg", storyboard: "assets/images/storybird_filhoprodigo_completo.jpg" },
+        prodigo: { pixar: "assets/images/filhoprodigo_pixar.jpg", coloring: "assets/images/filhoprodigo_coloring.jpg", storyboard: "assets/images/storybird_filhoprodigo_completo.jpg" }
+      };
+
+      // 1. Verifica se corresponde a um tema clássico pré-configurado
+      if (termoNorm.includes("davi") || termoNorm.includes("david") || termoNorm.includes("golias") || termoNorm.includes("goliath")) {
+        dadosAula = montarEstrutura(TEMAS_PADRAO.davi, estiloVisual, lang);
+      } else if (termoNorm.includes("criacao") || termoNorm.includes("criação") || termoNorm.includes("creation") || termoNorm.includes("creacion")) {
+        dadosAula = montarEstrutura(TEMAS_PADRAO.criacao, estiloVisual, lang);
+      } else {
+        // Busca na biblioteca de 100 histórias se carregada
+        let achado = bibliotecaLocal.find(h => 
+          (h.titulo && h.titulo.toLowerCase().includes(termoNorm)) ||
+          (h.referencia && h.referencia.toLowerCase().includes(termoNorm)) ||
+          (h.tema_principal && h.tema_principal.toLowerCase().includes(termoNorm))
+        );
+
+        if (achado) {
+          dadosAula = converterBibliotecaParaAula(achado, estiloVisual, lang);
+        } else {
+          dadosAula = gerarAulaDinamica(termoBusca, estiloVisual, lang);
+        }
+
+        // Aplica imagem local se disponível para o tema
+        const termoSemAcento = termoNorm.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        for (const [chave, imgs] of Object.entries(mapaImagensLocais)) {
+          const chaveNorm = chave.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+          if (termoNorm.includes(chave) || termoSemAcento.includes(chaveNorm)) {
+            dadosAula.imagem_pixar = imgs.pixar;
+            dadosAula.imagem_coloring = imgs.coloring;
+            if (imgs.storyboard) dadosAula.imagem_storyboard = imgs.storyboard;
+            dadosAula.imagem = (estiloVisual === 'coloring') ? imgs.coloring : imgs.pixar;
+            break;
+          }
+        }
+      }
+
+      aulaAtual = dadosAula;
+      renderizarAulaNaTela(dadosAula);
+      atualizarSelecaoSidebar(termoBusca);
+    }
+
+    // Construtor estruturado
+    function montarEstrutura(base, estilo, lang) {
+      const imgPixar = base.imagem_pixar || base.imagem;
+      const imgColoring = base.imagem_2d || base.imagem_coloring || base.imagem_pixar;
+      const img = estilo === 'coloring' ? imgColoring : imgPixar;
+      return {
+        titulo: base.titulo[lang] || base.titulo.pt,
+        referencia: base.referencia,
+        versiculo: base.versiculo[lang] || base.versiculo.pt,
+        versiculo_ref: base.versiculo_ref,
+        imagem: img,
+        imagem_pixar: imgPixar,
+        imagem_coloring: imgColoring,
+        historia: base.historia[lang] || base.historia.pt,
+        aplicacao: base.aplicacao[lang] || base.aplicacao.pt,
+        palavras_caca: base.palavras_caca[lang] || base.palavras_caca.pt,
+        quiz: base.quiz[lang] || base.quiz.pt,
+        atividades: base.atividades[lang] || base.atividades.pt,
+        desafio: base.desafio[lang] || base.desafio.pt
+      };
+    }
+
+    // CONTROLE DE IMPRESSÃO PROFISSIONAL (SEM QUEBRA INDESEJADA DE PÁGINA)
+    function imprimirFolha(folhaId) {
+      const todasFolhas = document.querySelectorAll('.print-page');
+      todasFolhas.forEach(p => p.classList.add('no-print-temp'));
+      const folhaAlvo = document.getElementById(folhaId);
+      if (folhaAlvo) folhaAlvo.classList.remove('no-print-temp');
+      window.print();
+      setTimeout(() => {
+        todasFolhas.forEach(p => p.classList.remove('no-print-temp'));
+      }, 1000);
+    }
+
+    function imprimirTodasFolhas() {
+      const todasFolhas = document.querySelectorAll('.print-page');
+      todasFolhas.forEach(p => p.classList.remove('no-print-temp'));
+      window.print();
+    }
+  
+    function rolarParaFolha(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.add('ring-4', 'ring-indigo-300', 'transition-all');
+        setTimeout(() => el.classList.remove('ring-4', 'ring-indigo-300'), 1500);
+      }
+    }
+  
+    function alternarEstiloImagem(tipo) {
+      if (!aulaAtual) return;
+      const imgEl = document.getElementById('story-image');
+      const btnDown = document.getElementById('btn-download-img');
+      const capEl = document.getElementById('img-caption');
+      const tabPixar = document.getElementById('btn-tab-pixar');
+      const tabColoring = document.getElementById('btn-tab-coloring');
+
+      if (tipo === 'coloring') {
+        const src = aulaAtual.imagem_coloring || aulaAtual.imagem;
+        imgEl.src = src;
+        btnDown.href = src;
+        btnDown.download = "desenho_para_colorir.jpg";
+        if (capEl) capEl.innerText = "Desenho com traços nítidos e contornos limpos pronto para pintar.";
+        if (tabColoring) tabColoring.className = "flex-1 py-1.5 px-2.5 rounded-lg bg-white shadow-xs text-rose-700 flex items-center justify-center gap-1 transition font-bold";
+        if (tabPixar) tabPixar.className = "flex-1 py-1.5 px-2.5 rounded-lg text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1 transition font-bold";
+      } else {
+        const src = aulaAtual.imagem_pixar || aulaAtual.imagem;
+        imgEl.src = src;
+        btnDown.href = src;
+        btnDown.download = "ilustracao_colorida.jpg";
+        if (capEl) capEl.innerText = "Ilustração colorida de alta resolução adaptada para o público infantil.";
+        if (tabPixar) tabPixar.className = "flex-1 py-1.5 px-2.5 rounded-lg bg-white shadow-xs text-indigo-700 flex items-center justify-center gap-1 transition font-bold";
+        if (tabColoring) tabColoring.className = "flex-1 py-1.5 px-2.5 rounded-lg text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1 transition font-bold";
+      }
+    }
+
+    // Conversor da biblioteca de 100 histórias
+    function converterBibliotecaParaAula(h, estilo, lang) {
+      const palavras = (h.atividades_pedagogicas && h.atividades_pedagogicas.caca_palavras) ? h.atividades_pedagogicas.caca_palavras : ["DEUS", "AMOR", "FE", "PAZ", "VIDA"];
+      const quizItens = (h.quiz && h.quiz.length >= 3) ? h.quiz.slice(0, 3).map(q => ({
+        p: q.pergunta,
+        o: q.opcoes,
+        c: q.resposta_correta,
+        j: q.justificativa
+      })) : TEMAS_PADRAO.davi.quiz.pt;
+
+      const narrativa = (h.narrativa_por_idade && h.narrativa_por_idade["6-8"]) ? h.narrativa_por_idade["6-8"] : h.mensagem_central;
+      const vers = h.versiculo ? h.versiculo.texto : "O Senhor é bom em todo o tempo.";
+      const vref = h.versiculo ? h.versiculo.ref : h.referencia;
+
+      // Imagem AI caso não tenha local
+      const promptAI = encodeURIComponent(`cute bible story for kids, ${h.titulo}, ${estilo === 'pixar' ? '3d pixar animation style, colorful bright lighting' : '2d flat cute cartoon storybook illustration'}`);
+      const imgUrl = `https://image.pollinations.ai/prompt/${promptAI}?width=800&height=600&nologo=true`;
+
+      return {
+        titulo: h.titulo,
+        referencia: h.referencia,
+        versiculo: vers,
+        versiculo_ref: vref,
+        imagem: imgUrl,
+        historia: narrativa,
+        aplicacao: h.aplicacao_pratica || "Devemos sempre confiar em Deus e amar os nossos amigos!",
+        palavras_caca: palavras.slice(0, 5),
+        quiz: quizItens,
+        atividades: TEMAS_PADRAO.davi.atividades[lang] || TEMAS_PADRAO.davi.atividades.pt,
+        desafio: (h.atividades_pedagogicas && h.atividades_pedagogicas.desafio_semanal) ? h.atividades_pedagogicas.desafio_semanal : "Praticar o amor e a oração com a família durante a semana!"
+      };
+    }
+
+    // Gerador dinâmico para qualquer versículo novo
+    function gerarAulaDinamica(termo, estilo, lang) {
+      const titulos = {
+        pt: `Lição Bíblica: ${termo}`,
+        en: `Bible Lesson: ${termo}`,
+        es: `Lección Bíblica: ${termo}`,
+        fr: `Leçon Biblique : ${termo}`
+      };
+
+      const promptAI = encodeURIComponent(`cute bible story illustration for children, theme: ${termo}, ${estilo === 'pixar' ? '3d pixar disney style, vibrant colors' : '2d flat coloring storybook illustration'}`);
+      const imgUrl = `https://image.pollinations.ai/prompt/${promptAI}?width=800&height=600&nologo=true`;
+
+      const palavrasPorLang = {
+        pt: ["DEUS", "AMOR", "FE", "GRATIDAO", "ORACAO"],
+        en: ["GOD", "LOVE", "FAITH", "PEACE", "PRAYER"],
+        es: ["DIOS", "AMOR", "FE", "GRATITUD", "ORACION"],
+        fr: ["DIEU", "AMOUR", "FOI", "PAIX", "PRIERE"]
+      };
+
+      return {
+        titulo: titulos[lang] || titulos.pt,
+        referencia: termo,
+        versiculo: "Tudo posso naquele que me fortalece.",
+        versiculo_ref: "Filipenses 4:13",
+        imagem: imgUrl,
+        historia: `A Bíblia nos ensina que quando nos aproximamos de Deus com coração sincero em relação a ${termo}, Ele ouve as nossas orações e nos enche de paz. Assim como os heróis da fé confiaram no Senhor, nós também podemos caminhar com alegria e segurança sabendo que nunca estamos sozinhos!`,
+        aplicacao: "Em qualquer momento do seu dia, lembre-se de que Deus cuida de você com amor infinito. Seja bondoso com todos!",
+        palavras_caca: palavrasPorLang[lang] || palavrasPorLang.pt,
+        quiz: TEMAS_PADRAO.davi.quiz[lang] || TEMAS_PADRAO.davi.quiz.pt,
+        atividades: TEMAS_PADRAO.davi.atividades[lang] || TEMAS_PADRAO.davi.atividades.pt,
+        desafio: "Praticar uma atitude de carinho e orar pela sua família esta semana!"
+      };
+    }
+
+    // --- RENDERIZAÇÃO DOS COMPONENTES VISUAIS ---
+    let modoStoryboard = 'poster'; // 'poster' (cartaz StoryBird completo) ou 'quadros' (5 tirinhas com falas)
+
+    function alternarModoStoryboard() {
+      modoStoryboard = modoStoryboard === 'poster' ? 'quadros' : 'poster';
+      const labelEl = document.getElementById('btn-storyboard-modo-label');
+      if (labelEl) {
+        labelEl.innerText = modoStoryboard === 'poster' ? 'Ver em 5 Quadros' : 'Ver Cartaz StoryBird';
+      }
+      if (aulaAtual) {
+        renderizarStoryboard(aulaAtual);
+      }
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+    
+    // RENDERIZAR O STORYBOARD CONFORME DIAGRAMA DA PÁGINA 3
+    function renderizarStoryboard(aula) {
+      const containerEl = document.getElementById('storyboard-quadros-grid');
+      if (!containerEl) return;
+
+      const temaNorm = ((aula.titulo || '') + " " + (aula.referencia || '')).toLowerCase();
+      const isDavi = temaNorm.includes("davi") || temaNorm.includes("golias");
+      const isProdigo = temaNorm.includes("prodigo") || temaNorm.includes("pródigo");
+      const isNoe = temaNorm.includes("noe") || temaNorm.includes("noé") || temaNorm.includes("arca");
+      const isJonas = temaNorm.includes("jonas") || temaNorm.includes("peixe");
+
+      let posterSrc = aula.imagem_storyboard;
+      let altText = aula.titulo || "Storyboard";
+      if (isDavi) {
+        posterSrc = "assets/images/storybird_davi_completo.jpg";
+        altText = "Storyboard Davi e Golias";
+      } else if (isProdigo) {
+        posterSrc = "assets/images/storybird_filhoprodigo_completo.jpg";
+        altText = "Storyboard O Filho Pródigo";
+      } else if (isNoe) {
+        posterSrc = "assets/images/storybird_noe_completo.jpg";
+        altText = "Storyboard A Arca de Noé";
+      } else if (isJonas) {
+        posterSrc = "assets/images/storybird_jonas_completo.jpg";
+        altText = "Storyboard Jonas e o Grande Peixe";
+      }
+
+      const temPosterCompleto = !!posterSrc;
+
+      if (modoStoryboard === 'poster' && temPosterCompleto) {
+        containerEl.className = "flex flex-col items-center justify-center w-full h-full flex-1 min-h-0 overflow-hidden";
+        containerEl.innerHTML = `
+          <div class="w-full h-full flex justify-center items-center overflow-hidden p-0.5">
+            <img src="${posterSrc}" alt="${altText}" class="w-auto h-auto max-w-full max-h-[380px] sm:max-h-[420px] object-contain rounded-xl shadow-xs border border-amber-200/80 bg-white">
+          </div>
+        `;
+        const labelEl = document.getElementById('btn-storyboard-modo-label');
+        if (labelEl) labelEl.innerText = "Ver em Quadros";
+        return;
+      }
+
+      // Modo em quadros individuais no padrão StoryBird (Grid 2x3: 5 Cenas + 1 Cartão de Título)
+      const cenas = obterCenasStoryboard(aula, idiomaAtual);
+      containerEl.className = "grid grid-cols-3 gap-2 pt-0.5 w-full h-full items-stretch flex-1";
+      const labelEl = document.getElementById('btn-storyboard-modo-label');
+      if (labelEl) labelEl.innerText = temPosterCompleto ? "Ver Cartaz StoryBird" : "Modo 5 Cenas";
+
+      const htmlCenas = cenas.slice(0, 5).map((c, idx) => `
+        <div class="border-2 border-amber-900/60 rounded-xl p-1.5 bg-amber-50/40 flex flex-col justify-between space-y-1 shadow-xs">
+          <!-- Faixa do Título da Cena -->
+          <div class="border-b border-amber-200/80 pb-0.5">
+            <span class="text-[9px] font-black uppercase text-amber-950 bg-amber-100 px-1 py-0.2 rounded border border-amber-300 block text-center truncate">
+              ${c.num}. ${c.titulo}
+            </span>
+          </div>
+
+          <!-- Desenho da Cena -->
+          <div class="h-16 sm:h-20 bg-white rounded-lg border border-amber-200/70 flex items-center justify-center overflow-hidden p-0.5">
+            <img src="${c.img || aula.imagem_coloring || aula.imagem_pixar || aula.imagem}" alt="${c.titulo}" class="max-h-full max-w-full object-contain">
+          </div>
+
+          <!-- Balãozinho de Fala -->
+          <div class="bg-white/90 border border-amber-800/40 rounded-lg p-1 text-[9px] text-slate-800 leading-tight italic truncate">
+            💬 "${c.fala || c.desc}"
+          </div>
+        </div>
+      `).join('');
+
+      const htmlCartaoTitulo = `
+        <div class="rounded-xl p-2 bg-gradient-to-br from-amber-50 via-amber-100/70 to-amber-200/50 border-2 border-amber-300/80 flex flex-col items-center justify-center text-center space-y-1 shadow-xs">
+          <div class="w-7 h-7 rounded-full bg-amber-200/80 flex items-center justify-center text-amber-800 font-black text-xs">🕊️</div>
+          <span class="text-[9px] font-black uppercase tracking-wider text-amber-900">StoryBird</span>
+          <h4 class="font-black text-xs text-amber-950 uppercase leading-tight line-clamp-2">${aula.titulo}</h4>
+          <span class="text-[8px] font-bold text-amber-800/80 bg-amber-200/50 px-1.5 py-0.2 rounded">${aula.referencia}</span>
+        </div>
+      `;
+
+      containerEl.innerHTML = htmlCenas + htmlCartaoTitulo;
+    }
+
+    function obterCenasStoryboard(aula, lang) {
+      const temaNorm = ((aula.titulo || '') + " " + (aula.referencia || '')).toLowerCase();
+      
+      if (temaNorm.includes("davi") || temaNorm.includes("golias")) {
+        return [
+          { num: 1, titulo: "DAVID, O JOVEM PASTOR", desc: "Davi pastoreava com amor as ovelhas.", fala: "O Senhor é o meu pastor, nada me faltará!", img: "assets/images/storybird_davi_cena1.jpg" },
+          { num: 2, titulo: "O DESAFIO DO GIGANTE", desc: "O gigante afrontava todo o exército.", fala: "Quem é esse que desafia o exército de Deus?", img: "assets/images/storybird_davi_cena2.jpg" },
+          { num: 3, titulo: "A PREPARAÇÃO", desc: "Davi escolheu cinco pedrinhas no riacho.", fala: "Vou em nome do Senhor dos Exércitos!", img: "assets/images/storybird_davi_cena3.jpg" },
+          { num: 4, titulo: "O ENCONTRO", desc: "Davi arremessou a pedrinha na funda.", fala: "Deus entregará o gigante hoje em minhas mãos!", img: "assets/images/storybird_davi_cena4.jpg" },
+          { num: 5, titulo: "A VITÓRIA", desc: "O gigante caiu por terra e o povo venceu.", fala: "Toda a terra saberá que há Deus em Israel!", img: "assets/images/storybird_davi_cena5.jpg" }
+        ];
+      }
+
+      if (temaNorm.includes("prodigo") || temaNorm.includes("pródigo")) {
+        return [
+          { num: 1, titulo: "A PARTIDA", desc: "O filho pede sua herança e vai embora.", fala: "Vou viajar e viver minha própria vida!", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "A ILUSÃO", desc: "Ele gasta todo o seu dinheiro com festas passageiras.", fala: "Aproveitem enquanto tenho muitas riquezas!", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "A DIFICULDADE", desc: "Sem dinheiro e com fome, cuida de porcos.", fala: "Até os servos do meu pai têm pão sobrando...", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "O ARREPENDIMENTO", desc: "Ele se arrepende e decide retornar ao lar.", fala: "Pai, pequei contra o céu e perante ti!", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "O GRANDE ABRAÇO", desc: "O pai corre de braços abertos, perdoa e faz uma grande festa.", fala: "Meu filho estava perdido e foi achado! Celebremos!", img: "assets/images/filhoprodigo_pixar.jpg" }
+        ];
+      }
+
+      if (temaNorm.includes("noe") || temaNorm.includes("noé") || temaNorm.includes("arca")) {
+        return [
+          { num: 1, titulo: "O CHAMADO", desc: "Noé ouve com reverência a voz do Senhor.", fala: "Vou obedecer a Deus e construir a arca!", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "A CONSTRUÇÃO", desc: "Noé e seus filhos trabalham juntos com zelo.", fala: "Cada tábua colocada é um ato de fé!", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "OS ANIMAIS", desc: "Pares de todos os animais entram em fila na arca.", fala: "Deus cuida de toda a Sua criação!", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "A TEMPESTADE", desc: "A arca flutua em segurança sobre as grandes águas.", fala: "O Senhor é o nosso refúgio seguro!", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "A PROMESSA", desc: "O arco-íris brilha no céu como sinal da aliança.", fala: "Deus é sempre fiel à Sua promessa!", img: aula.imagem_pixar || aula.imagem }
+        ];
+      }
+
+      if (temaNorm.includes("jonas") || temaNorm.includes("peixe")) {
+        return [
+          { num: 1, titulo: "A FUGA", desc: "Jonas tenta fugir de Nínive em um navio.", fala: "Vou para bem longe, onde ninguém me veja...", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "A TEMPESTADE", desc: "O vento e as ondas balançam a embarcação.", fala: "Clamem ao Senhor por misericórdia!", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "NO MAR", desc: "Jonas no mar é acolhido por um grande peixe.", fala: "Deus preparou um livramento especial!", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "A ORAÇÃO", desc: "Dentro do peixe, Jonas ora com coração humilde.", fala: "Ao Senhor pertence a salvação!", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "NOVA CHANCE", desc: "Jonas na praia, pronto para cumprir sua missão.", fala: "Agora vou anunciar a Palavra de Deus!", img: aula.imagem_pixar || aula.imagem }
+        ];
+      }
+
+      if (temaNorm.includes("daniel") || temaNorm.includes("cova") || temaNorm.includes("leoes") || temaNorm.includes("leões")) {
+        return [
+          { num: 1, titulo: "A ORAÇÃO", desc: "Daniel ora com fé três vezes ao dia junto à janela.", fala: "Ao meu Deus eu sirvo e adoro sempre!", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "O DECRETO", desc: "Homens invejosos tramam uma lei injusta.", fala: "Ninguém poderá orar senão ao rei!", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "NA COVA", desc: "Daniel é lançado na cova dos leões famintos.", fala: "O meu Deus é poderoso para me livrar!", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "O ANJO", desc: "Deus envia Seu anjo e fecha a boca dos leões.", fala: "Nenhum mal me aconteceu, Deus está aqui!", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "O LIVRAMENTO", desc: "O rei retira Daniel ileso e louva ao Senhor.", fala: "Vivo é o Deus de Daniel por todas as gerações!", img: aula.imagem_pixar || aula.imagem }
+        ];
+      }
+
+      if (temaNorm.includes("criacao") || temaNorm.includes("criação") || temaNorm.includes("creation")) {
+        return [
+          { num: 1, titulo: "HAJA LUZ", desc: "Deus cria a luz e separa o dia da noite.", fala: "E viu Deus que a luz era muito boa!", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "CÉU E MAR", desc: "Formam-se o firmamento azul, as águas e a terra seca.", fala: "Surjam plantas, árvores e flores coloridas!", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "LUMINARES", desc: "O sol para o dia e a lua com estrelas para a noite.", fala: "Para iluminar a terra com beleza sem fim!", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "A VIDA ANIMAL", desc: "Pássaros cortam os céus e peixes povoam os oceanos.", fala: "Multipliquem-se todos os seres vivos!", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "ADÃO E EVA", desc: "Deus cria o ser humano com amor no Jardim do Éden.", fala: "Tudo o que Deus fez era muito bom!", img: aula.imagem_pixar || aula.imagem }
+        ];
+      }
+
+      if (temaNorm.includes("pastor") || temaNorm.includes("shepherd")) {
+        return [
+          { num: 1, titulo: "O CUIDADO", desc: "O Bom Pastor cuida com carinho de cada ovelhinha.", fala: "O Senhor é o meu pastor, nada me faltará!", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "PASTOS VERDES", desc: "Descanso e alimento em pastos verdejantes.", fala: "Ele renova as minhas forças a cada manhã!", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "ÁGUAS CALMAS", desc: "Caminhando em segurança junto às águas tranquilas.", fala: "Guia-me pelas veredas da justiça por Seu amor!", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "SEM MEDO", desc: "Passando pelo vale com a vara e o cajado do Pastor.", fala: "Não temerei mal algum, pois Tu estás comigo!", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "BONDADE E AMOR", desc: "Cálice transbordando de bênçãos e vida eterna.", fala: "Bondade e misericórdia me seguirão todos os dias!", img: aula.imagem_pixar || aula.imagem }
+        ];
+      }
+
+      if (temaNorm.includes("tempestade") || temaNorm.includes("marcos 4")) {
+        return [
+          { num: 1, titulo: "A VIAGEM", desc: "Jesus entra no barco e adormece sobre a almofada.", fala: "Passemos para a outra margem do mar!", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "O GRANDE VENTO", desc: "Ondas fortes invadem o pequeno barco no mar.", fala: "O vento está muito forte, o barco vai afundar!", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "O CLAMOR", desc: "Os discípulos assustados acordam o Mestre.", fala: "Mestre, não te importa que pereçamos?", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "AQUIETA-TE!", desc: "Jesus em pé repreende o vento e as ondas com autoridade.", fala: "Silêncio! Aquieta-te, vento e mar!", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "GRANDE BONANÇA", desc: "O mar fica calmo como um espelho e todos se alegram.", fala: "Quem é este que até o vento e o mar lhe obedecem?", img: aula.imagem_pixar || aula.imagem }
+        ];
+      }
+
+      if (temaNorm.includes("paes") || temaNorm.includes("pães") || temaNorm.includes("multiplicacao") || temaNorm.includes("multiplicação")) {
+        return [
+          { num: 1, titulo: "A MULTIDÃO", desc: "Milhares de famílias reunidas para ouvir Jesus.", fala: "Onde compraremos pão para tanta gente?", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "O MENINO", desc: "Um garotinho oferece seus cinco pães e dois peixinhos.", fala: "Aqui está o meu lanche, entregue ao Senhor!", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "A GRATIDÃO", desc: "Jesus toma os alimentos, olha para o céu e dá graças.", fala: "O Pai supre com amor todas as nossas necessidades!", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "O MILAGRE", desc: "Os discípulos distribuem e o alimento se multiplica.", fala: "Todos comeram e ficaram plenamente satisfeitos!", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "A ABUNDÂNCIA", desc: "Recolhem doze cestos cheios com as sobras do banquete.", fala: "Em Deus, a partilha se transforma em fartura!", img: aula.imagem_pixar || aula.imagem }
+        ];
+      }
+
+      if (temaNorm.includes("samaritano")) {
+        return [
+          { num: 1, titulo: "A ESTRADA", desc: "Um viajante é atacado e deixado ferido no caminho.", fala: "Alguém pode me ajudar a levantar?", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "A INDIFERENÇA", desc: "Pessoas importantes passam longe e não prestam socorro.", fala: "Tenho muita pressa, não posso parar agora...", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "A COMPAIXÃO", desc: "O bom samaritano para e sente profunda misericórdia.", fala: "Eu cuidarei de você com carinho e amor!", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "O CUIDADO", desc: "Ele limpa os ferimentos e o leva até a hospedaria.", fala: "Tome este óleo e descanse em segurança.", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "AMOR AO PRÓXIMO", desc: "Paga todas as despesas da recuperação do irmão.", fala: "Vá e faça você o mesmo: ame o seu próximo!", img: aula.imagem_pixar || aula.imagem }
+        ];
+      }
+
+      if (temaNorm.includes("moises") || temaNorm.includes("moisés") || temaNorm.includes("vermelho")) {
+        return [
+          { num: 1, titulo: "A JORNADA", desc: "O povo de Deus caminha livre guiado pela coluna de nuvem.", fala: "O Senhor vai adiante de nós dia e noite!", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "O CERCO", desc: "O exército se aproxima e o mar está logo à frente.", fala: "Não tenham medo! Permaneçam firmes e vejam o livramento!", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "A ORDEM", desc: "Deus diz a Moisés: 'Diga ao povo que marche!'.", fala: "Estende a tua vara sobre o mar e divide-o!", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "O MAR SE ABRE", desc: "O vento sopra forte e as águas se abrem em dois paredões.", fala: "O Senhor abriu um caminho seguro no meio do mar!", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "A VITÓRIA", desc: "Israel atravessa em terra seca e canta louvores de gratidão.", fala: "O Senhor é a minha força e o meu cântico!", img: aula.imagem_pixar || aula.imagem }
+        ];
+      }
+
+      if (temaNorm.includes("ressurreicao") || temaNorm.includes("ressurreição") || temaNorm.includes("tomb") || temaNorm.includes("pascoa") || temaNorm.includes("páscoa")) {
+        return [
+          { num: 1, titulo: "O AMANHECER", desc: "Mulheres caminham ao jardim ao nascer do sol.", fala: "Quem rolará a grande pedra para nós?", img: aula.imagem_pixar || aula.imagem },
+          { num: 2, titulo: "A PEDRA", desc: "A enorme pedra foi removida da entrada do sepulcro.", fala: "A entrada está aberta, o que aconteceu?", img: aula.imagem_coloring || aula.imagem },
+          { num: 3, titulo: "O ANJO", desc: "Um anjo resplandecente traz as boas novas.", fala: "Não tenham medo! Ele não está aqui, ressuscitou!", img: aula.imagem_coloring || aula.imagem },
+          { num: 4, titulo: "O TÚMULO VAZIO", desc: "Os lençóis dobrados e a sepultura totalmente vazia.", fala: "A morte foi vencida, Jesus vive para sempre!", img: aula.imagem_pixar || aula.imagem },
+          { num: 5, titulo: "ELE VIVE!", desc: "Jesus glorificado aparece com paz e alegria.", fala: "Paz seja convosco! Eu estarei com vocês para sempre!", img: aula.imagem_pixar || aula.imagem }
+        ];
+      }
+
+      // Fallback para outros temas bíblicos
+      return [
+        { num: 1, titulo: "Cena 1: O Começo", desc: "Deus inicia o seu grande plano.", fala: "Deus está presente conosco!", img: aula.imagem_pixar || aula.imagem },
+        { num: 2, titulo: "Cena 2: O Desafio", desc: "Um momento de provação e fé.", fala: "Não tenham medo, confiem no Senhor!", img: aula.imagem_coloring || aula.imagem },
+        { num: 3, titulo: "Cena 3: A Oração", desc: "O povo clama e busca a Deus.", fala: "Senhor, venha em nosso socorro!", img: aula.imagem_pixar || aula.imagem },
+        { num: 4, titulo: "Cena 4: O Milagre", desc: "O poder de Deus se manifesta.", fala: "Grandes coisas fez o Senhor por nós!", img: aula.imagem_coloring || aula.imagem },
+        { num: 5, titulo: "Cena 5: A Celebração", desc: "Todos agradecem pela vitória.", fala: "Glória a Deus por seu amor infinito!", img: aula.imagem_pixar || aula.imagem }
+      ];
+    }
+  
+    function renderizarAulaNaTela(aula) {
+      document.getElementById('story-title').innerText = aula.titulo;
+      document.getElementById('badge-referencia').innerText = aula.referencia;
+      document.getElementById('story-verse').innerText = `"${aula.versiculo}"`;
+      document.getElementById('story-verse-ref').innerText = aula.versiculo_ref;
+      
+      const imgEl = document.getElementById('story-image');
+      imgEl.src = aula.imagem_pixar || aula.imagem;
+      document.getElementById('btn-download-img').href = aula.imagem_pixar || aula.imagem;
+
+      // Desenho de Colorir dedicado
+      const imgColoringEl = document.getElementById('story-image-coloring');
+      if (imgColoringEl) {
+        imgColoringEl.src = aula.imagem_coloring || aula.imagem;
+        const btnDownColoring = document.getElementById('btn-download-coloring');
+        if (btnDownColoring) btnDownColoring.href = aula.imagem_coloring || aula.imagem;
+      }
+
+      // História
+      const storyTextEl = document.getElementById('story-text');
+      storyTextEl.innerHTML = aula.historia.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('');
+      document.getElementById('story-application').innerText = aula.aplicacao;
+
+      // Caça-palavras
+      gerarCacaPalavras(aula.palavras_caca);
+
+      // Quiz
+      renderizarQuiz(aula.quiz);
+
+      // Storyboard (HQ em Cenas - Folha 3)
+      renderizarStoryboard(aula);
+
+      // Atividades
+      renderizarAtividades(aula.atividades);
+
+      // Desafio
+      document.getElementById('weekly-challenge').innerText = aula.desafio;
+
+      // Gabarito
+      renderizarGabarito(aula);
+
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    // --- GERADOR DE GRADE DE CAÇA-PALAVRAS (10x10) ---
+    function gerarCacaPalavras(palavras) {
+      const tamanho = 10;
+      gridCacaPalavras = Array.from({ length: tamanho }, () => Array(tamanho).fill(''));
+      palavrasPosicionadas = [];
+      mostrarSolucaoCaca = false;
+      document.getElementById('btn-toggle-caca').innerText = "Ver Resposta";
+
+      const alfabeto = "ABCDEFGHILMNOPQRSTUVZ";
+
+      palavras.forEach((palavraOriginal) => {
+        const palavra = palavraOriginal.toUpperCase().replace(/[^A-Z]/g, '');
+        let colocado = false;
+        let tentativas = 0;
+
+        while (!colocado && tentativas < 100) {
+          tentativas++;
+          const direcao = Math.random() > 0.5 ? 'H' : 'V'; // Horizontal ou Vertical
+          const lin = direcao === 'H' ? Math.floor(Math.random() * tamanho) : Math.floor(Math.random() * (tamanho - palavra.length + 1));
+          const col = direcao === 'H' ? Math.floor(Math.random() * (tamanho - palavra.length + 1)) : Math.floor(Math.random() * tamanho);
+
+          // Verifica se cabe sem colisão
+          let cabe = true;
+          for (let i = 0; i < palavra.length; i++) {
+            const r = direcao === 'H' ? lin : lin + i;
+            const c = direcao === 'H' ? col + i : col;
+            if (gridCacaPalavras[r][c] !== '' && gridCacaPalavras[r][c] !== palavra[i]) {
+              cabe = false;
+              break;
+            }
+          }
+
+          if (cabe) {
+            const coords = [];
+            for (let i = 0; i < palavra.length; i++) {
+              const r = direcao === 'H' ? lin : lin + i;
+              const c = direcao === 'H' ? col + i : col;
+              gridCacaPalavras[r][c] = palavra[i];
+              coords.push({ r, c });
+            }
+            palavrasPosicionadas.push({ palavra, lin: lin + 1, col: col + 1, direcao, coords });
+            colocado = true;
+          }
+        }
+      });
+
+      // Preenche espaços vazios com letras aleatórias
+      for (let r = 0; r < tamanho; r++) {
+        for (let c = 0; c < tamanho; c++) {
+          if (gridCacaPalavras[r][c] === '') {
+            gridCacaPalavras[r][c] = alfabeto[Math.floor(Math.random() * alfabeto.length)];
+          }
+        }
+      }
+
+      desenharGradeCacaPalavras();
+
+      // Renderiza lista de palavras em coluna ao lado
+      const qtdEl = document.getElementById('qtd-palavras');
+      if (qtdEl) qtdEl.innerText = `${palavras.length} palavras`;
+      const listaEl = document.getElementById('wordsearch-list');
+      if (listaEl) {
+        listaEl.innerHTML = palavras.slice(0, 5).map(p => `
+          <div class="px-2.5 py-1 rounded-lg bg-white border border-purple-200/90 text-purple-950 text-xs font-black flex items-center gap-1.5 shadow-2xs">
+            <span class="w-3.5 h-3.5 rounded border border-purple-300 bg-purple-50 flex items-center justify-center text-[9px] shrink-0 text-purple-600 font-bold">✓</span>
+            <span class="tracking-wide">${p}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    function desenharGradeCacaPalavras() {
+      const gridEl = document.getElementById('wordsearch-grid');
+      const solucaoCoords = new Set();
+      if (mostrarSolucaoCaca) {
+        palavrasPosicionadas.forEach(p => p.coords.forEach(coord => solucaoCoords.add(`${coord.r},${coord.c}`)));
+      }
+
+      gridEl.innerHTML = gridCacaPalavras.map((linha, r) => `
+        <div class="flex gap-0.5">
+          ${linha.map((letra, c) => {
+            const isHighlighted = solucaoCoords.has(`${r},${c}`);
+            return `<div class="grid-cell ${isHighlighted ? 'highlight' : 'bg-white'}">${letra}</div>`;
+          }).join('')}
+        </div>
+      `).join('');
+    }
+
+    function toggleGabaritoCacaPalavras() {
+      mostrarSolucaoCaca = !mostrarSolucaoCaca;
+      document.getElementById('btn-toggle-caca').innerText = mostrarSolucaoCaca ? "Ocultar Resposta" : "Ver Resposta";
+      desenharGradeCacaPalavras();
+    }
+
+    // --- RENDERIZAÇÃO DO QUIZ (3 PERGUNTAS E 3 OPÇÕES) ---
+    function renderizarQuiz(perguntas) {
+      const quizEl = document.getElementById('quiz-container');
+      if (!quizEl || !perguntas) return;
+      const letras = ['A', 'B', 'C'];
+
+      quizEl.innerHTML = perguntas.slice(0, 3).map((item, idx) => `
+        <div class="bg-white p-2.5 rounded-xl border border-indigo-200/90 shadow-2xs space-y-1.5">
+          <p class="text-[11px] sm:text-xs font-bold text-slate-900 flex items-start gap-1.5 leading-snug">
+            <span class="w-4 h-4 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px] shrink-0 font-bold">${idx + 1}</span>
+            <span>${item.p}</span>
+          </p>
+          <div class="space-y-1 pl-5">
+            ${item.o.map((op, opIdx) => `
+              <label onclick="verificarQuiz(this, ${opIdx}, ${item.c})" class="cursor-pointer border border-slate-200 hover:border-indigo-400 bg-slate-50 hover:bg-indigo-50/50 p-1.5 rounded-lg flex items-center gap-2 text-[11px] font-medium text-slate-700 transition">
+                <span class="w-3.5 h-3.5 rounded border border-slate-300 flex items-center justify-center text-[9px] font-bold text-slate-500 bg-white shrink-0">${letras[opIdx]}</span>
+                <span class="leading-tight">${op}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function verificarQuiz(labelEl, escolhida, correta) {
+      const parent = labelEl.parentElement;
+      const allLabels = parent.querySelectorAll('label');
+      allLabels.forEach(l => l.classList.remove('bg-emerald-100', 'border-emerald-500', 'text-emerald-900', 'bg-red-100', 'border-red-400', 'text-red-900'));
+
+      if (escolhida === correta) {
+        labelEl.classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+      } else {
+        labelEl.classList.add('bg-red-100', 'border-red-400', 'text-red-900');
+        allLabels[correta].classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+      }
+    }
+
+    // --- RENDERIZAÇÃO DAS 5 SUGESTÕES DE BRINCADEIRAS ---
+    function renderizarAtividades(atividades) {
+      const listEl = document.getElementById('activities-list');
+      if (!listEl || !atividades) return;
+      const icons = ['theater', 'palette', 'gamepad-2', 'brain', 'heart-handshake'];
+      const colors = ['text-purple-600', 'text-amber-600', 'text-emerald-600', 'text-sky-600', 'text-rose-600'];
+
+      listEl.innerHTML = atividades.slice(0, 5).map((at, idx) => {
+        const isFifth = (idx === 4 && atividades.length >= 5);
+        return `
+        <div class="p-3 sm:p-3.5 rounded-xl bg-white border border-amber-200/90 shadow-2xs space-y-1 hover:border-amber-400 transition ${isFifth ? 'md:col-span-2' : ''}">
+          <div class="flex items-center gap-2 ${colors[idx % colors.length]} font-extrabold text-xs uppercase tracking-wide">
+            <span class="w-5 h-5 rounded-full bg-amber-100 text-amber-900 flex items-center justify-center text-[10px] font-black border border-amber-300 shrink-0">${idx + 1}</span>
+            <i data-lucide="${icons[idx % icons.length]}" class="w-3.5 h-3.5"></i>
+            <span>${at.tit}</span>
+          </div>
+          <p class="text-[11px] sm:text-xs text-slate-600 leading-relaxed pl-7">${at.desc}</p>
+        </div>
+      `;
+      }).join('');
+    }
+
+    // --- GABARITO DO PROFESSOR ---
+    function renderizarGabarito(aula) {
+      const letras = ['A', 'B', 'C'];
+      const gabQuizEl = document.getElementById('gabarito-quiz');
+      gabQuizEl.innerHTML = aula.quiz.map((q, idx) => `
+        <div class="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200/90 shadow-2xs space-y-1">
+          <p class="font-bold text-emerald-950 flex items-center gap-1.5 text-xs">
+            <span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white font-black text-[10px]">Questão ${idx + 1}</span>
+            <span>Letra <strong class="text-emerald-700 font-black">${letras[q.c]}</strong> (${q.o[q.c]})</span>
+          </p>
+          <p class="text-[11px] text-slate-600 italic leading-relaxed pl-1">${q.j}</p>
+        </div>
+      `).join('');
+
+      const gabCacaEl = document.getElementById('gabarito-caca');
+      gabCacaEl.innerHTML = palavrasPosicionadas.map(p => `
+        <div class="bg-indigo-50/70 p-2.5 rounded-xl border border-indigo-200/90 shadow-2xs flex items-center justify-between">
+          <span class="font-bold text-indigo-950 flex items-center gap-1.5 text-xs">
+            <span class="text-indigo-600">🔍</span> ${p.palavra}
+          </span>
+          <span class="text-[11px] font-semibold text-indigo-800 bg-white/90 px-2 py-0.5 rounded-md border border-indigo-100 shadow-2xs">
+            Linha ${p.lin}, Coluna ${p.col} (${p.direcao === 'H' ? 'Horizontal ➔' : 'Vertical ⬇'})
+          </span>
+        </div>
+      `).join('');
+    }
+
+    // --- COPIAR TEXTO COMPLETO ---
+    function copiarTextoAula() {
+      if (!aulaAtual) return;
+      const texto = `📖 AULA BÍBLICA: ${aulaAtual.titulo} (${aulaAtual.referencia})
+⭐ Versículo: "${aulaAtual.versiculo}" (${aulaAtual.versiculo_ref})
+
+📜 HISTÓRIA:
+${aulaAtual.historia}
+
+❤️ APLICAÇÃO:
+${aulaAtual.aplicacao}
+
+❓ QUIZ:
+${aulaAtual.quiz.map((q, i) => `${i+1}. ${q.p}\n   A) ${q.o[0]}\n   B) ${q.o[1]}\n   C) ${q.o[2]}\n   Gabarito: ${['A','B','C'][q.c]}`).join('\n\n')}
+
+🏠 MISSÃO DA SEMANA:
+${aulaAtual.desafio}`;
+
+      navigator.clipboard.writeText(texto).then(() => {
+        alert("Texto da aula copiado com sucesso! Você pode colar direto no WhatsApp dos professores ou dos pais.");
+      });
+    }
+  </script>
+
 </body>
 </html>

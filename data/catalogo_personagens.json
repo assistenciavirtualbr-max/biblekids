@@ -1,0 +1,367 @@
+{
+  "versao_catalogo": "1.1.0",
+  "data_revisao": "2026-11-22",
+  "fase": "Fase 2.2.4.1 (Ajuste Cronológico Canônico de Moisés e Jesus)",
+  "descricao": "Catálogo Mestre de Personagens e Fichas de Referência Visual — BIBLEKIDS",
+  "padrao_visual": "2D Premium Storybook (16:9 Widescreen)",
+  "personagens": [
+    {
+      "id": "jesus_bebe",
+      "nome": "Jesus (Recém-nascido na Manjedoura)",
+      "personagem_base": "Jesus",
+      "fase_cronologica": "Bebê / Recém-nascido (Lucas 2:7, 12, 16: 'brephos' / bebê envolto em panos)",
+      "descricao_fisica": "Bebê adorável e sereno, traços suaves e bochechas coradas, olhar calmo de paz celestial.",
+      "cabelo_barba": "Finíssimos cabelos castanho-claros de bebê, sem barba.",
+      "vestimentas_cores": "Envolto em panos de linho simples e aconchegantes em tom bege-claro acolchoado.",
+      "elementos_distintivos": "Deitado confortavelmente em uma manjedoura de madeira rústica com palha dourada na estrebaria de Belém, suave brilho acolhedor ao redor.",
+      "referencias_biblicas": [
+        "Lucas 2:1-20"
+      ],
+      "historias_biblioteca": [
+        32
+      ],
+      "prompt_ancora_en": "sweet peaceful newborn baby Jesus wrapped in warm simple beige linen swaddling cloths resting gently on golden straw in a rustic wooden manger in Bethlehem, gentle warm lantern glow, loving peaceful atmosphere",
+      "observacoes_continuidade": "Utilizado exclusivamente na noite do nascimento na manjedoura. Não confundir com a visita posterior dos magos."
+    },
+    {
+      "id": "jesus_crianca",
+      "nome": "Jesus (Menino / Primeira Infância na Visita dos Magos)",
+      "personagem_base": "Jesus",
+      "fase_cronologica": "Primeira Infância / Menino pequeno (Mateus 2:11: 'paidion' / menino em casa com Maria)",
+      "descricao_fisica": "Menino pequeno adorável na primeira infância, com passos firmes ou sentado com carinho junto de Maria, sorriso radiante e doce, olhinhos castanhos curiosos e afetuosos, expressando serenidade e pureza.",
+      "cabelo_barba": "Cabelinhos castanho-claros ondulados na altura das orelhas, sem barba.",
+      "vestimentas_cores": "Túnica infantil de linho bege ou azul-pastel suave de corte simples e confortável.",
+      "elementos_distintivos": "Recebendo com alegria pura a adoração e os presentes dos sábios do Oriente (ouro, incenso e mirra) dentro de uma casa em Belém (Mateus 2:11); luz suave da estrela entrando pela janela.",
+      "referencias_biblicas": [
+        "Mateus 2:1-12"
+      ],
+      "historias_biblioteca": [
+        33
+      ],
+      "prompt_ancora_en": "sweet young toddler boy Jesus with expressive curious dark eyes, gentle loving smile, soft wavy light-brown hair, wearing a humble pastel linen child tunic, sitting happily beside Mary inside a home in Bethlehem as Wise Men present golden treasures",
+      "observacoes_continuidade": "Conforme Mateus 2:11, os magos viram o 'menino' (paidion) na 'casa', não o recém-nascido na manjedoura. Não fixar idade milimétrica sem fundamento bíblico."
+    },
+    {
+      "id": "jesus_menino",
+      "nome": "Jesus (Menino no Templo)",
+      "personagem_base": "Jesus",
+      "fase_cronologica": "Menino (12 anos — Lucas 2:42)",
+      "descricao_fisica": "Garoto semítico de 12 anos, olhos castanhos vivos de sabedoria e pureza, feição amigável e atenta, postura respeitosa.",
+      "cabelo_barba": "Cabelos castanho-ondulados na altura das orelhas, sem barba.",
+      "vestimentas_cores": "Túnica juvenil de linho cru bege simples, amarrada na cintura com faixa de tecido azul-claro.",
+      "elementos_distintivos": "Segura respeitosamente um rolo de pergaminho bíblico, ouvindo e conversando com os doutores do Templo.",
+      "referencias_biblicas": [
+        "Lucas 2:41-52"
+      ],
+      "historias_biblioteca": [
+        34
+      ],
+      "prompt_ancora_en": "twelve-year-old boy Jesus with expressive thoughtful brown eyes, wavy shoulder-length brown hair, wearing a humble beige linen tunic with simple blue sash, sitting respectfully among temple elders",
+      "observacoes_continuidade": "Diferenciar claramente da fisionomia adulta; manter traços juvenis expressivos e amáveis."
+    },
+    {
+      "id": "jesus_adulto",
+      "nome": "Jesus Cristo (Ministério Adulto)",
+      "personagem_base": "Jesus",
+      "fase_cronologica": "Adulto (30 a 33 anos — Lucas 3:23)",
+      "descricao_fisica": "Homem semítico de aproximadamente 30 a 33 anos, porte acolhedor, sorriso compassivo e gentil, olhar caloroso de infinito amor, compleição física saudável de caminhante da Galileia.",
+      "cabelo_barba": "Cabelos castanhos médios ondulados até a altura dos ombros, barba castanha curta, bem cuidada e alinhada.",
+      "vestimentas_cores": "Túnica de linho cru esbranquiçado/bege de tecelagem simples, sobreposta por um manto terracota/carmesim suave sobre os ombros, sandálias de tiras de couro simples.",
+      "elementos_distintivos": "Postura de acolhimento e bênção com mãos estendidas, iluminação cinematográfica suave e dourada, olhar direto e confortador.",
+      "referencias_biblicas": [
+        "Mateus",
+        "Marcos",
+        "Lucas",
+        "João"
+      ],
+      "historias_biblioteca": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "prompt_ancora_en": "Jesus Christ as an inspiring warm friendly teacher, Middle-Eastern man in his early 30s, compassionate welcoming brown eyes, gentle kind smile, neat shoulder-length wavy brown hair, short trimmed brown beard, wearing a modest off-white natural linen tunic and a soft terracotta red draped mantle, simple leather sandals",
+      "observacoes_continuidade": "Manter rigorosamente idêntica a paleta de cores da túnica (bege) e manto (terracota) ao longo de todo o ministério."
+    },
+    {
+      "id": "pedro_pescador",
+      "nome": "Simão Pedro (Pescador da Galileia)",
+      "personagem_base": "Pedro",
+      "fase_cronologica": "Adulto (35 a 40 anos)",
+      "descricao_fisica": "Homem vigoroso de 35 a 40 anos, ombros fortes de pescador trabalhador, pele bronzeada pelo sol do lago, expressão leal, espontânea e corajosa.",
+      "cabelo_barba": "Cabelos castanhos escuros cacheados e volumosos, barba castanha curta e espessa com alguns fios grisalhos.",
+      "vestimentas_cores": "Túnica rústica azul-petróleo ou verde-mar amarrada na cintura por corda de cânhamo, mangas dobradas.",
+      "elementos_distintivos": "Geralmente associado a redes de pesca, barcos de madeira ou olhando com fé e entusiasmo para Jesus.",
+      "referencias_biblicas": [
+        "Lucas 5:1-11",
+        "Mateus 14:22-33",
+        "Mateus 16:13-20"
+      ],
+      "historias_biblioteca": [
+        41,
+        45,
+        51,
+        59
+      ],
+      "prompt_ancora_en": "Peter the fisherman, strong Middle-Eastern man in his late 30s with sun-bronzed skin, loyal energetic expression, thick curly dark brown hair and short sturdy beard, wearing a rustic teal-blue fisherman tunic tied with hemp rope",
+      "observacoes_continuidade": "Destacar a força física de pescador da Galileia e o contraste de afeto com o Mestre."
+    },
+    {
+      "id": "moises_bebe",
+      "nome": "Moisés (Bebê no Nilo)",
+      "personagem_base": "Moisés",
+      "fase_cronologica": "Bebê / Lactente (Êxodo 2:2-3)",
+      "descricao_fisica": "Lindo bebê de três meses, bochechas fofas, olhar curioso e protegido, envolto em faixas de linho.",
+      "cabelo_barba": "Cabelinhos pretos finos de bebê.",
+      "vestimentas_cores": "Paninhos de linho branco puro e coberta macia.",
+      "elementos_distintivos": "Dentro de um cesto de junco calafetado com betume, flutuando em segurança entre os papiros do Nilo sob a guarda de sua irmã Miriã.",
+      "referencias_biblicas": [
+        "Êxodo 2:1-10"
+      ],
+      "historias_biblioteca": [
+        11
+      ],
+      "prompt_ancora_en": "beautiful three-month-old baby Moses with fine dark hair, resting safely wrapped in soft white linen blankets inside a floating waterproof woven papyrus basket among tall green reeds of the Nile River",
+      "observacoes_continuidade": "Enfatizar a providência protetora de Deus no cesto de junco; sem lágrimas de pânico."
+    },
+    {
+      "id": "moises_adulto",
+      "nome": "Moisés (Fase Adulta em Midiã)",
+      "personagem_base": "Moisés",
+      "fase_cronologica": "Adulto em Midiã (anterior ao chamado no Horebe — Êxodo 2:11-25)",
+      "descricao_fisica": "Homem hebreu adulto em sua fase de pastor junto ao rebanho de Jetro em Midiã, semblante reflexivo e postura ágil.",
+      "cabelo_barba": "Cabelos escuros e barba curta bem delineada.",
+      "vestimentas_cores": "Túnica simples de pastor nômade em tons de marrom e bege cru.",
+      "elementos_distintivos": "Cajado simples de pastoreio junto aos poços e rebanhos de Midiã.",
+      "referencias_biblicas": [
+        "Êxodo 2:11-25"
+      ],
+      "historias_biblioteca": [],
+      "prompt_ancora_en": "adult shepherd Moses in Midian, thoughtful Middle-Eastern man with dark hair and short beard, wearing a simple earth-toned nomadic shepherd tunic beside a stone well in the desert",
+      "observacoes_continuidade": "Ficha de referência para a fase preliminar em Midiã anterior aos 80 anos."
+    },
+    {
+      "id": "moises_lider_exodo",
+      "nome": "Moisés (Líder do Êxodo e Peregrinação no Sinai)",
+      "personagem_base": "Moisés",
+      "fase_cronologica": "Maturidade / Liderança no Êxodo e Peregrinação no Sinai (a partir dos 80 anos — Êxodo 7:7)",
+      "descricao_fisica": "Líder venerável e vigoroso de aproximadamente 80 anos (conforme Êxodo 7:7: 'Era Moisés de oitenta anos quando falaram a Faraó'), semblante solene e corajoso, olhar firme de profunda fé no Deus Todo-Poderoso, compleição física saudável e robusta preservada pela graça divina.",
+      "cabelo_barba": "Cabelos ondulados em tom cinza-escuro/grisalho e barba grisalha média bem aparada e imponente.",
+      "vestimentas_cores": "Túnica de linho rústico em tons de areia e marrom-terra, manto do deserto com capuz dobrado nos ombros, sandálias de couro resistentes.",
+      "elementos_distintivos": "O bordão de Deus em sua mão direita (Êxodo 4:20), com o qual estende a mão para os sinais perante Faraó, a abertura do Mar Vermelho, a orientação do maná e as tábuas da Lei no Sinai.",
+      "referencias_biblicas": [
+        "Êxodo 3",
+        "Êxodo 5-12",
+        "Êxodo 7:7",
+        "Êxodo 14",
+        "Êxodo 16",
+        "Êxodo 20"
+      ],
+      "historias_biblioteca": [
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "prompt_ancora_en": "venerable and vigorous 80-year-old leader Moses (Exodus 7:7), dignified Middle-Eastern prophet with firm reverent dark eyes, wavy gray hair and neat gray beard, wearing an earth-toned sandy linen tunic and desert mantle, holding the wooden staff of God",
+      "observacoes_continuidade": "Conforme Êxodo 7:7, Moisés tinha 80 anos diante de Faraó e durante a peregrinação inicial no Sinai (histórias #012 a #016). Deve manter a mesma aparência madura, vigorosa e solene com túnica cor de areia/marrom, barba grisalha alinhada e bordão de Deus."
+    },
+    {
+      "id": "moises_anciao",
+      "nome": "Moisés (Fase Final da Vida e Bênção das Tribos)",
+      "personagem_base": "Moisés",
+      "fase_cronologica": "Fase Final da Vida / Ancião (despedida nas campinas de Moabe até os 120 anos — Deuteronômio 31-34)",
+      "descricao_fisica": "Patriarca majestoso e venerável ao término de sua jornada aos 120 anos, de vigor e visão preservados por Deus (Deuteronômio 34:7: 'não se lhe escureceram os olhos, nem se abateu o seu vigor'), semblante iluminado pela comunhão íntima com o Senhor.",
+      "cabelo_barba": "Longos cabelos prateados ondulados e barba branca venerável na altura do peito.",
+      "vestimentas_cores": "Túnica solene em linho marrom-escuro e manto largo cor de areia do deserto.",
+      "elementos_distintivos": "Abençoando as doze tribos de Israel e contemplando a Terra Prometida do alto do Monte Nebo (Deuteronômio 34:1-4).",
+      "referencias_biblicas": [
+        "Deuteronômio 31-34",
+        "Deuteronômio 34:7"
+      ],
+      "historias_biblioteca": [],
+      "prompt_ancora_en": "venerable elderly prophet Moses at 120 years of age (Deuteronomy 34:7), majestic silver-white hair and long noble white beard, undiminished radiant vigor and clear eyes, wearing a dark brown linen robe and sandy desert mantle, standing atop Mount Nebo overlooking the Promised Land",
+      "observacoes_continuidade": "Ficha reservada para a fase final da vida de Moisés aos 120 anos (Deut. 34:7). Não utilizar para as narrativas da peregrinação inicial do Êxodo e do Sinai (#012 a #016)."
+    },
+    {
+      "id": "davi_jovem_pastor",
+      "nome": "Davi (Jovem Pastor e Vencedor)",
+      "personagem_base": "Davi",
+      "fase_cronologica": "Adolescente / Jovem (15 a 17 anos)",
+      "descricao_fisica": "Jovem corajoso de 15 a 17 anos, olhos castanhos expressivos e brilhantes de fé, semblante radiante e destemido, constituição ágil de pastor.",
+      "cabelo_barba": "Cabelos castanho-claros ligeiramente ondulados e brilhantes, rosto jovem sem barba.",
+      "vestimentas_cores": "Túnica curta pastoril em tom verde-oliva claro e bege, amarrada com faixa de tecido simples, bolsa de couro a tiracolo.",
+      "elementos_distintivos": "Carrega sua funda de couro e seu cajado de pastor de madeira clara; harpa/lira encostada na relva nas cenas de louvor.",
+      "referencias_biblicas": [
+        "1 Samuel 16:1-13",
+        "1 Samuel 17"
+      ],
+      "historias_biblioteca": [
+        22,
+        23,
+        24
+      ],
+      "prompt_ancora_en": "young shepherd David as an agile 16-year-old youth, bright faithful courageous eyes, radiant confident smile, slightly curly light-brown hair, clean-shaven youthful face, wearing a short olive-green and beige linen tunic, leather shepherd pouch across shoulder, holding a smooth wooden staff and leather sling",
+      "observacoes_continuidade": "Impedir expressamente barba em Davi diante de Golias; ele é explicitamente jovem na narrativa."
+    },
+    {
+      "id": "abraao_patriarca",
+      "nome": "Abraão (Pai da Fé)",
+      "personagem_base": "Abraão",
+      "fase_cronologica": "Patriarca Ancião (75 a 85 anos)",
+      "descricao_fisica": "Patriarca respeitável e afetuoso, olhos serenos voltados para o céu com profunda confiança em Deus, postura digna de peregrino.",
+      "cabelo_barba": "Longos cabelos brancos bem penteados e barba branca cheia e venerável.",
+      "vestimentas_cores": "Túnica longa de linho rústico em tons de areia e manto pesado de lã tecida marrom-claro com detalhes artesanais.",
+      "elementos_distintivos": "Mão direita apoiada em cajado rústico, contemplando o céu estrelado sob a tenda nômade.",
+      "referencias_biblicas": [
+        "Gênesis 12:1-9",
+        "Gênesis 15",
+        "Gênesis 22"
+      ],
+      "historias_biblioteca": [
+        5,
+        6,
+        7
+      ],
+      "prompt_ancora_en": "venerable patriarch Abraham, dignified kind-hearted elderly Middle-Eastern man with flowing white hair and full noble white beard, deep faithful gaze looking upward, wearing a traditional sandy-beige nomadic linen robe and woven wool mantle",
+      "observacoes_continuidade": "Transmitir paternidade, acolhimento e fé inabalável; evitar expressões de tristeza na provação de Isaque."
+    },
+    {
+      "id": "maria_jovem",
+      "nome": "Maria (Anunciação e Mãe em Belém)",
+      "personagem_base": "Maria",
+      "fase_cronologica": "Jovem Donzela (16 a 18 anos)",
+      "descricao_fisica": "Jovem judia humilde e graciosa, olhar dócil e repleto de pureza, feição serena e radiante de alegria e fé.",
+      "cabelo_barba": "Cabelos castanho-escuros compridos, parcialmente cobertos por um véu leve.",
+      "vestimentas_cores": "Túnica de linho azul-celeste suave ou azul-claro pastel, com véu e manto branco cru.",
+      "elementos_distintivos": "Postura de oração reverente e afeto maternal profundo ao segurar o bebê Jesus na manjedoura ou o menino diante dos magos.",
+      "referencias_biblicas": [
+        "Lucas 1:26-38",
+        "Lucas 2:1-20",
+        "Mateus 2:11"
+      ],
+      "historias_biblioteca": [
+        31,
+        32,
+        33
+      ],
+      "prompt_ancora_en": "young Mary of Nazareth, gentle Middle-Eastern maiden with soft sweet facial features, humble radiant smile, warm brown eyes, wearing a graceful pastel sky-blue linen dress with a clean modest white veil over dark hair",
+      "observacoes_continuidade": "Continuidade visual com os trajes suaves e postura afetuosa de mãe."
+    },
+    {
+      "id": "jose_jovem",
+      "nome": "José (A Túnica Colorida)",
+      "personagem_base": "José do Egito",
+      "fase_cronologica": "Jovem (17 anos — Gênesis 37:2)",
+      "descricao_fisica": "Jovem hebreu de 17 anos, feição nobre, inocente e sonhadora, sorriso bondoso, rosto sem barba.",
+      "cabelo_barba": "Cabelos castanhos escuros sedosos, sem barba.",
+      "vestimentas_cores": "A icônica túnica especial confeccionada por seu pai Jacó, com mangas compridas e faixas verticais em cores harmônicas e vivas (azul-turquesa, amarelo-ouro, terracota e verde).",
+      "elementos_distintivos": "A túnica colorida é o centro visual de sua identidade nesta fase.",
+      "referencias_biblicas": [
+        "Gênesis 37"
+      ],
+      "historias_biblioteca": [
+        9
+      ],
+      "prompt_ancora_en": "young seventeen-year-old Joseph of Canaan, handsome gentle Middle-Eastern youth with kind brown eyes, dark wavy hair, clean-shaven youthful face, proudly wearing his beautiful long-sleeved tunic of many vibrant colors (turquoise, golden-yellow, terracotta, soft green)",
+      "observacoes_continuidade": "Contrastar com a versão governante no Egito, onde usará vestes egípcias de nobreza."
+    },
+    {
+      "id": "jose_governador",
+      "nome": "José (Governador no Egito)",
+      "personagem_base": "José do Egito",
+      "fase_cronologica": "Adulto Governador (30 a 35 anos — Gênesis 41:46)",
+      "descricao_fisica": "Homem nobre e imponente de cerca de 30 anos, postura de autoridade combinada com um olhar de imensa compaixão e perdão.",
+      "cabelo_barba": "Cabelos pretos aparados no estilo nobre egípcio, sem barba.",
+      "vestimentas_cores": "Vestimenta nobre egípcia de linho finíssimo branco plissado com bordaduras douradas, peitoral de nobreza com pedras coloridas e anel real.",
+      "elementos_distintivos": "Cetro de autoridade egípcia na mão ou abrindo os braços em lágrimas de amor ao perdoar seus irmãos.",
+      "referencias_biblicas": [
+        "Gênesis 45",
+        "Gênesis 50:15-21"
+      ],
+      "historias_biblioteca": [
+        10
+      ],
+      "prompt_ancora_en": "Joseph as the prime minister of Egypt in his 30s, distinguished regal posture, compassionate tearful eyes of forgiveness, clean-shaven, wearing elegant pleated white Egyptian royal linen garments with golden embroidery and a discrete gold ornamental collar",
+      "observacoes_continuidade": "Cena de reconciliação familiar; expressar acolhimento sem rancor."
+    },
+    {
+      "id": "daniel_jovem",
+      "nome": "Daniel (Jovem Fiel na Babilônia)",
+      "personagem_base": "Daniel",
+      "fase_cronologica": "Jovem Adulto (18 a 22 anos)",
+      "descricao_fisica": "Jovem sábio de porte nobre e sereno, olhar de absoluta paz e confiança no Deus de Israel, feição corajosa e mansa.",
+      "cabelo_barba": "Cabelos castanho-escuros alinhados, barba incipiente ou rosto limpo.",
+      "vestimentas_cores": "Túnica de linho azul-marinho nobre com bordas em tecido claro, amarrada com faixa de seda discreta.",
+      "elementos_distintivos": "Em atitude serena de oração ajoelhada, cercado por leões majestosos e dóceis que repousam como cordeiros.",
+      "referencias_biblicas": [
+        "Daniel 6:16-23"
+      ],
+      "historias_biblioteca": [
+        28
+      ],
+      "prompt_ancora_en": "young prophet Daniel kneeling peacefully in prayer, calm fearless Middle-Eastern young man with tranquil trusting eyes, dark hair, wearing a noble deep-blue linen tunic, surrounded by magnificent docile lions resting gently like lambs in a sunlit stone chamber",
+      "observacoes_continuidade": "Os leões devem ser amigos e tranquilos, jamais rosnando ou ferindo; iluminação celestial suave."
+    },
+    {
+      "id": "elias_profeta",
+      "nome": "Elias (Profeta de Fogo)",
+      "personagem_base": "Elias",
+      "fase_cronologica": "Profeta Maduro (45 a 55 anos)",
+      "descricao_fisica": "Homem vigoroso do campo, pele bronzeada pelo vento do deserto de Gileade, olhar firme e ardente de fé e lealdade a Deus.",
+      "cabelo_barba": "Cabelos castanho-escuros espessos e barba cerrada viril.",
+      "vestimentas_cores": "Manto rústico tradicional de pelos de camelo ou lã crua, ajustado com um cinto de couro marrom largo.",
+      "elementos_distintivos": "Mãos erguidas em oração confiante ao Senhor no Monte Carmelo, ou abençoando o pote de farinha e a botija de azeite da viúva.",
+      "referencias_biblicas": [
+        "1 Reis 17",
+        "1 Reis 18"
+      ],
+      "historias_biblioteca": [
+        26,
+        27
+      ],
+      "prompt_ancora_en": "prophet Elijah on Mount Carmel, vigorous Middle-Eastern man in his late 40s, powerful faithful gaze, thick dark hair and full rugged beard, wearing a rustic woven camel-hair mantle bound with a wide leather belt, praying with raised hands",
+      "observacoes_continuidade": "Evitar qualquer representação de sangue; a cena deve focar no fogo celestial que consome o holocausto no altar molhado."
+    },
+    {
+      "id": "paulo_apostolo",
+      "nome": "Paulo (Apóstolo dos Gentios)",
+      "personagem_base": "Paulo",
+      "fase_cronologica": "Adulto Maduro (40 a 50 anos)",
+      "descricao_fisica": "Homem de estatura média, testa ampla e inteligente, olhos brilhantes de zelo pelo Evangelho, sorriso de esperança e coragem.",
+      "cabelo_barba": "Cabelos castanho-escuros ralos no topo, barba castanha curta aparada.",
+      "vestimentas_cores": "Manto de viagem em tecido ocre/terracota resistente e túnica de linho marrom-claro, bolsa de couro para guardar cartas e pergaminhos.",
+      "elementos_distintivos": "Louvando a Deus com Silas na prisão à meia-noite enquanto as correntes se soltam com o terremoto celestial.",
+      "referencias_biblicas": [
+        "Atos 9",
+        "Atos 16:16-40"
+      ],
+      "historias_biblioteca": [
+        60
+      ],
+      "prompt_ancora_en": "Apostle Paul with his friend Silas in a Roman prison chamber, joyful resilient Middle-Eastern man in his 40s with intelligent kind eyes, short trimmed dark beard, singing praises to God as gentle heavenly light breaks into the stone cell",
+      "observacoes_continuidade": "Transmitir alegria na adversidade e comunhão fraterna, sem crueldade nas grades."
+    }
+  ]
+}
